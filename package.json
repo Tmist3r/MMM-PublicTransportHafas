@@ -29,16 +29,16 @@
     "hafas-client": "^6.3.0"
   },
   "devDependencies": {
-    "@eslint/js": "^8.57.0",
-    "@stylistic/eslint-plugin": "^2.6.4",
-    "eslint": "^8.57.0",
-    "eslint-plugin-import": "^2.29.1",
+    "@eslint/js": "^8.57.1",
+    "@stylistic/eslint-plugin": "^2.8.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-import": "^2.30.0",
     "globals": "^15.9.0",
-    "husky": "^9.1.5",
-    "lint-staged": "^15.2.9",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "markdownlint-cli": "^0.41.0",
     "prettier": "^3.3.3",
-    "stylelint": "^16.8.2",
+    "stylelint": "^16.9.0",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-prettier": "^5.0.2"
   },

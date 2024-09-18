@@ -112,7 +112,7 @@ class PTHAFASTableBodyBuilder {
     }
 
     if (marquee.innerText !== "") {
-      while (marquee.innerText.length < 3_000) {
+      while (marquee.innerText.length < 3000) {
         marquee.innerText += marquee.innerText;
       }
     }

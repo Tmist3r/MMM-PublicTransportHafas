@@ -11,9 +11,7 @@ const productMap = {};
  * @returns {Array} An array without duplicate values.
  */
 function arrayUnique (array) {
-
-    return [...new Set(array)];
-
+  return [...new Set(array)];
 }
 
 /**
@@ -22,19 +20,15 @@ function arrayUnique (array) {
  * @returns {string} A list of transport products as a string.
  */
 function refineProducts (products) {
+  if (!products) {
+    return "none";
+  }
 
-    if (!products) {
+  const availableProducts = Object.keys(products).filter((key) => products[key]);
 
-        return "none";
+  const availableProductsReadable = arrayUnique(availableProducts.map((product) => productMap[product]));
 
-    }
-
-    const availableProducts = Object.keys(products).filter((key) => products[key]);
-
-    const availableProductsReadable = arrayUnique(availableProducts.map((product) => productMap[product]));
-
-    return availableProductsReadable.join(", ");
-
+  return availableProductsReadable.join(", ");
 }
 
 /**
@@ -42,97 +36,75 @@ function refineProducts (products) {
  * @param {object} station The station it's about.
  */
 function printStationInfo (station) {
-
-    if (station.id && station.name) {
-
-        console.info(` > Stop: ${station.name}\n   ID: ${
-            station.id
-        }\n   Transport product(s): ${refineProducts(station.products)} \n`);
-
-    }
-
+  if (station.id && station.name) {
+    console.info(` > Stop: ${station.name}\n   ID: ${
+      station.id
+    }\n   Transport product(s): ${refineProducts(station.products)} \n`);
+  }
 }
 
 function query (profile) {
+  if (profile !== "" && typeof profile !== "undefined") {
+    const client = createClient(
+      profile,
+      "MMM-PublicTransportHafas"
+    );
+    const rl = readline.createInterface({
+      "input": process.stdin,
+      "output": process.stdout
+    });
 
-    if (profile !== "" && typeof profile !== "undefined") {
+    rl.question(
+      "Enter an address or station name: ",
+      async (answer) => {
+        rl.close();
 
-        const client = createClient(
-            profile,
-            "MMM-PublicTransportHafas"
-        );
-        const rl = readline.createInterface({
-            "input": process.stdin,
-            "output": process.stdout
-        });
+        const opt = {
+          "adresses": false,
+          "poi": false,
+          "results": 10,
+          "stations": true
+        };
 
-        rl.question(
-            "Enter an address or station name: ",
-            async (answer) => {
-
-                rl.close();
-
-                const opt = {
-                    "adresses": false,
-                    "poi": false,
-                    "results": 10,
-                    "stations": true
-                };
-
-                try {
-
-                    const response = await client.locations(
-                        answer,
-                        opt
-                    );
-                    console.info(`\nStops found for '${answer}':\n`);
-                    for (const station of response) {
-
-                        printStationInfo(station);
-
-                    }
-
-                } catch (error) {
-
-                    console.error(error);
-
-                }
-
-            }
-        );
-
-    }
-
+        try {
+          const response = await client.locations(
+            answer,
+            opt
+          );
+          console.info(`\nStops found for '${answer}':\n`);
+          for (const station of response) {
+            printStationInfo(station);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    );
+  }
 }
 
 if (process.argv.length === 3) {
-
-    profileName = process.argv[2];
-    console.info(`Using hafas-client profile: ${profileName}\n`);
-
+  profileName = process.argv[2];
+  console.info(`Using hafas-client profile: ${profileName}\n`);
 } else {
+  console.info("Using default hafas-client profile: 'db'");
+  profileName = "db";
+}
 
-    console.info("Using default hafas-client profile: 'db'");
-    profileName = "db";
+async function importProfile () {
+  const {profile} = await import(`hafas-client/p/${profileName}/index.js`);
 
+  Object.keys(profile.products).forEach((key) => {
+    const productMapKey = profile.products[key].id;
+    const productMapName = profile.products[key].name;
+    productMap[productMapKey] = productMapName;
+  });
+
+  query(profile);
 }
 
 try {
-
-    const {profile} = await import(`hafas-client/p/${profileName}/index.js`);
-
-    for (const key of Object.keys(profile.products)) {
-
-        const productMapKey = profile.products[key].id,
-            productMapName = profile.products[key].name;
-        productMap[productMapKey] = productMapName;
-
-    }
-
-    query(profile);
-
+  importProfile();
 } catch (error) {
-
-    console.error(`${error.message}\n\n Did you choose the right profile name? \n`);
-
+  console.error(`${error.message}\n\n Did you choose the right profile name? \n`);
 }

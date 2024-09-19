@@ -109,9 +109,9 @@ npm run query sbb
 
 ## Configuration
 
-The module is quite configurable. The only option you really have to set is `stationID` - all other options are **optional**.
+### Configuration options
 
-These are the possible options:
+The module is quite configurable. The only option you really have to set is `stationID` - all other options are **optional**.
 
 <!-- prettier-ignore-start -->
 | Option                            | Description    |
@@ -151,33 +151,35 @@ These are the possible options:
 | `animationSpeed`                  | <p>Speed of the update animation.</p><p>**Type:** `integer`<br>**Possible values:** `0` - `5000`<br>**Default value:** `2000`<br>**Unit:** `milliseconds`</p>|
 <!-- prettier-ignore-end -->
 
-Here is an example for an entry in `config.js`
+### Configuration example
+
+Here is an example for an entry in the modules array in your `config.js`:
 
 ```javascript
-{
-  module: "MMM-PublicTransportHafas",
-  position: "bottom_right",
+    {
+      module: "MMM-PublicTransportHafas",
+      position: "bottom_right",
 
-  config: {
-    // Departures options
-    stationID: "8012202",                   // Replace with your stationID!
-    stationName: "Wilhelm-Leuschner-Platz", // Replace with your station name!
-    direction: "",                    // Show only departures heading to this station. (A station ID.)
-    excludedTransportationTypes: [],  // Which transportation types should not be shown on the mirror? (comma-separated list of types) possible values: "tram", "bus", "suburban", "subway", "regional" and "national"
-    ignoredLines: [],                 // Which lines should be ignored? (comma-separated list of line names)
-    timeToStation: 10,                // How long do you need to walk to the next Station?
+      config: {
+        // Departures options
+        stationID: "8012202",                   // Replace with your stationID!
+        stationName: "Wilhelm-Leuschner-Platz", // Replace with your station name!
+        direction: "",                    // Show only departures heading to this station. (A station ID.)
+        excludedTransportationTypes: [],  // Which transportation types should not be shown on the mirror? (comma-separated list of types) possible values: "tram", "bus", "suburban", "subway", "regional" and "national"
+        ignoredLines: [],                 // Which lines should be ignored? (comma-separated list of line names)
+        timeToStation: 10,                // How long do you need to walk to the next Station?
 
-    // Look and Feel
-    displayLastUpdate: true,          // Display the last time of module update.
-    maxUnreachableDepartures: 0,      // How many unreachable departures should be shown?
-    maxReachableDepartures: 7,        // How many reachable departures should be shown?
-    showColoredLineSymbols: true,     // Want colored line symbols?
-    customLineStyles: "",             // Prefix for the name of the custom css file. ex: Leipzig-lines.css (case sensitive)
-    showOnlyLineNumbers: false,       // Display only the line number instead of the complete name, i. e. "11" instead of "STR 11"
-    showTableHeadersAsSymbols: true,  // Table Headers as symbols or text?
-    useColorForRealtimeInfo: true     // Want colored real time information (timeToStation, early)?
-  }
-},
+        // Look and Feel
+        displayLastUpdate: true,          // Display the last time of module update.
+        maxUnreachableDepartures: 0,      // How many unreachable departures should be shown?
+        maxReachableDepartures: 7,        // How many reachable departures should be shown?
+        showColoredLineSymbols: true,     // Want colored line symbols?
+        customLineStyles: "",             // Prefix for the name of the custom css file. ex: Leipzig-lines.css (case sensitive)
+        showOnlyLineNumbers: false,       // Display only the line number instead of the complete name, i. e. "11" instead of "STR 11"
+        showTableHeadersAsSymbols: true,  // Table Headers as symbols or text?
+        useColorForRealtimeInfo: true     // Want colored real time information (timeToStation, early)?
+      }
+    },
 ```
 
 ## Multiple instances

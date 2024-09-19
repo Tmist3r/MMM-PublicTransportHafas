@@ -46,7 +46,7 @@ For more information see the [Configuration](#configuration) section.
 
 ## Installation
 
-Just clone the module into your modules folder of your MagicMirror² and execute `npm ci` in the module’s directory:
+Just clone the module into your modules directory and install the dependencies:
 
 ```bash
 cd ~/MagicMirror/modules
@@ -57,7 +57,7 @@ npm ci
 
 ## Update
 
-Go to the module’s folder inside MagicMirror modules folder and pull the latest version from GitHub and install:
+Just enter the MMM-PublicTransportHafas directory, pull the update and install the dependencies:
 
 ```bash
 cd ~/MagicMirror/modules/MMM-PublicTransportHafas
@@ -71,7 +71,7 @@ You need the `stationId` for the station whose departures should be displayed.
 
 Here's how to find out the `stationId`:
 
-1. You have to be in the modules folder (`MagicMirror/modules/MMM-PublicTransportHafas`).
+1. You have to be in the modules directory (`~/MagicMirror/modules/MMM-PublicTransportHafas`).
 2. Then run the following command: `npm run query`.
 3. Enter a station name. It is useful to enter a city name too since the system knows a lot of stations even outside Germany.
 4. The result could contain one or more possible stations with valid IDs.
@@ -188,7 +188,7 @@ You can even use the same `stationID` in different instances. So you can display
 
 ## Providing a custom CSS file
 
-**Note:** For some cities, separate CSS files have already been created that contain the local line colours. You can look them up in the `css` folder. If you create a file for another city, feel free to send it to us.
+**Note:** For some cities, separate CSS files have already been created that contain the local line colours. You can look them up in the `css` directory. If you create a file for another city, feel free to send it to us.
 
 ### Colored line labels
 
@@ -196,7 +196,7 @@ If you set `showColoredLineSymbols` to `true` the module will try to colorize th
 
 To provide your own classes create a CSS file in the `css` directory of the module. It must be named like `<your custom name>-lines.css`, where `<your custom name>` can be any valid filename but should not contain blanks or dots. The part `<your custom name>` is then used in the config file as value for the `customLineStyles` property.
 
-In the example above “leipzig” is used as value for the `customLineStyles` property. Therefore there must be a file named `leipzig-lines.css` inside the `css` folder. If this is not the case the module won’t be started and it will not be visible. The browser’s console will show an error.
+In the example above “leipzig” is used as value for the `customLineStyles` property. Therefore there must be a file named `leipzig-lines.css` inside the `css` directory. If this is not the case the module won’t be started and it will not be visible. The browser’s console will show an error.
 
 Basically you can set whatever you want in the CSS file but it is recommended to only set the foreground and background color and the width. In some cases it is useful to change the border radius too. See the file `css/leipzig-lines.css` for reference and as a guideline.
 

@@ -66,7 +66,6 @@ const config = [
       "@stylistic/indent": ["error", 2],
       "@stylistic/padded-blocks": ["error", "never"],
       "func-style": "off",
-      "import/namespace": "off",
       "max-lines-per-function": ["error", 100],
       "no-magic-numbers": "off",
       "one-var": "off",

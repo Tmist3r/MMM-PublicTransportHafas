@@ -1,11 +1,9 @@
-import eslintPluginImport from "eslint-plugin-import";
 import eslintPluginJs from "@eslint/js";
 import eslintPluginStylistic from "@stylistic/eslint-plugin";
 import globals from "globals";
 
 const config = [
   eslintPluginJs.configs.all,
-  eslintPluginImport.flatConfigs.recommended,
   {
     "files": ["**/*.js"],
     "languageOptions": {
@@ -13,7 +11,8 @@ const config = [
       "globals": {
         ...globals.browser,
         ...globals.node
-      }
+      },
+      "sourceType": "commonjs"
     },
     "plugins": {
       ...eslintPluginStylistic.configs["all-flat"].plugins

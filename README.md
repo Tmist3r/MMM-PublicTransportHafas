@@ -51,7 +51,7 @@ npm ci
 
 ## Update
 
-Just enter the MMM-PublicTransportHafas directory, pull the update and install the dependencies:
+Just enter the module's directory, pull the update and install the dependencies:
 
 ```bash
 cd ~/MagicMirror/modules/MMM-PublicTransportHafas
@@ -257,3 +257,8 @@ Thanks to @AgP42 for this functionality!
 If you find any problems, bugs or have questions, please [open a GitHub issue](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues) in this repository.
 
 Pull requests are of course also very welcome 🙂
+
+### Developer commands
+
+- `npm run lint` - Run linting and formatter checks.
+- `npm run lint:fix` - Fix linting and formatter issues.

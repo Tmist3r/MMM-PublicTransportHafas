@@ -50,6 +50,7 @@
     "lint:fix": "eslint . --fix && stylelint **/*.css --fix && markdownlint . --ignore node_modules --fix && prettier . --write",
     "prepare": "[ -f node_modules/.bin/husky ] && husky || echo husky is not installed.",
     "query": "node ./convenience/query_stations.mjs",
+    "release": "bumpp --no-push",
     "test": "npm run lint"
   },
   "lint-staged": {

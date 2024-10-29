@@ -54,6 +54,7 @@ const config = [
       "@stylistic/indent": ["error", 2],
       "@stylistic/lines-around-comment": "off",
       "@stylistic/multiline-comment-style": "off",
+      "@stylistic/no-multi-spaces": ["error", {"ignoreEOLComments": true}],
       "@stylistic/object-property-newline": "off",
       "@stylistic/padded-blocks": ["error", "never"],
       "@stylistic/quote-props": ["error", "as-needed"],

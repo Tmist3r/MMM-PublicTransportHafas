@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/no-multi-spaces */
 /* global dayjs PTHAFASDomBuilder Module Log config */
 
 /*

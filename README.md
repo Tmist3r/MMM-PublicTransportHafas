@@ -200,25 +200,28 @@ Basically you can set whatever you want in the CSS file but it is recommended to
 
 In Leipzig the tram lines 2, 8 and 9 use a yellow color. Since the lines share the same settings the CSS class names are listed with commas so that the settings apply to each listed class.
 
-<!-- prettier-ignore-start -->
 ```css
-.str2, .str8, .str9 {
-  background-color: #f8c623;  /* yellow background */
-  color: black;               /* text color black */
+.str2,
+.str8,
+.str9 {
+  background-color: #f8c623; /* yellow background */
+  color: black; /* text color black */
 }
 ```
-<!-- prettier-ignore-end -->
 
 Some night buses in Leipzig use an orange-ish color.
 
-<!-- prettier-ignore-start -->
 ```css
-.busn1, .busn1e, .busn5, .busn5e, .busn8, .busn8e {
-  background-color: #ee9f2e;  /* orange-ish background */
-  color: #164585;             /* blue-ish text color */
+.busn1,
+.busn1e,
+.busn5,
+.busn5e,
+.busn8,
+.busn8e {
+  background-color: #ee9f2e; /* orange-ish background */
+  color: #164585; /* blue-ish text color */
 }
 ```
-<!-- prettier-ignore-end -->
 
 ### Customizing the color for delays
 

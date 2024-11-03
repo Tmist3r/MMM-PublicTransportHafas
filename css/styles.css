@@ -105,7 +105,7 @@ them from the MagicMirror² core system and other modules.
   }
 }
 
-/* Marquee for the warinig remarks field */
+/* Marquee for the warning remarks field */
 .mmm-pth-warning-remarks {
   white-space: nowrap;
   overflow: hidden;

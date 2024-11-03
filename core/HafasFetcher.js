@@ -2,7 +2,7 @@
 const dayjs = require("dayjs");
 const isSameOrAfter = require("dayjs/plugin/isSameOrAfter");
 const Log = require("logger");
-const pjson = require("../package.json");
+const packageJson = require("../package.json");
 
 dayjs.extend(isSameOrAfter);
 
@@ -43,10 +43,10 @@ module.exports = class HafasFetcher {
     const {profile} = await import(`hafas-client/p/${this.config.hafasProfile}/index.js`);
     this.hafasClient = createClient(
       profile,
-      `MMM-PublicTransportHafas v${pjson.version}`
+      `MMM-PublicTransportHafas v${packageJson.version}`
     );
 
-    // Possible transportation types given by profil
+    // Possible transportation types given by profile
     this.possibleTransportationTypes = profile.products.map((product) => product.id);
 
     // Remove the excluded types from the possible types

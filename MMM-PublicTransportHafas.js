@@ -66,7 +66,7 @@ Module.register("MMM-PublicTransportHafas", {
     this.initialized = false;
     this.error = {};
 
-    this.sanitzeConfig();
+    this.sanitizeConfig();
 
     if (!this.config.stationID) {
       Log.error(`stationID not set! ${this.config.stationID}`);
@@ -98,21 +98,21 @@ Module.register("MMM-PublicTransportHafas", {
   suspend () {
     // Core function called when the module is hidden
     this.ModulePublicTransportHafasHidden = true; // Module hidden
-    // Log.log("Function suspend - Module PublicTransportHafas is hidden " + this.config.stationName);
+    Log.debug(`Function suspend - Module MMM-PublicTransportHafas is hidden ${this.config.stationName}`);
     this.gestionUpdateIntervalHafas(); // Call the function which manages all the cases
   },
 
   resume () {
     // Core function called when the module is displayed
     this.ModulePublicTransportHafasHidden = false;
-    // Log.log("Function working - Module PublicTransportHafas is displayed " + this.config.stationName);
+    Log.debug(`Function working - Module MMM-PublicTransportHafas is displayed ${this.config.stationName}`);
     this.gestionUpdateIntervalHafas();
   },
 
   notificationReceived (notification, payload) {
     if (notification === "USER_PRESENCE") {
       // Notification sent by the MMM-PIR-Sensor module. See its doc.
-      // Log.log("NotificationReceived USER_PRESENCE = " + payload);
+      Log.debug(`[MMM-PublicTransportHafas]: NotificationReceived USER_PRESENCE = ${payload}`);
       UserPresence = payload;
       this.gestionUpdateIntervalHafas();
     }
@@ -123,13 +123,13 @@ Module.register("MMM-PublicTransportHafas", {
       UserPresence === true && this.ModulePublicTransportHafasHidden === false
     ) {
       // Make sure to have a user present in front of the screen (PIR sensor) and that the module is displayed
-      // Log.log(this.config.stationName + " is displayed and user present! Update it");
+      Log.debug(`[MMM-PublicTransportHafas]: ${this.config.stationName} is displayed and user present! Update it`);
 
       // Update now and start again the update timer
       this.startFetchingLoop(this.config.updatesEvery);
     } else {
       // (UserPresence = false OU ModulePublicTransportHafasHidden = true)
-      // Log.log("No one is watching: Stop the update!" + this.config.stationName);
+      Log.debug(`[MMM-PublicTransportHafas]: No one is watching: Stop the update!${this.config.stationName}`);
       clearInterval(this.updatesIntervalID); // Stop the current update interval
       this.updatesIntervalID = 0; // Reset the variable
     }
@@ -171,12 +171,12 @@ Module.register("MMM-PublicTransportHafas", {
 
     // Display the update time at the end, if defined so by the user config
     if (this.config.displayLastUpdate) {
-      const updateinfo = document.createElement("div");
-      updateinfo.className = "xsmall light align-left";
-      updateinfo.innerText = `Update: ${dayjs
+      const updateInfo = document.createElement("div");
+      updateInfo.className = "xsmall light align-left";
+      updateInfo.innerText = `Update: ${dayjs
         .unix(this.lastUpdate)
         .format(this.config.displayLastUpdateFormat)}`;
-      wrapper.appendChild(updateinfo);
+      wrapper.appendChild(updateInfo);
     }
 
     return wrapper;
@@ -252,7 +252,7 @@ Module.register("MMM-PublicTransportHafas", {
     return payload.identifier === this.identifier;
   },
 
-  sanitzeConfig () {
+  sanitizeConfig () {
     if (this.config.updatesEvery < 30) {
       this.config.updatesEvery = 30;
     }

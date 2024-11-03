@@ -1,5 +1,5 @@
 /*
-  This stylesheet contains the css classes needed to colorize the line
+  This stylesheet contains the CSS classes needed to colorize the line
   labels in the display for Berlin. Bus, Tram, U-Bahn & S-Bahn.
  */
 
@@ -72,7 +72,7 @@
 }
 
 /*
-  All subways have a diffrent color code and a white text color, except the U4 have a black text color.
+  All subways have a different color code and a white text color, except the U4 have a black text color.
   The width of the line symbol is pulled from the styles.css of MMM-PublicTransportHafas/css.
   It is equal to the font size. This will result in a square symbol.
   Source: https://en.wikipedia.org/wiki/Berlin_U-Bahn#Routes;
@@ -116,7 +116,7 @@
 }
 
 /*
-  All tram lines have a diffrent color code and a white text color.
+  All tram lines have a different color code and a white text color.
   The width of the line symbol is pulled from the styles.css of MMM-PublicTransportHafas/css.
   It is equal to the font size. This will result in a square symbol.
   Source: https://de.wikipedia.org/wiki/Stra%C3%9Fenbahn_Berlin#Linien%C3%BCbersicht;

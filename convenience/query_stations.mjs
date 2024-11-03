@@ -60,7 +60,7 @@ function query (profile) {
         rl.close();
 
         const opt = {
-          "adresses": false,
+          "addresses": false,
           "poi": false,
           "results": 10,
           "stations": true

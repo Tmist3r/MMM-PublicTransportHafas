@@ -17,7 +17,7 @@
 
 ## Description
 
-This module shows live public transport information in Germany for all stations known to the Deutsche Bahn system. Most public transportation providers in Germany providing information for that system so the coverage should be quite good. The data is provided by the fantastic [hafas-client](https://github.com/public-transport/hafas-client). Even in other european contries this module should work as HAFAS is widely used throughout Europe.
+This module shows live public transport information in Germany for all stations known to the Deutsche Bahn system. Most public transportation providers in Germany providing information for that system so the coverage should be quite good. The data is provided by the fantastic [hafas-client](https://github.com/public-transport/hafas-client). Even in other european countries this module should work as HAFAS is widely used throughout Europe.
 
 You can very easy adapt the shapes and line colors of your local transport companies. See [Providing a custom CSS file](#providing-a-custom-css-file).
 
@@ -33,7 +33,7 @@ For more information see the [Configuration](#configuration) section.
 |![Example: Goerdelerring Leipzig, all directions](img/Goerdelerring_all.png)<br>*Leipzig, Goerdelerring (all directions)*|![Example: Goerdelerring Leipzig, heading to main station](img/Goerdelerring_to_hbf.png)<br>*Leipzig, Goerdelerring (heading to main station)*|
 |---|---|
 |![Example: Hauptbahnhof, Leipzig, only tram](img/Hauptbahnhof_tram_only.png)<br>*Hauptbahnhof, Leipzig (displaying only trams and two unreachable departures)*|![Example: Hauptbahnhof, Leipzig, only regional and national trains](img/Hauptbahnhof_train_only.png)<br>*Hauptbahnhof, Leipzig (displaying only regional and national trains)*|
-|![Example: Leuschner Platz with relative departure time and reorderd columns](img/Leuschner_Platz_relative.png)<br>*Leuschner Platz, Leipzig (displaying departure times in relative format and reordered columns)*| |
+|![Example: Leuschner Platz with relative departure time and reordered columns](img/Leuschner_Platz_relative.png)<br>*Leuschner Platz, Leipzig (displaying departure times in relative format and reordered columns)*| |
 
 ![Example: Multiple instances in Berlin, showing the last update time](img/UpdateTimeDisplayed.png)<br>*Several instances in Berlin, showing the last update time*
 <!-- prettier-ignore-end -->
@@ -116,8 +116,8 @@ The module is quite configurable. The only option you really have to set is `sta
 | `headerPrefix`                    | <p>The text to be prepended to the `stationName`.</p><p>**Type:** `string`<br>**Example:** `"von"` (Will result in “von Wilhelm-Leuschner-Platz” being displayed.)<br>**Default value:** `""`</p><p>**Note:** A blank between `headerPrefix` and `stationName` is automatically inserted.</p>|
 | `headerAppendix`                  | <p>The text to be prepended to the `stationName`.</p><p>**Type:** `string`<br>**Example:** `"(Richtung HBF)"`<br>**Default value:** `""`</p><p>**Note:** A blank between `headerAppendix` and `stationName` is automatically inserted.</p>|
 | `updatesEvery`                    | <p>The time in seconds when the displayed departures should be updated.</p><p>**Type:** `integer`<br>**Example:** `60` (The departures will be refreshed every minute.)<br>**Default value:** `120`<br>**Unit:** `seconds`</p><p>**Note:** The minimal refresh time is 30 seconds.</p>|
-| `direction`                       | <p>An ID of a station. It is used to display only those departures heading to this station.</p><p>**Type:** `string`<br>**Example:** `"954609"`<br>**Default value:** `""`</p><p>**Note:** It is not neccessary to find the ID of the end station. Just use the next station which is on the route you are after.<br>It is not possible to list multiple IDs. If you want to display different directions for one station use multiple instances of this module.</p>|
-| `ignoredLines`                    | <p>An array of strings describing the lines you want to exclude from the displayed departures.</p><p>**Type:** `array`<br>**Example:** `[ "STR 11", "STR 10" ]` (Displays all lines except tram 10 and 11.)<br>**Default value:** `[]`</p><p>**Note:** You need to provide the line names exactly as they are otherwise displayed. This setting is case sensitive. Blanks need to be exactly as they are display. If a line is usually displayes as `BUS  89` (two blanks) you need to type exactly that into the array.</p>|
+| `direction`                       | <p>An ID of a station. It is used to display only those departures heading to this station.</p><p>**Type:** `string`<br>**Example:** `"954609"`<br>**Default value:** `""`</p><p>**Note:** It is not necessary to find the ID of the end station. Just use the next station which is on the route you are after.<br>It is not possible to list multiple IDs. If you want to display different directions for one station use multiple instances of this module.</p>|
+| `ignoredLines`                    | <p>An array of strings describing the lines you want to exclude from the displayed departures.</p><p>**Type:** `array`<br>**Example:** `[ "STR 11", "STR 10" ]` (Displays all lines except tram 10 and 11.)<br>**Default value:** `[]`</p><p>**Note:** You need to provide the line names exactly as they are otherwise displayed. This setting is case sensitive. Blanks need to be exactly as they are display. If a line is usually displays as `BUS  89` (two blanks) you need to type exactly that into the array.</p>|
 | `ignoreRelatedStations`           | <p>Ignore departures from related stations or not.</p><p>**Type:** `boolean`<br>**Default value:** `false`<br>**Possible values:** `true` and `false`<p>**Note:** Usually you don't need to touch this option.</p>|
 | `excludedTransportationTypes`     | <p>An array of strings describing the transportation types you want to exclude from the displayed departures.</p><p>**Type:** `array`<br>**Example:** `[ "suburban", "bus" ]`<br>**Default value:** `[]`<br>**Possible values:** <table><tr><th>Type</th><th>Use in Germany</th></tr><tr><td>`"bus"`</td><td>bus</td></tr><tr><td>`"ferry"`</td><td>F&auml;hre</td></tr><tr><td>`"express"`</td><td>?</td></tr><tr><td>`"national"`</td><td>IC trains</td></tr><tr><td>`"nationalExpress"`</td><td>ICE trains</td></tr><tr><td>`"regional"`</td><td>RB or RE</td></tr><tr><td>`"suburban"`</td><td>S-Bahn</td></tr><tr><td>`"subway"`</td><td>U-Bahn</td></tr><tr><td>`"tram"`</td><td>Tram</td></tr><tr><td>`"taxi"`</td><td>Taxi</td></tr></table></p>|
 | `timeToStation`                   | <p>An integer indicating how long it takes you to get to the station.</p><p>**Type:** `integer`<br>**Example:** `5`<br>**Default value:** `10`<br>**Unit:** `minutes`</p>|
@@ -184,7 +184,7 @@ You can even use the same `stationID` in different instances. So you can display
 
 ## Providing a custom CSS file
 
-**Note:** For some cities, separate CSS files have already been created that contain the local line colours. You can look them up in the `css` directory. If you create a file for another city, feel free to send it to us.
+**Note:** For some cities, separate CSS files have already been created that contain the local line colors. You can look them up in the `css` directory. If you create a file for another city, feel free to send it to us.
 
 ### Colored line labels
 
@@ -237,13 +237,13 @@ No delay or negative delays (the transport will arrive early) are displayed in g
 
 Sometimes there is no real-time data for a departure, in that case it is displayed with a question mark:
 
-![Time without relat time data](img/time_without_real_time_data.png)
+![Time without real time data](img/time_without_real_time_data.png)
 
 If you want to customize that include the classes `mmm-pth-has-delay` and `mmm-pth-to-early` in your custom CSS file and make the appropriate settings.
 
 ## Technical background details
 
-To limit the server request only when the module is displayed and/or the user is present, the update will be stopped when no instance of the module are displayed (module hidden e.g. by a [MMM-Carousel](https://github.com/lawrence-jeff/MMM-Carousel), [MMM-Pages](https://github.com/edward-shen/MMM-pages) or [MMM-Remote-Control](https://github.com/Jopyth/MMM-Remote-Control)). The update will also be stopped by the use of a PIR sensor using the module [MMM-PIR-Sensor](https://github.com/paviro/MMM-PIR-Sensor) (that sends the notification 'USER_PRESENCE'). No special configuration is needed for this behaviour.
+To limit the server request only when the module is displayed and/or the user is present, the update will be stopped when no instance of the module are displayed (module hidden e.g. by a [MMM-Carousel](https://github.com/lawrence-jeff/MMM-Carousel), [MMM-Pages](https://github.com/edward-shen/MMM-pages) or [MMM-Remote-Control](https://github.com/Jopyth/MMM-Remote-Control)). The update will also be stopped by the use of a PIR sensor using the module [MMM-PIR-Sensor](https://github.com/paviro/MMM-PIR-Sensor) (that sends the notification 'USER_PRESENCE'). No special configuration is needed for this behavior.
 
 Thanks to @AgP42 for this functionality!
 

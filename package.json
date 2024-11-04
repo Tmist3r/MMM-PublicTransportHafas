@@ -2,16 +2,17 @@
   "name": "mmm-publictransporthafas",
   "version": "2.1.5",
   "description": "Public transport module for MagicMirror² driven by hafas-client data.",
-  "repository": "KristjanESPERANTO/MMM-PublicTransportHafas",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas.git"
+  },
+  "main": "MMM-PublicTransportHafas.js",
   "keywords": [
     "MagicMirror",
     "public transport",
     "hafas"
   ],
-  "author": {
-    "name": "Kristjan ESPERANTO",
-    "url": "https://github.com/KristjanESPERANTO"
-  },
+  "author": "Kristjan ESPERANTO (https://github.com/KristjanESPERANTO)",
   "contributors": [
     "https://github.com/raywo/MMM-PublicTransportHafas/graphs/contributors",
     "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/graphs/contributors"
@@ -33,11 +34,11 @@
     "@eslint/json": "^0.6.0",
     "@eslint/markdown": "^6.2.1",
     "@stylistic/eslint-plugin": "^2.10.1",
-    "bumpp": "^9.8.0",
+    "bumpp": "^9.8.1",
     "cspell": "^8.15.7",
     "eslint": "^9.14.0",
     "eslint-plugin-import": "^2.31.0",
-    "globals": "^15.11.0",
+    "globals": "^15.12.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "markdownlint-cli": "^0.42.0",

@@ -1,6 +1,6 @@
 # MMM-PublicTransportHafas [![GitHub license](https://img.shields.io/github/license/KristjanESPERANTO/mmm-publictransporthafas?style=plastic)](https://github.com/KristjanESPERANTO/mmm-publictransporthafas/blob/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/KristjanESPERANTO/mmm-publictransporthafas)](https://github.com/KristjanESPERANTO/mmm-publictransporthafas/issues) [![GitHub forks](https://img.shields.io/github/forks/KristjanESPERANTO/mmm-publictransporthafas)](https://github.com/KristjanESPERANTO/mmm-publictransporthafas/network) [![GitHub stars](https://img.shields.io/github/stars/KristjanESPERANTO/mmm-publictransporthafas)](https://github.com/KristjanESPERANTO/mmm-publictransporthafas/stargazers)
 
-**MMM-PublicTransportHafas is a module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) to display public transport departures.**
+**MMM-PublicTransportHafas** is a module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) to display public transport departures.
 
 - [Description](#description)
 - [How it works](#how-it-works)

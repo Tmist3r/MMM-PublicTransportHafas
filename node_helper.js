@@ -1,5 +1,5 @@
-const NodeHelper = require("node_helper");
 const Log = require("logger");
+const NodeHelper = require("node_helper");
 const HafasFetcher = require("./core/HafasFetcher");
 
 module.exports = NodeHelper.create({

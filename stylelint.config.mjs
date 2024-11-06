@@ -1,5 +1,4 @@
 const config = {
-  "configBasedir": "./",
   "extends": ["stylelint-config-standard"],
   "plugins": ["stylelint-prettier"],
   "root": true,

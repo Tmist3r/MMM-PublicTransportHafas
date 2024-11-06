@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import * as readline from "node:readline";
 import {createClient} from "hafas-client";
+import process from "node:process";
 
 let profileName = "";
 const productMap = {};

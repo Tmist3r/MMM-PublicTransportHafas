@@ -173,7 +173,7 @@ Module.register("MMM-PublicTransportHafas", {
     if (this.config.displayLastUpdate) {
       const updateInfo = document.createElement("div");
       updateInfo.className = "xsmall light align-left";
-      updateInfo.innerText = `Update: ${dayjs
+      updateInfo.textContent = `Update: ${dayjs
         .unix(this.lastUpdate)
         .format(this.config.displayLastUpdateFormat)}`;
       wrapper.appendChild(updateInfo);

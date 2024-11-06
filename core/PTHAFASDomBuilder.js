@@ -64,7 +64,7 @@ class PTHAFASDomBuilder {
       this.heading += ` ${headerAppendix}`;
     }
 
-    this.headingElement.innerText = this.heading;
+    this.headingElement.textContent = this.heading;
 
     return this.headingElement;
   }
@@ -126,7 +126,7 @@ class PTHAFASDomBuilder {
       content.className = values.symbol;
       cell.appendChild(content);
     } else {
-      cell.innerText = values.text;
+      cell.textContent = values.text;
     }
 
     return cell;

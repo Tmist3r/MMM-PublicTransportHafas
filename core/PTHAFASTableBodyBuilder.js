@@ -37,7 +37,7 @@ class PTHAFASTableBodyBuilder {
         // departure.remarks.push({ "id": "326169", "type": "warning", "summary": "Meldung für Linie 8", "text": "Es kommt zu betriebsbedingten Fahrtausfällen. \nDie entfallenden Fahrten sind in der App MOOVME sowie unter www.havag.com/fahrtenplaner gekennzeichnet.", "icon": { "type": "HIM3", "title": null }, "priority": 50, "products": { "nationalExpress": true, "national": true, "regional": true, "suburban": true, "tram": true, "bus": true, "tourismTrain": true }, "company": "HAVAG - Hallesche Verkehrs-AG", "categories": [3], "validFrom": "2021-12-03T09:17:00+01:00", "validUntil": "2022-12-31T23:59:00+01:00", "modified": "2021-12-03T09:17:46+01:00" });
 
         const remarksRow = this.getRemarksTableRow(departure);
-        if (remarksRow.innerText !== "") {
+        if (remarksRow.textContent !== "") {
           tBody.appendChild(remarksRow);
         }
       }
@@ -70,7 +70,7 @@ class PTHAFASTableBodyBuilder {
     this.cell.className = cssClass;
 
     if (typeof content === "string") {
-      this.cell.innerText = content;
+      this.cell.textContent = content;
     } else {
       this.cell.appendChild(content);
     }
@@ -84,7 +84,7 @@ class PTHAFASTableBodyBuilder {
 
     const cell = document.createElement("td");
     cell.colSpan = 3;
-    cell.innerText = noDepartureMessage;
+    cell.textContent = noDepartureMessage;
 
     this.row.appendChild(cell);
 
@@ -102,18 +102,18 @@ class PTHAFASTableBodyBuilder {
     cellContainer.className = "mmm-pth-warning-remarks";
 
     const marquee = document.createElement("span");
-    marquee.innerText = "";
+    marquee.textContent = "";
 
     for (const remark of departure.remarks) {
       if (remark.type === "warning") {
-        marquee.innerText += `  ⚠️  ${remark.summary.replaceAll("\n", " ")}:
+        marquee.textContent += `  ⚠️  ${remark.summary.replaceAll("\n", " ")}:
           ${remark.text.replaceAll("\n", " ")}`;
       }
     }
 
-    if (marquee.innerText !== "") {
-      while (marquee.innerText.length < 3000) {
-        marquee.innerText += marquee.innerText;
+    if (marquee.textContent !== "") {
+      while (marquee.textContent.length < 3000) {
+        marquee.textContent += marquee.textContent;
       }
     }
 
@@ -217,7 +217,7 @@ class PTHAFASTableBodyBuilder {
 
   getDelaySpan (delay) {
     const delaySpan = document.createElement("span");
-    delaySpan.innerText = this.getDelay(delay);
+    delaySpan.textContent = this.getDelay(delay);
 
     let cssClass = "dimmed";
 
@@ -291,7 +291,7 @@ class PTHAFASTableBodyBuilder {
     }
 
     const lineDiv = document.createElement("div");
-    lineDiv.innerText = line;
+    lineDiv.textContent = line;
     lineDiv.className = `${this.getLineCssClass(lineName)} mmm-pth-text-center`;
 
     return this.getTableCell(lineDiv);
@@ -372,7 +372,7 @@ class PTHAFASTableBodyBuilder {
       this.config.marqueeLongDirections && content.length > truncatePosition
     ) {
       content = document.createElement("span");
-      content.innerText = this.getProcessedDirection(direction);
+      content.textContent = this.getProcessedDirection(direction);
       className += " mmm-pth-marquee";
     }
 

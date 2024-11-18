@@ -11,14 +11,14 @@ them from the MagicMirror² core system and other modules.
   border-collapse: collapse;
   border-spacing: 1px;
   display: table;
-}
 
-.mmm-pth-table > thead {
-  text-align: left;
-}
+  > thead {
+    text-align: left;
+  }
 
-.mmm-pth-table td {
-  vertical-align: middle;
+  td {
+    vertical-align: middle;
+  }
 }
 
 .mmm-pth-time-cell {
@@ -84,12 +84,12 @@ them from the MagicMirror² core system and other modules.
   overflow: hidden;
   text-align: left;
   white-space: nowrap;
-}
 
-.mmm-pth-marquee span {
-  animation: mmm-pth-marquee 3s linear infinite alternate;
-  display: inline-block;
-  white-space: nowrap;
+  span {
+    animation: mmm-pth-marquee 3s linear infinite alternate;
+    display: inline-block;
+    white-space: nowrap;
+  }
 }
 
 @keyframes mmm-pth-marquee {
@@ -112,13 +112,13 @@ them from the MagicMirror² core system and other modules.
   font-size: 0.8em;
   width: 80ch;
   display: inline-block;
-}
 
-.mmm-pth-warning-remarks span {
-  font-weight: 400;
-  animation: mmm-pth-warning-remarks 600s linear infinite;
-  display: inline-block;
-  padding-left: 20%;
+  span {
+    font-weight: 400;
+    animation: mmm-pth-warning-remarks 600s linear infinite;
+    display: inline-block;
+    padding-left: 20%;
+  }
 }
 
 @keyframes mmm-pth-warning-remarks {
@@ -183,14 +183,14 @@ them from the MagicMirror² core system and other modules.
 }
 
 /* Default properties for "Rufbusse" */
-.ruf::before {
-  content: "☎ ";
-  font-size: 0.8em;
-}
-
 .ruf {
   border-radius: 1rem;
   background-color: rgb(122 32 106);
+
+  &::before {
+    content: "☎ ";
+    font-size: 0.8em;
+  }
 }
 
 /* Default properties for trams */

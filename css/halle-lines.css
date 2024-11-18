@@ -81,11 +81,13 @@
 
 .str94,
 .str94e {
+  border: 1px solid #666;
   background-color: rgb(111 17 5);
 }
 
 .str95,
 .str95e {
+  border: 1px solid #666;
   background-color: rgb(5 21 65);
 }
 
@@ -122,6 +124,7 @@
 
 .bus26,
 .bus26e {
+  border: 1px solid #666;
   background-color: rgb(89 11 34);
 }
 
@@ -157,6 +160,7 @@
 
 .bus35,
 .bus35e {
+  border: 1px solid #666;
   background-color: rgb(23 62 112);
 }
 

@@ -25,8 +25,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Install dependencies and run tests
-        run: |
-          npm ci
-          npm run test
+      - name: Install dependencies
+        run: npm ci
+      - name: Check spelling
+        run: npm run test:spelling
+      - name: Check linting
+        run: npm run lint
       - run: echo "🍏 This job's status is ${{ job.status }}."

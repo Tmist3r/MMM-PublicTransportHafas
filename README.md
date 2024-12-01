@@ -30,12 +30,12 @@ For more information see the [Configuration](#configuration) section.
 ## Screenshots
 
 <!-- prettier-ignore-start -->
-|![Example: Goerdelerring Leipzig, all directions](img/Goerdelerring_all.png)<br>*Leipzig, Goerdelerring (all directions)*|![Example: Goerdelerring Leipzig, heading to main station](img/Goerdelerring_to_hbf.png)<br>*Leipzig, Goerdelerring (heading to main station)*|
+|![Example: Goerdelerring Leipzig, all directions](img/Goerdelerring_all.png)<br>_Leipzig, Goerdelerring (all directions)_|![Example: Goerdelerring Leipzig, heading to main station](img/Goerdelerring_to_hbf.png)<br>_Leipzig, Goerdelerring (heading to main station)_|
 |---|---|
-|![Example: Hauptbahnhof, Leipzig, only tram](img/Hauptbahnhof_tram_only.png)<br>*Hauptbahnhof, Leipzig (displaying only trams and two unreachable departures)*|![Example: Hauptbahnhof, Leipzig, only regional and national trains](img/Hauptbahnhof_train_only.png)<br>*Hauptbahnhof, Leipzig (displaying only regional and national trains)*|
-|![Example: Leuschner Platz with relative departure time and reordered columns](img/Leuschner_Platz_relative.png)<br>*Leuschner Platz, Leipzig (displaying departure times in relative format and reordered columns)*| |
+|![Example: Hauptbahnhof, Leipzig, only tram](img/Hauptbahnhof_tram_only.png)<br>_Hauptbahnhof, Leipzig (displaying only trams and two unreachable departures)_|![Example: Hauptbahnhof, Leipzig, only regional and national trains](img/Hauptbahnhof_train_only.png)<br>_Hauptbahnhof, Leipzig (displaying only regional and national trains)_|
+|![Example: Leuschner Platz with relative departure time and reordered columns](img/Leuschner_Platz_relative.png)<br>_Leuschner Platz, Leipzig (displaying departure times in relative format and reordered columns)_| |
 
-![Example: Multiple instances in Berlin, showing the last update time](img/UpdateTimeDisplayed.png)<br>*Several instances in Berlin, showing the last update time*
+![Example: Multiple instances in Berlin, showing the last update time](img/UpdateTimeDisplayed.png)<br>_Several instances in Berlin, showing the last update time_
 <!-- prettier-ignore-end -->
 
 ## Installation

@@ -2,12 +2,14 @@ import eslintPluginImport from "eslint-plugin-import";
 import eslintPluginJs from "@eslint/js";
 import eslintPluginJson from "@eslint/json";
 import eslintPluginMarkdown from "@eslint/markdown";
+import eslintPluginPackageJson from "eslint-plugin-package-json/configs/recommended";
 import eslintPluginStylistic from "@stylistic/eslint-plugin";
 import globals from "globals";
 
 const config = [
   eslintPluginImport.flatConfigs.recommended,
   eslintPluginJs.configs.all,
+  eslintPluginPackageJson,
   ...eslintPluginMarkdown.configs.recommended,
   {
     "files": ["**/*.md"],
@@ -23,8 +25,14 @@ const config = [
     }
   },
   {
+    "files": ["package.json"],
+    "rules": {
+      "package-json/valid-package-def": "off"
+    }
+  },
+  {
     "files": ["**/*.json"],
-    "ignores": ["package-lock.json"],
+    "ignores": ["package.json", "package-lock.json"],
     "language": "json/json",
     ...eslintPluginJson.configs.recommended,
     "rules": {
@@ -97,6 +105,7 @@ const config = [
       "@stylistic/indent": ["error", 2],
       "@stylistic/padded-blocks": ["error", "never"],
       "func-style": "off",
+      "import/no-unresolved": "off",
       "max-lines-per-function": ["error", 100],
       "no-magic-numbers": "off",
       "one-var": "off",

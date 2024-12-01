@@ -2,29 +2,26 @@
   "name": "mmm-publictransporthafas",
   "version": "2.1.8",
   "description": "Public transport module for MagicMirror² driven by hafas-client data.",
-  "author": "Kristjan ESPERANTO (https://github.com/KristjanESPERANTO)",
-  "contributors": [
-    "https://github.com/raywo/MMM-PublicTransportHafas/graphs/contributors",
-    "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/graphs/contributors"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas.git"
-  },
-  "bugs": {
-    "url": "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues"
-  },
   "keywords": [
     "MagicMirror",
     "public transport",
     "hafas"
   ],
-  "main": "MMM-PublicTransportHafas.js",
-  "engines": {
-    "node": ">=16"
+  "homepage": "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas#readme",
+  "bugs": {
+    "url": "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas.git"
+  },
+  "license": "MIT",
+  "author": "Kristjan ESPERANTO (https://github.com/KristjanESPERANTO)",
+  "contributors": [
+    "https://github.com/raywo/MMM-PublicTransportHafas/graphs/contributors",
+    "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/graphs/contributors"
+  ],
+  "main": "MMM-PublicTransportHafas.js",
   "scripts": {
     "lint": "eslint . && stylelint **/*.css && markdownlint . --ignore node_modules && prettier . --check",
     "lint:fix": "eslint . --fix && stylelint **/*.css --fix && markdownlint . --ignore node_modules --fix && prettier . --write",
@@ -33,6 +30,11 @@
     "release": "bumpp --no-push",
     "test": "npm run lint && npm run test:spelling",
     "test:spelling": "cspell ."
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.css": "stylelint --fix",
+    "*": "prettier --ignore-unknown --write"
   },
   "dependencies": {
     "dayjs": "^1.11.13",
@@ -47,6 +49,7 @@
     "cspell": "^8.16.1",
     "eslint": "^9.16.0",
     "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-package-json": "^0.17.0",
     "globals": "^15.12.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
@@ -56,9 +59,7 @@
     "stylelint-config-standard": "^36.0.1",
     "stylelint-prettier": "^5.0.2"
   },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.css": "stylelint --fix",
-    "*": "prettier --ignore-unknown --write"
+  "engines": {
+    "node": ">=16"
   }
 }

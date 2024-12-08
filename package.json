@@ -27,7 +27,7 @@
     "lint:fix": "eslint . --fix && stylelint **/*.css --fix && markdownlint . --ignore node_modules --fix && prettier . --write",
     "prepare": "[ -f node_modules/.bin/husky ] && husky || echo husky is not installed.",
     "query": "node ./convenience/query_stations.mjs",
-    "release": "bumpp --no-push",
+    "release": "npx bumpp --no-push",
     "test": "npm run lint && npm run test:spelling",
     "test:spelling": "cspell ."
   },
@@ -45,7 +45,6 @@
     "@eslint/json": "^0.8.0",
     "@eslint/markdown": "^6.2.1",
     "@stylistic/eslint-plugin": "^2.11.0",
-    "bumpp": "^9.8.1",
     "cspell": "^8.16.1",
     "eslint": "^9.16.0",
     "eslint-plugin-import": "^2.31.0",

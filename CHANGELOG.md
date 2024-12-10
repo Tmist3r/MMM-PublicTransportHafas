@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [chore] Update devDependencies
 - [chore] Update format `package.json`
 
-## [2.0.4] - [2.1.9] Maintenance Releases
+## [2.0.4 - 2.1.9] Maintenance Releases
 
 There were several maintenance releases in this period. The changes are not listed here, but you can find them in the commits.
 
@@ -55,7 +55,8 @@ No functional changes. Just optimizations to the code and dependencies updates.
 
 <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/releases>
 
-[2.1.10]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.1.9...v.2.1.10
+[2.1.10]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.9...v2.1.10
+[2.0.4 - 2.1.9]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.0.4...v2.1.9
 [2.0.4]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.0.3...v.2.0.4
 [2.0.3]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.0.1...v.2.0.3
 [2.0.1]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.0.0...v.2.0.1

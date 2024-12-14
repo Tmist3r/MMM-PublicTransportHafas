@@ -69,7 +69,7 @@ Module.register("MMM-PublicTransportHafas", {
     this.sanitizeConfig();
 
     if (!this.config.stationID) {
-      Log.error(`stationID not set! ${this.config.stationID}`);
+      Log.error(`[MMM-PublicTransportHafas] stationID not set! ${this.config.stationID}`);
       this.error.message = this.translate("NO_STATION_ID_SET");
 
       return;
@@ -98,21 +98,21 @@ Module.register("MMM-PublicTransportHafas", {
   suspend () {
     // Core function called when the module is hidden
     this.ModulePublicTransportHafasHidden = true; // Module hidden
-    Log.debug(`Function suspend - Module MMM-PublicTransportHafas is hidden ${this.config.stationName}`);
+    Log.debug(`[MMM-PublicTransportHafas] Function suspend - Module is hidden ${this.config.stationName}`);
     this.gestionUpdateIntervalHafas(); // Call the function which manages all the cases
   },
 
   resume () {
     // Core function called when the module is displayed
     this.ModulePublicTransportHafasHidden = false;
-    Log.debug(`Function working - Module MMM-PublicTransportHafas is displayed ${this.config.stationName}`);
+    Log.debug(`[MMM-PublicTransportHafas] Function working - Module is displayed ${this.config.stationName}`);
     this.gestionUpdateIntervalHafas();
   },
 
   notificationReceived (notification, payload) {
     if (notification === "USER_PRESENCE") {
       // Notification sent by the MMM-PIR-Sensor module. See its doc.
-      Log.debug(`[MMM-PublicTransportHafas]: NotificationReceived USER_PRESENCE = ${payload}`);
+      Log.debug(`[MMM-PublicTransportHafas] NotificationReceived USER_PRESENCE = ${payload}`);
       UserPresence = payload;
       this.gestionUpdateIntervalHafas();
     }
@@ -123,13 +123,13 @@ Module.register("MMM-PublicTransportHafas", {
       UserPresence === true && this.ModulePublicTransportHafasHidden === false
     ) {
       // Make sure to have a user present in front of the screen (PIR sensor) and that the module is displayed
-      Log.debug(`[MMM-PublicTransportHafas]: ${this.config.stationName} is displayed and user present! Update it`);
+      Log.debug(`[MMM-PublicTransportHafas] ${this.config.stationName} is displayed and user present! Update it`);
 
       // Update now and start again the update timer
       this.startFetchingLoop(this.config.updatesEvery);
     } else {
       // (UserPresence = false OU ModulePublicTransportHafasHidden = true)
-      Log.debug(`[MMM-PublicTransportHafas]: No one is watching: Stop the update!${this.config.stationName}`);
+      Log.debug(`[MMM-PublicTransportHafas] No one is watching: Stop the update!${this.config.stationName}`);
       clearInterval(this.updatesIntervalID); // Stop the current update interval
       this.updatesIntervalID = 0; // Reset the variable
     }
@@ -140,13 +140,26 @@ Module.register("MMM-PublicTransportHafas", {
 
     // Error handling
     if (this.hasErrors()) {
-      Log.error(this.error.message);
-      let errorMessage = `${this.translate("LOADING")}<br><br>⚠️ `;
+      Log.error(this.error);
 
-      errorMessage += this.error.code === "ENOTFOUND"
-        ? this.translate("ERROR_ENOTFOUND") // HAFAS endpoint not available
-        : this.error.message; // All other errors
+      let errorMessage;
 
+      switch (this.error.code) {
+        case "ENOTFOUND":
+          // HAFAS endpoint not available
+          errorMessage = this.translate("ERROR_ENOTFOUND");
+          break;
+        case "NOT_FOUNDS":
+          // Station not found
+          errorMessage = this.translate("NOT_FOUND");
+          break;
+        default:
+          errorMessage = this.error.hafasMessage || this.error.code;
+          break;
+      }
+
+      Log.error(`[MMM-PublicTransportHafas] ${errorMessage}`);
+      errorMessage = `${this.translate("LOADING")}<br><br>⚠️ ${errorMessage}`;
       return domBuilder.getSimpleDom(errorMessage);
     }
 
@@ -225,7 +238,7 @@ Module.register("MMM-PublicTransportHafas", {
             this.lastUpdate = Date.now() / 1_000; // Save the timestamp of the last update to be able to display it
           }
 
-          Log.log(`TransportHafas update OK, station : ${
+          Log.log(`[MMM-PublicTransportHafas] Update OK, station : ${
             this.config.stationName
           } at : ${Number(dayjs
             .unix(this.lastUpdate)

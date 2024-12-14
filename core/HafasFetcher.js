@@ -1,4 +1,4 @@
-/* global config */
+/* global */
 const dayjs = require("dayjs");
 const isSameOrAfter = require("dayjs/plugin/isSameOrAfter");
 const Log = require("logger");
@@ -167,9 +167,7 @@ module.exports = class HafasFetcher {
     const reachableDepartures = departures.filter((departure) => departure.isReachable);
 
     // Output reachableDepartures for debugging
-    if (config.logLevel.includes("DEBUG")) {
-      Log.log(reachableDepartures);
-    }
+    Log.debug("[MMM-PublicTransportHafas]", reachableDepartures);
 
     // Merge unreachable and reachable departures
     const result = [].concat(unreachableDepartures, reachableDepartures);

@@ -26,12 +26,12 @@ module.exports = NodeHelper.create({
       fetcher = new HafasFetcher(config);
       await fetcher.init();
       this.departuresFetchers[config.identifier] = fetcher;
-      Log.info(`Transportation fetcher for station with id '${fetcher.getStationID()}' created.`);
+      Log.info(`[MMM-PublicTransportHafas] Transportation fetcher for station with id '${fetcher.getStationID()}' created.`);
 
       this.sendFetcherLoaded(fetcher);
     } else {
       fetcher = this.departuresFetchers[config.identifier];
-      Log.info(`Using existing transportation fetcher for station id '${fetcher.getStationID()}'.`);
+      Log.info(`[MMM-PublicTransportHafas] Using existing transportation fetcher for station id '${fetcher.getStationID()}'.`);
 
       this.sendFetcherLoaded(fetcher);
     }
@@ -47,7 +47,7 @@ module.exports = NodeHelper.create({
     const fetcher = this.departuresFetchers[identifier];
 
     if (typeof fetcher === "undefined") {
-      Log.log("MMM-PublicTransportHafas: fetcher is undefined. If this occurs only sporadically, it is not a problem.");
+      Log.log("[MMM-PublicTransportHafas] fetcher is undefined. If this occurs only sporadically, it is not a problem.");
     } else {
       try {
         const fetchedDepartures = await fetcher.fetchDepartures();

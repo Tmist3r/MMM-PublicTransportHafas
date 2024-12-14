@@ -1,6 +1,7 @@
 {
   "ERROR_ENOTFOUND": "Abfahrtsschnittstelle nicht erreichbar!",
   "NO_STATION_ID_SET": "Sie haben keine stationID eingegeben!<br>Bitte ergänzen Sie die ID in config.js!",
+  "NOT_FOUND": "'stationID' fehlt oder ist inkorrekt!",
   "PTH_CANCELLED": "Fällt aus",
   "PTH_DEPARTURE_TIME": "Abfahrt",
   "PTH_LINE": "Linie",

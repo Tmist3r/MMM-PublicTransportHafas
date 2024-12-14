@@ -1,6 +1,7 @@
 {
   "ERROR_ENOTFOUND": "Departure interface not available!",
   "NO_STATION_ID_SET": "You have not provided a stationID!<br>Please set stationID in config.js!",
+  "NOT_FOUND": "'stationID' is missing or invalid!",
   "PTH_CANCELLED": "Cancelled",
   "PTH_DEPARTURE_TIME": "Time",
   "PTH_LINE": "Line",

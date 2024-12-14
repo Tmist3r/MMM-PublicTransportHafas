@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file. Since we in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.11] 2024-12-14
+
+### Changed
+
+- Optimize logging
+- [chore] Update devDependencies
+- [chore] Optimize heading in README.md
+- [chore] Switch to lts node version in linter workflow
+
 ## [2.1.10] 2024-12-10 - Maintenance Release
 
 ### Added

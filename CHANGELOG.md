@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file. Since we in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.12] 2024-12-16
+
+### Changed
+
+- Only show the error message if it occurs 2 times in a row.
+- [chore] Update devDependencies
+
 ## [2.1.11] 2024-12-14
 
 ### Changed

@@ -258,7 +258,7 @@ Module.register("MMM-PublicTransportHafas", {
           this.departures = [];
 
           // Only show the error message if it occurs 2 times in a row.
-          if (this.errorCount <= 2) {
+          if (this.errorCount > 1) {
             this.updateDom(this.config.animationSpeed);
           }
 

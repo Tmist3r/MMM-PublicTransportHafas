@@ -65,13 +65,12 @@ Module.register("MMM-PublicTransportHafas", {
     this.departures = [];
     this.initialized = false;
     this.error = {};
+    this.errorCount = 0;
 
     this.sanitizeConfig();
 
     if (!this.config.stationID) {
-      Log.error(`[MMM-PublicTransportHafas] stationID not set! ${this.config.stationID}`);
       this.error.message = this.translate("NO_STATION_ID_SET");
-
       return;
     }
 
@@ -140,7 +139,7 @@ Module.register("MMM-PublicTransportHafas", {
 
     // Error handling
     if (this.hasErrors()) {
-      Log.error(this.error);
+      Log.error("[MMM-PublicTransportHafas]", this.error);
 
       let errorMessage;
 
@@ -154,14 +153,16 @@ Module.register("MMM-PublicTransportHafas", {
           errorMessage = this.translate("NOT_FOUND");
           break;
         default:
-          errorMessage = this.error.hafasMessage || this.error.code;
+          errorMessage = this.error.hafasMessage || this.error.code || this.error.message;
           break;
       }
 
-      Log.error(`[MMM-PublicTransportHafas] ${errorMessage}`);
-      errorMessage = `${this.translate("LOADING")}<br><br>⚠️ ${errorMessage}`;
+      Log.error("[MMM-PublicTransportHafas]", errorMessage.replace(/<br>/gu, " "));
+      errorMessage = `${this.translate("LOADING")}<br><br><small>⚠️ ${errorMessage}</small>`;
       return domBuilder.getSimpleDom(errorMessage);
     }
+    this.errorCount = 0;
+
 
     if (!this.initialized) {
       return domBuilder.getSimpleDom(this.translate("LOADING"));
@@ -253,8 +254,13 @@ Module.register("MMM-PublicTransportHafas", {
 
         case "FETCH_ERROR":
           this.error = payload.error;
+          this.errorCount += 1;
           this.departures = [];
-          this.updateDom(this.config.animationSpeed);
+
+          // Only show the error message if it occurs 2 times in a row.
+          if (this.errorCount <= 2) {
+            this.updateDom(this.config.animationSpeed);
+          }
 
           break;
       }

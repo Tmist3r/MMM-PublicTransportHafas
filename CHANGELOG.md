@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Enable rule "markdown/no-missing-label-refs"
+- _chore_ - Enable rule "markdown/no-missing-label-refs"
+- _chore_ - Update dependencies incl. hafas-client
 
 ## [2.1.12] 2024-12-16
 

@@ -19,7 +19,6 @@ const config = [
     },
     "rules": {
       "logical-assignment-operators": "off",
-      "markdown/no-missing-label-refs": "off",
       "max-lines-per-function": "off",
       "no-irregular-whitespace": "off"
     }

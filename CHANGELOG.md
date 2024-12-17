@@ -5,33 +5,39 @@ All notable changes to this project will be documented in this file. Since we in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.13] 2024-12-17
+
+### Changed
+
+- Enable rule "markdown/no-missing-label-refs"
+
 ## [2.1.12] 2024-12-16
 
 ### Changed
 
 - Only show the error message if it occurs 2 times in a row.
-- [chore] Update devDependencies
+- _chore_ - Update devDependencies
 
 ## [2.1.11] 2024-12-14
 
 ### Changed
 
 - Optimize logging
-- [chore] Update devDependencies
-- [chore] Optimize heading in README.md
-- [chore] Switch to lts node version in linter workflow
+- _chore_ - Update devDependencies
+- _chore_ - Optimize heading in README.md
+- _chore_ - Switch to lts node version in linter workflow
 
 ## [2.1.10] 2024-12-10 - Maintenance Release
 
 ### Added
 
-- [chore] Add CHANGELOG.md
+- _chore_ - Add CHANGELOG.md
 
 ### Changed
 
-- [chore] Update Code of Conduct
-- [chore] Update devDependencies
-- [chore] Update format `package.json`
+- _chore_ - Update Code of Conduct
+- _chore_ - Update devDependencies
+- _chore_ - Update format `package.json`
 
 ## [2.0.4 - 2.1.9] Maintenance Releases
 
@@ -71,6 +77,9 @@ No functional changes. Just optimizations to the code and dependencies updates.
 
 <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/releases>
 
+[2.1.13]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.12...v2.1.13
+[2.1.12]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.11...v2.1.12
+[2.1.11]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.10...v2.1.11
 [2.1.10]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.9...v2.1.10
 [2.0.4 - 2.1.9]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.0.4...v2.1.9
 [2.0.4]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.0.3...v.2.0.4

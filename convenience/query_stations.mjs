@@ -77,7 +77,7 @@ function query (profile) {
             printStationInfo(station);
           }
         } catch (error) {
-          console.error(error);
+          console.error(`\n Error: ${error.message || error}\n`);
         }
       }
     );

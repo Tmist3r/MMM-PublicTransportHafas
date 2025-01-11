@@ -1,6 +1,6 @@
-/* global PTHAFASTableBodyBuilder */
+/* global PtTableBodyBuilder */
 // eslint-disable-next-line no-unused-vars
-class PTHAFASDomBuilder {
+class PtDomBuilder {
   constructor (config) {
     this.config = config;
 
@@ -78,7 +78,7 @@ class PTHAFASDomBuilder {
       table.appendChild(tableHeader);
     }
 
-    const tableBodyBuilder = new PTHAFASTableBodyBuilder(this.config);
+    const tableBodyBuilder = new PtTableBodyBuilder(this.config);
     const tableBody = tableBodyBuilder.getDeparturesTableBody(
       departures,
       noDepartureMessage

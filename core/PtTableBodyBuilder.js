@@ -4,7 +4,7 @@ dayjs.extend(window.dayjs_plugin_relativeTime);
 dayjs.extend(window.dayjs_plugin_localizedFormat);
 
 // eslint-disable-next-line no-unused-vars
-class PTHAFASTableBodyBuilder {
+class PtTableBodyBuilder {
   constructor (config) {
     this.config = config;
   }

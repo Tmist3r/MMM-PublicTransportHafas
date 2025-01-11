@@ -17,7 +17,11 @@
 
 ## Description
 
-This module shows live public transport information in Germany for all stations known to the Deutsche Bahn system. Most public transportation providers in Germany providing information for that system so the coverage should be quite good. The data is provided by the fantastic [hafas-client](https://github.com/public-transport/hafas-client). Even in other european countries this module should work as HAFAS is widely used throughout Europe.
+This module shows live public transport information in Germany for all stations known to the Deutsche Bahn system. Most public transportation providers in Germany providing information for that system so the coverage should be quite good.
+
+For the default profile `db` the data is provided by the [db-vendo-client](https://github.com/public-transport/db-vendo-client). For other profiles the data is provided by the [hafas-client](https://github.com/public-transport/hafas-client).
+
+Even in other european countries this module should work as HAFAS is widely used throughout Europe.
 
 You can very easy adapt the shapes and line colors of your local transport companies. See [Providing a custom CSS file](#providing-a-custom-css-file).
 
@@ -95,7 +99,7 @@ Stops found for 'Leipzig, Wilhelm-Leuschner-Platz':
    Transport product(s): Bus, Tram
 ```
 
-By default, the module uses the `db` profile of the `hafas-client`. In some cases it can be advantageous to use a different profile - e.g. the default profile often does not provide platform information from local transport companies. [Here](https://github.com/public-transport/hafas-client/blob/master/p/readme.md) you can find the name of all supported interfaces. Just add the name as a parameter to the command. Like `sbb` for the profile of Swiss Railways.
+By default, the module uses the `db` profile. In some cases it can be advantageous to use a different profile - e.g. the default profile often does not provide platform information from local transport companies. [Here](https://github.com/public-transport/hafas-client/blob/master/p/readme.md) you can find the name of all supported interfaces. Just add the name as a parameter to the command. Like `sbb` for the profile of Swiss Railways.
 
 ```bash
 npm run query sbb
@@ -250,7 +254,7 @@ Thanks to @AgP42 for this functionality!
 ## Special Thanks
 
 - [Michael Teeuw](https://github.com/MichMich) for creating the inspiring project [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror). You can sponsor the MagicMirror² project through [GitHub](https://magicmirror.builders/#donate).
-- [Jannis Redmann](https://github.com/derhuerst) for creating the most useful [hafas-client](https://github.com/derhuerst/hafas-client) library which provides the data for this module. You can sponsor him and a lot of his public transport projects through [GitHub](https://github.com/sponsors/derhuerst) or [Patreon](https://www.patreon.com/derhuerst).
+- [Jannis Redmann](https://github.com/derhuerst) for creating the [db-vendo-client](https://github.com/public-transport/db-vendo-client) and the [hafas-client](https://github.com/derhuerst/hafas-client) which provides the data for this module. You can support him and many of his public transport projects via [GitHub](https://github.com/sponsors/derhuerst) or [Patreon](https://www.patreon.com/derhuerst).
 - [deg0nz](https://github.com/deg0nz) for creating the [MMM-PublicTransportBerlin](https://github.com/deg0nz/MMM-PublicTransportBerlin) module, on which this one is originally based.
 - [Ray Wojciechowski](https://github.com/raywo) for initiating this module and maintaining it until 2018.
 - The community of MagicMirror² for help in the development process and all contributors for finding and fixing errors in this module.

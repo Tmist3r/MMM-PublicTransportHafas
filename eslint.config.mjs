@@ -82,6 +82,7 @@ const config = [
       "no-ternary": "off",
       "no-undef": "warn",
       "one-var": "off",
+      "prefer-destructuring": "off",
       "sort-keys": "off",
       "strict": "off"
     }
@@ -105,8 +106,11 @@ const config = [
       "@stylistic/padded-blocks": ["error", "never"],
       "func-style": "off",
       "import/no-unresolved": "off",
+      "init-declarations": "off",
       "max-lines-per-function": ["error", 100],
+      "max-statements": ["error", 25],
       "no-magic-numbers": "off",
+      "no-ternary": "off",
       "one-var": "off",
       "prefer-destructuring": "off"
     }

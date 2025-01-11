@@ -1,4 +1,4 @@
-/* global dayjs PTHAFASDomBuilder Module Log config */
+/* global dayjs PtDomBuilder Module Log config */
 
 /*
  * UserPresence Management (PIR sensor)
@@ -12,7 +12,7 @@ Module.register("MMM-PublicTransportHafas", {
   defaults: {
     // Module misc
     name: "MMM-PublicTransportHafas",
-    hafasProfile: "db",                 // Which HAFAS profile should be used?
+    hafasProfile: "db",                 // Which profile should be used?
     hidden: false,
     updatesEvery: 120,                  // How often should the table be updated in s?
     timeFormat: config.timeFormat,      // Since we don't use moment.js, we need to handle the time format ourselves. This is the default time format of the mirror.
@@ -135,7 +135,7 @@ Module.register("MMM-PublicTransportHafas", {
   },
 
   getDom () {
-    const domBuilder = new PTHAFASDomBuilder(this.config);
+    const domBuilder = new PtDomBuilder(this.config);
 
     // Error handling
     if (this.hasErrors()) {
@@ -213,8 +213,8 @@ Module.register("MMM-PublicTransportHafas", {
       this.file("node_modules/dayjs/plugin/localizedFormat.js"),
       this.file("node_modules/dayjs/plugin/relativeTime.js"),
       this.file(`node_modules/dayjs/locale/${config.language}.js`),
-      this.file("core/PTHAFASDomBuilder.js"),
-      this.file("core/PTHAFASTableBodyBuilder.js")
+      this.file("core/PtDomBuilder.js"),
+      this.file("core/PtTableBodyBuilder.js")
     ];
   },
 

@@ -16,7 +16,7 @@ function getArrayDiff (arrayA, arrayB) {
   return arrayA.filter((element) => !arrayB.includes(element));
 }
 
-module.exports = class HafasFetcher {
+module.exports = class DepartureFetcher {
   /**
    *
    * @param {object} config The configuration used for this fetcher. It has the following format:
@@ -39,8 +39,24 @@ module.exports = class HafasFetcher {
   }
 
   async init () {
-    const {createClient} = await import("hafas-client");
-    const {profile} = await import(`hafas-client/p/${this.config.hafasProfile}/index.js`);
+    let createClient;
+    let profile;
+    if (this.config.hafasProfile === "db") {
+      Log.info("[MMM-PublicTransportHafas] Using vendo client");
+      const vendoClient = await import("db-vendo-client");
+      const createVendoClient = vendoClient.createClient;
+      createClient = createVendoClient;
+      const vendo = await import(`db-vendo-client/p/${this.config.hafasProfile}/index.js`);
+      profile = vendo.profile;
+    } else {
+      Log.info("[MMM-PublicTransportHafas] Using HAFAS client");
+      const hafasClient = await import("hafas-client");
+      const createHafasClient = hafasClient.createClient;
+      createClient = createHafasClient;
+      const hafas = await import(`hafas-client/p/${this.config.hafasProfile}/index.js`);
+      profile = hafas.profile;
+    }
+
     this.hafasClient = createClient(
       profile,
       `MMM-PublicTransportHafas v${packageJson.version}`

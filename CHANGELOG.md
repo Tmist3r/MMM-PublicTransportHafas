@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file. Since we in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] 2025-01-11
+
+Usually a major release would contain breaking changes. But in this case, the changes are not breaking changes for the user. The major release is due to the fact that the underlying `hafas-client` library is not been used for the `db` profile anymore. Instead, the `db-vendo-client` is used. This is a major change in the codebase, but the user should not notice any difference.
+
+### Changed
+
+- Use `db-vendo-client` instead of `hafas-client` for `db` profile
+- _chore_ - Update devDependencies
+- _chore_ - Improve error logging in query_stations
+
 ## [2.1.13] 2024-12-17
 
 ### Changed
@@ -78,6 +88,7 @@ No functional changes. Just optimizations to the code and dependencies updates.
 
 <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/releases>
 
+[3.0.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.13...v3.0.0
 [2.1.13]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.12...v2.1.13
 [2.1.12]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.11...v2.1.12
 [2.1.11]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.10...v2.1.11

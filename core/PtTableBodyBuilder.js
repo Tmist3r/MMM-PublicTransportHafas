@@ -235,10 +235,15 @@ class PtTableBodyBuilder {
   getDelay (delay) {
     this.delayString = this.config.noRealtimeDelayString;
     if (typeof delay === "number") {
+      // convert seconds to minutes
+      this.delayString = delay / 60;
+      // round to one digit after comma
+      this.delayString = Math.round(this.delayString * 10) / 10;
+      // add "+" or "-" sign
       const sign = delay < 0
         ? "-"
         : "+";
-      this.delayString = sign + delay / 60;
+      this.delayString = sign + this.delayString;
     }
 
     return this.delayString;

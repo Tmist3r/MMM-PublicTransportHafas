@@ -90,6 +90,19 @@ module.exports = class DepartureFetcher {
       this.config.stationID,
       options
     );
+
+    /*
+    * Filter direction for db-vendo-client
+    * This if condition is a workaround because the vendo-client doesn't support
+    *  the direction query option yet.
+    * This will be removed when the vendo-client supports the direction query option.
+    */
+    if (this.config.direction !== "" && this.config.hafasProfile === "db") {
+      if (this.config.direction) {
+        departures.departures = departures.departures.filter((departure) => this.config.direction.includes(departure.destination.id));
+      }
+    }
+
     const maxElements = this.config.maxReachableDepartures + this.config.maxUnreachableDepartures;
     let filteredDepartures = this.filterByTransportationTypes(departures.departures);
 

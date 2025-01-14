@@ -5,9 +5,16 @@ All notable changes to this project will be documented in this file. Since we in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.2] 2025-01-14
+
+### Fixed
+
+- Fix direction option `db` profile.
+  The direction option is not yet supported by the `db-vendo-client`. This is a workaround to make it work again. When the `db-vendo-client` supports the direction option, this workaround will be removed.
+
 ## [3.0.1] 2025-01-12
 
-## Fixed
+### Fixed
 
 - Round delay to one digit after comma
 
@@ -94,6 +101,7 @@ No functional changes. Just optimizations to the code and dependencies updates.
 
 <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/releases>
 
+[3.0.2]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.13...v3.0.0
 [2.1.13]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.12...v2.1.13

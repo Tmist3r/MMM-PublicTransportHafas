@@ -208,7 +208,7 @@ _Skipped version 1.1.1 because 0m4rs fork had this version already._
 
 ### Changed
 
-1. Bugix: Add missing comma #8
+1. Bugfix: Add missing comma #8
 2. Cleanup: Change repo for installing #7
 
 ## [1.0.6] - 2021-03-17
@@ -219,7 +219,7 @@ This is the first release of this fork. This merged all forks.
 
 1. Update hafas-client #1 - @0m4r
 2. Add css file for Düsseldorf #2 - @0m4r
-3. Handle invalid depature times and canceled trains #3 - @rudibarani
+3. Handle invalid departure times and canceled trains #3 - @rudibarani
 4. Broadcast context #4 - @nkucza
 5. Stopping update in some cases + display last update time #5 - @AgP42
 6. Introduce platform column #6 - @KristjanESPERANTO

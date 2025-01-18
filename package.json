@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.13",
-    "db-vendo-client": "^6.3.2",
+    "db-vendo-client": "^6.3.3",
     "hafas-client": "^6.3.3"
   },
   "devDependencies": {
@@ -50,10 +50,10 @@
     "cspell": "^8.17.2",
     "eslint": "^9.18.0",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-package-json": "^0.19.0",
+    "eslint-plugin-package-json": "^0.20.0",
     "globals": "^15.14.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.3.0",
+    "lint-staged": "^15.4.1",
     "markdownlint-cli": "^0.43.0",
     "prettier": "^3.4.2",
     "stylelint": "^16.13.2",

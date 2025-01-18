@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. Since we introduced the changelog very late, there will be no detailed changelog entries for versions prior to 2.1.10.
+All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -105,7 +105,7 @@ No functional changes. Just optimizations to the code and dependencies updates.
 
 ## [1.5.4] 2022-11-27
 
-## Changed
+### Changed
 
 - Optimize error handling
 - Update dependencies
@@ -135,7 +135,95 @@ No functional changes. Just optimizations to the code and dependencies updates.
 - Add parameter showRelativeTimeOnlyUnder in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/45>
 - [Add Super-Linter](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/4ea4fb01877a86da97fe8e3009e89d5ea64965e7) and handle a bunch of linter issues
 
-## Before 1.5.1
+## [1.4.0] - 2022-02-03
+
+### Changed
+
+- Use kebab-case for class names **- this could be break custom CSS -**
+- Add CSS file for Magdeburg
+- Use `stylelint` for css files
+
+## [1.3.0] - 2022-02-02
+
+### Changed
+
+- Add configuration option `ignoreRelatedStations` in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/8506c22151bee8fcac691a480101f5014a265922>
+- Show "platform" as default in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/cc6cda9d9037fc5f3daa92ecb2fe49c0cbf39737>
+- Optimize configuration part in README
+- Remove dependency from "arr-diff" and "array-unique"
+- Add a GitHub Actions CI workflow in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/32>
+- Bump eslint from 8.7.0 to 8.8.0 in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/33>
+
+## [1.2.0] - 2022-01-24
+
+### Changed
+
+- Introduction of eslint
+- Code modification in context with eslint
+
+## [1.1.3] - 2022-01-15
+
+### Changed
+
+- create berlin lines by @mazim-co in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/30>
+- dynamic lead time adjustment to fix <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/29>
+- and some small other adjustments
+
+## [1.1.2] - 2021-12-26
+
+### Changed
+
+_Skipped version 1.1.1 because 0m4rs fork had this version already._
+
+- This is mainly a maintenance release (cleanup, linting, version bumping, ...) @KristjanESPERANTO
+- Add tests from @0m4r's fork <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/26>
+
+## [1.1.0] - 2021-12-06
+
+### Changed
+
+- Add row for warnings <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/1509e0d66a4c24018e377e9a2ec01844262d3c61>
+- Cleanup
+
+## [1.0.9] - 2021-11-16
+
+### Changed
+
+- Made animation speed configurable by @jrettsch in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/17>
+- Add 'hafasProfile' as config parameter <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/4c9f53a7a2ee65538a49c96bd2985c23c085a3a1>
+- Add technical background details <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/69694e6754a116d21fbbb64eaf8e758b425779aa>
+- Switch from var to let <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/d560b7217a028b3819ca324f81465929f29e08ce>
+- Add a function to mark canceled departures <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/d954bd77ac79cedfcec07cbb285ef41a7be68d68>
+- and much little changes more
+
+## [1.0.8] - 2021-03-22
+
+### Changed
+
+1. Create `munich-lines.css` [1](https://github.com/raywo/MMM-PublicTransportHafas/issues/64), [2](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/adcc1ff5d9f80ffff7587166e41dc9ef92546039) - @moejetz
+2. Introduce default classes for suburban and subway [3](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/8994273a1af5bde96b93e7cad76752bc440381f7)
+3. Bunch of minor changes
+
+## [1.0.7] - 2021-03-18
+
+### Changed
+
+1. Bugix: Add missing comma #8
+2. Cleanup: Change repo for installing #7
+
+## [1.0.6] - 2021-03-17
+
+### Changed
+
+This is the first release of this fork. This merged all forks.
+
+1. Update hafas-client #1 - @0m4r
+2. Add css file for Düsseldorf #2 - @0m4r
+3. Handle invalid depature times and canceled trains #3 - @rudibarani
+4. Broadcast context #4 - @nkucza
+5. Stopping update in some cases + display last update time #5 - @AgP42
+6. Introduce platform column #6 - @KristjanESPERANTO
+7. Add css file for Halle #6 - @KristjanESPERANTO
 
 <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/releases>
 
@@ -153,6 +241,16 @@ No functional changes. Just optimizations to the code and dependencies updates.
 [2.0.1]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.0.0...v.2.0.1
 [2.0.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.5.4...v.2.0.0
 [1.5.4]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.5.3...v.1.5.4
-[1.5.3]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.5.2...v.1.5.3
-[1.5.2]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.5.1...v.1.5.2
-[1.5.1]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.4.0...v.1.5.1
+[1.5.3]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.5.2...v.1.5.3
+[1.5.2]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.5.1...v1.5.2
+[1.5.1]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.4.0...v1.5.1
+[1.4.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.1.3...v1.2.0
+[1.1.3]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.1.2...v1.1.3
+[1.1.2]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.1.0...v1.1.2
+[1.1.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.0.9...v1.1.0
+[1.0.9]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.0.8...v1.0.9
+[1.0.8]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.0.7...v1.0.8
+[1.0.7]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.0.6...v1.0.7
+[1.0.6]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v1.0.5...v1.0.6

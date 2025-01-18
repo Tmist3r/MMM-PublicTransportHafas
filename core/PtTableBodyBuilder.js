@@ -7,7 +7,7 @@ dayjs.extend(window.dayjs_plugin_localizedFormat);
 class PtTableBodyBuilder {
   constructor (config) {
     this.config = config;
-    this.remarksCollector = [] ;  // the array with warnings that are already displayed
+    this.remarksCollector = [];  // the array with warnings that are already displayed
   }
 
   getDeparturesTableBody (departures, noDepartureMessage) {
@@ -36,7 +36,7 @@ class PtTableBodyBuilder {
       if (this.config.showWarningRemarks) {
         // Next line is for testing if there are no warning remarks - uncomment it to append to every departure a warning remark
         // This is a list of dictionaries. There is also a "hint" type but that does not contain a summary.
-        // departure.remarks.push({ "id": "326169", "type": "warning", "summary": "Meldung für Linie 8", "text": "Es kommt zu betriebsbedingten Fahrtausfällen. \nDie entfallenden Fahrten sind in der App MOOVME sowie unter www.havag.com/fahrtenplaner gekennzeichnet.", "icon": { "type": "HIM3", "title": null }, "priority": 50, "products": { "nationalExpress": true, "national": true, "regional": true, "suburban": true, "tram": true, "bus": true, "tourismTrain": true }, "company": "HAVAG - Hallesche Verkehrs-AG", "categories": [3], "validFrom": "2021-12-03T09:17:00+01:00", "validUntil": "2022-12-31T23:59:00+01:00", "modified": "2021-12-03T09:17:46+01:00" });
+        // departure.remarks.push({id: "326169", type: "warning", summary: "Meldung für Linie 8", text: "Es kommt zu betriebsbedingten Fahrtausfällen. \nDie entfallenden Fahrten sind in der App MOOVME sowie unter www.havag.com/fahrtenplaner gekennzeichnet.", icon: {type: "HIM3", title: null}, priority: 50, products: {nationalExpress: true, national: true, regional: true, suburban: true, tram: true, bus: true, tourismTrain: true}, company: "HAVAG - Hallesche Verkehrs-AG", categories: [3], validFrom: "2021-12-03T09:17:00+01:00", validUntil: "2022-12-31T23:59:00+01:00", modified: "2021-12-03T09:17:46+01:00"});
         const remarksRow = this.getRemarksTableRow(departure);
         if (remarksRow.textContent !== "") {
           tBody.appendChild(remarksRow);
@@ -109,14 +109,14 @@ class PtTableBodyBuilder {
       if (remark.type === "warning" &&
         !this.config.warningRemarksFilter.some((removable) => remark.text.includes(removable)) &&
         !this.config.warningRemarksFilter.some((removable) => remark.summary.includes(removable)) &&
-        !this.remarksCollector.some((removable) => remark.text.includes(removable)) && 
+        !this.remarksCollector.some((removable) => remark.text.includes(removable)) &&
         !this.remarksCollector.some((removable) => remark.summary.includes(removable))) {
         marquee.textContent += `  ⚠️  ${remark.summary.replaceAll("\n", " ")}:
             ${remark.text.replaceAll("\n", " ")}`;
-       
-      if (this.config.showWarningsOnce === true) {
+
+        if (this.config.showWarningsOnce === true) {
         // Add remark.summary and remark.text to the remarksCollector array. Elements in this array will not be displayed again
-        this.remarksCollector.push(remark.summary, remark.text);
+          this.remarksCollector.push(remark.summary, remark.text);
         }
       }
     }

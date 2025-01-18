@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file. Since we in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] 2025-01-18
+
+### Added
+
+- Add new options `warningRemarksFilter` and `showWarningsOnce` to filter departure warnings (#194) - by @drtorchwood.
+
 ## [3.0.2] 2025-01-14
 
 ### Fixed
@@ -83,7 +89,7 @@ No functional changes. Just optimizations to the code and dependencies updates.
 
 ### Changed
 
-- Optimize remark animation in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/126>
+- Optimize remark animation in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/126> - by @ucfnet002
 - [Don't do line breaks in line symbols](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/4be2dfb42fe4628eec4cab19d61ceaf1d98430af)
 - [Update and add line colors for Düsseldorf](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/236d7c3a6e7599e0e9e6554af14d4d72cccf8672)
 - Update dependencies
@@ -97,10 +103,43 @@ No functional changes. Just optimizations to the code and dependencies updates.
 - translate query_stations script to english
 - refactor
 
-## Before 2.0.0
+## [1.5.4] 2022-11-27
+
+## Changed
+
+- Optimize error handling
+- Update dependencies
+
+## [1.5.3] - 2022-09-21
+
+### Changed
+
+- Update CSS
+  - [Set text-align for direction cell](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/81c34c40de8608299f82c154c5cffd15f52d8459) - Thanks to @djzwerg for the hint.
+- Update dependencies
+  - [Bump stylelint version](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/679de3eddb7aa85d12dde5a2b4d485385508810c)
+
+## [1.5.2] - 2022-08-29
+
+### Changed
+
+- Update CSS for Düsseldorf 36388d91f844128214f68fbbd09ab717b4c4ba45 from [0m4r's fork](https://github.com/0m4r/MMM-PublicTransportHafas) - Thanks to @0m4r.
+- New CSS file for Hamburg to solve #82
+- Update Dependencies
+
+## [1.5.1] - 2022-03-09
+
+### Changed
+
+- Replace Moment.js by Day.js in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/44>
+- Add parameter showRelativeTimeOnlyUnder in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/45>
+- [Add Super-Linter](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/4ea4fb01877a86da97fe8e3009e89d5ea64965e7) and handle a bunch of linter issues
+
+## Before 1.5.1
 
 <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/releases>
 
+[3.1.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.0.2...v3.1.0
 [3.0.2]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v2.1.13...v3.0.0
@@ -113,3 +152,7 @@ No functional changes. Just optimizations to the code and dependencies updates.
 [2.0.3]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.0.1...v.2.0.3
 [2.0.1]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.2.0.0...v.2.0.1
 [2.0.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.5.4...v.2.0.0
+[1.5.4]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.5.3...v.1.5.4
+[1.5.3]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.5.2...v.1.5.3
+[1.5.2]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.5.1...v.1.5.2
+[1.5.1]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v.1.4.0...v.1.5.1

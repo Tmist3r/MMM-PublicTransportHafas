@@ -255,8 +255,9 @@ Thanks to @AgP42 for this functionality!
 
 ## Special Thanks
 
-- [Michael Teeuw](https://github.com/MichMich) for creating the inspiring project [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror). You can sponsor the MagicMirror² project through [GitHub](https://magicmirror.builders/#donate).
-- [Jannis Redmann](https://github.com/derhuerst) for creating the [db-vendo-client](https://github.com/public-transport/db-vendo-client) and the [hafas-client](https://github.com/derhuerst/hafas-client) which provides the data for this module. You can support him and many of his public transport projects via [GitHub](https://github.com/sponsors/derhuerst) or [Patreon](https://www.patreon.com/derhuerst).
+- [Michael Teeuw](https://github.com/MichMich) for creating the inspiring project [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror).
+- [Jannis Redmann](https://github.com/derhuerst) for creating the the [hafas-client](https://github.com/derhuerst/hafas-client) which provided the data for all profiles of this module for a long time. Since 2025 `hafas-client` is only used for the non-db profiles.
+- [Traines](https://github.com/traines-source) for creating the [db-vendo-client](https://github.com/public-transport/db-vendo-client) which provides the data for the default profile (`db`) of this module.
 - [deg0nz](https://github.com/deg0nz) for creating the [MMM-PublicTransportBerlin](https://github.com/deg0nz/MMM-PublicTransportBerlin) module, on which this one is originally based.
 - [Ray Wojciechowski](https://github.com/raywo) for initiating this module and maintaining it until 2018.
 - The community of MagicMirror² for help in the development process and all contributors for finding and fixing errors in this module.

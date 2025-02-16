@@ -41,7 +41,7 @@ module.exports = class DepartureFetcher {
   async init () {
     let createClient;
     let profile;
-    if (this.config.hafasProfile === "db") {
+    if (this.config.hafasProfile === "db" || this.config.hafasProfile === "dbweb") {
       Log.info("[MMM-PublicTransportHafas] Using vendo client");
       const vendoClient = await import("db-vendo-client");
       const createVendoClient = vendoClient.createClient;
@@ -90,18 +90,6 @@ module.exports = class DepartureFetcher {
       this.config.stationID,
       options
     );
-
-    /*
-    * Filter direction for db-vendo-client
-    * This if condition is a workaround because the vendo-client doesn't support
-    *  the direction query option yet.
-    * This will be removed when the vendo-client supports the direction query option.
-    */
-    if (this.config.direction !== "" && this.config.hafasProfile === "db") {
-      if (this.config.direction) {
-        departures.departures = departures.departures.filter((departure) => this.config.direction.includes(departure.destination.id));
-      }
-    }
 
     const maxElements = this.config.maxReachableDepartures + this.config.maxUnreachableDepartures;
     let filteredDepartures = this.filterByTransportationTypes(departures.departures);

@@ -100,7 +100,7 @@ async function importProfile () {
     let profile;
     let createClient;
 
-    if (process.argv.length === 3 && process.argv[2] !== "db") {
+    if (process.argv.length === 3 && process.argv[2] !== "db" && process.argv[2] !== "dbweb") {
       profileName = process.argv[2];
       console.info(`Using hafas-client profile: ${profileName}\n`);
       const hafasClient = await import("hafas-client");
@@ -110,7 +110,7 @@ async function importProfile () {
       createClient = createHafasClient;
     } else {
       profileName = "db";
-      console.info("Using db-vendo profile: 'db'");
+      console.info(`Using db-vendo profile: ${profileName}\n`);
       const vendoClient = await import("db-vendo-client");
       const createVendoClient = vendoClient.createClient;
       const vendo = await import(`db-vendo-client/p/${profileName}/index.js`);

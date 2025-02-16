@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _chore_ - Update dependencies
 
+### Removed
+
+- Removed the workaround (introduced in 3.0.2) to attempt to fix the direction issue with the `db` profile. This workaround is not needed anymore.
+
 ## [3.1.1] 2025-02-01 - Maintenance Release
 
 ### Changed

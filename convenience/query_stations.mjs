@@ -110,6 +110,13 @@ async function importProfile () {
       createClient = createHafasClient;
     } else {
       profileName = "db";
+      if (process.argv[2] === "dbweb") {
+        console.info(`
+          Since the 'dbweb' profile doesn't resolve station names,
+          the 'db' profile is used here instead. You can still use the
+          given station IDs with the 'dbweb' profile in the config.
+          `);
+      }
       console.info(`Using db-vendo profile: ${profileName}\n`);
       const vendoClient = await import("db-vendo-client");
       const createVendoClient = vendoClient.createClient;

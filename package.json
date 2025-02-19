@@ -33,9 +33,18 @@
     "test:spelling": "cspell ."
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.css": "stylelint --fix",
-    "*": "prettier --ignore-unknown --write"
+    "!(*.css|*.md)": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ],
+    "*.md": [
+      "markdownlint --ignore node_modules --fix",
+      "prettier --write"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "dayjs": "^1.11.13",
@@ -46,8 +55,8 @@
     "@eslint/js": "^9.20.0",
     "@eslint/json": "^0.10.0",
     "@eslint/markdown": "^6.2.2",
-    "@stylistic/eslint-plugin": "^4.0.0",
-    "cspell": "^8.17.3",
+    "@stylistic/eslint-plugin": "^4.0.1",
+    "cspell": "^8.17.4",
     "eslint": "^9.20.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-package-json": "^0.26.0",

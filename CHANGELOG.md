@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.3] 2025-02-27 - Maintenance Release
+
+### Added
+
+- Add information for using 'dbweb' profile in query_stations script.
+
+### Changed
+
+- Drop node 16 support (It reached EOL 2023. And 'db-vendo-client' will drop it with the next release too.)
+- Update README to clarify 'direction' option limitations with dbweb profile
+- _chore_ - Replace eslint-plugin-import by eslint-plugin-import-x
+- _chore_ - Update devDependencies
+- _chore_ - Remove release script (not needed anymore)
+- _chore_ - Optimize lint-staged
+- _chore_ - Optimize @stylistic/eslint-plugin config
+
 ## [3.1.2] 2025-02-17
 
 ### Fixed
@@ -250,6 +266,7 @@ This is the first release of this fork. This merged all forks.
 
 <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/releases>
 
+[3.1.3]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.2...v3.1.3
 [3.1.2]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.1...v3.1.2
 [3.1.1]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.0...v3.1.1
 [3.1.0]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.0.2...v3.1.0

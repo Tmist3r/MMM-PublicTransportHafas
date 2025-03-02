@@ -24,12 +24,6 @@ const config = [
     }
   },
   {
-    "files": ["package.json"],
-    "rules": {
-      "package-json/valid-package-def": "off"
-    }
-  },
-  {
     "files": ["**/*.json"],
     "ignores": ["package.json", "package-lock.json"],
     "language": "json/json",

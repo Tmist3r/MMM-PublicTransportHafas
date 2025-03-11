@@ -1,19 +1,20 @@
-/*
+.MMM-PublicTransportHafas {
+  /*
   This stylesheet contains the CSS classes needed to colorize the line
   labels in the display for Berlin. Bus, Tram, U-Bahn & S-Bahn.
  */
 
-/*
+  /*
   Bus lines share the same background color and a white text color.
   The border radius is pulled from the styles.css of MMM-PublicTransportHafas/css.
   This will result in nice round corners.
  */
 
-.bus {
-  background-color: #981e7b;
-}
+  .bus {
+    background-color: #981e7b;
+  }
 
-/*
+  /*
   Some suburban lines share the same settings so they are listed with commas
   separating them.
   The border radius is slightly bigger than the font size. This will result
@@ -21,191 +22,192 @@
   Source: https://en.wikipedia.org/wiki/Berlin_S-Bahn#Routes
   */
 
-.s {
-  border-radius: 1.25rem;
-}
+  .s {
+    border-radius: 1.25rem;
+  }
 
-.s1 {
-  background-color: #d96ea2;
-}
+  .s1 {
+    background-color: #d96ea2;
+  }
 
-.s2,
-.s25,
-.s26 {
-  background-color: #127734;
-}
+  .s2,
+  .s25,
+  .s26 {
+    background-color: #127734;
+  }
 
-.s3 {
-  background-color: #0167ad;
-}
+  .s3 {
+    background-color: #0167ad;
+  }
 
-.s41 {
-  background-color: #ad5a37;
-}
+  .s41 {
+    background-color: #ad5a37;
+  }
 
-.s42 {
-  background-color: #cb651d;
-}
+  .s42 {
+    background-color: #cb651d;
+  }
 
-.s45,
-.s46,
-.s47 {
-  background-color: #127734;
-}
+  .s45,
+  .s46,
+  .s47 {
+    background-color: #127734;
+  }
 
-.s5 {
-  background-color: #ea7619;
-}
+  .s5 {
+    background-color: #ea7619;
+  }
 
-.s7,
-.s75 {
-  background-color: #816fa5;
-}
+  .s7,
+  .s75 {
+    background-color: #816fa5;
+  }
 
-.s8,
-.s85 {
-  background-color: #6aaa28;
-}
+  .s8,
+  .s85 {
+    background-color: #6aaa28;
+  }
 
-.s9 {
-  background-color: #992644;
-}
+  .s9 {
+    background-color: #992644;
+  }
 
-/*
+  /*
   All subways have a different color code and a white text color, except the U4 have a black text color.
   The width of the line symbol is pulled from the styles.css of MMM-PublicTransportHafas/css.
   It is equal to the font size. This will result in a square symbol.
   Source: https://en.wikipedia.org/wiki/Berlin_U-Bahn#Routes;
  */
 
-.u1 {
-  background-color: #80ae50;
-}
+  .u1 {
+    background-color: #80ae50;
+  }
 
-.u2 {
-  background-color: #da4322;
-}
+  .u2 {
+    background-color: #da4322;
+  }
 
-.u3 {
-  background-color: #127a5c;
-}
+  .u3 {
+    background-color: #127a5c;
+  }
 
-.u4 {
-  background-color: #f0d732;
-  color: black;
-}
+  .u4 {
+    background-color: #f0d732;
+    color: black;
+  }
 
-.u5 {
-  background-color: #7e522e;
-}
+  .u5 {
+    background-color: #7e522e;
+  }
 
-.u6 {
-  background-color: #8c70ab;
-}
+  .u6 {
+    background-color: #8c70ab;
+  }
 
-.u7 {
-  background-color: #528ebb;
-}
+  .u7 {
+    background-color: #528ebb;
+  }
 
-.u8 {
-  background-color: #1d4f86;
-}
+  .u8 {
+    background-color: #1d4f86;
+  }
 
-.u9 {
-  background-color: #f17b25;
-}
+  .u9 {
+    background-color: #f17b25;
+  }
 
-/*
+  /*
   All tram lines have a different color code and a white text color.
   The width of the line symbol is pulled from the styles.css of MMM-PublicTransportHafas/css.
   It is equal to the font size. This will result in a square symbol.
   Source: https://de.wikipedia.org/wiki/Stra%C3%9Fenbahn_Berlin#Linien%C3%BCbersicht;
  */
 
-.strm1 {
-  background-color: #78b7e4;
-}
+  .strm1 {
+    background-color: #78b7e4;
+  }
 
-.strm2 {
-  background-color: #88b744;
-}
+  .strm2 {
+    background-color: #88b744;
+  }
 
-.strm4 {
-  background-color: #ba2d23;
-}
+  .strm4 {
+    background-color: #ba2d23;
+  }
 
-.strm5 {
-  background-color: #bf8c4a;
-}
+  .strm5 {
+    background-color: #bf8c4a;
+  }
 
-.strm6 {
-  background-color: #235690;
-}
+  .strm6 {
+    background-color: #235690;
+  }
 
-.strm8 {
-  background-color: #de792e;
-}
+  .strm8 {
+    background-color: #de792e;
+  }
 
-.strm10 {
-  background-color: #357943;
-}
+  .strm10 {
+    background-color: #357943;
+  }
 
-.strm13 {
-  background-color: #479e92;
-}
+  .strm13 {
+    background-color: #479e92;
+  }
 
-.strm17 {
-  background-color: #9b4932;
-}
+  .strm17 {
+    background-color: #9b4932;
+  }
 
-.str12 {
-  background-color: #8471a7;
-}
+  .str12 {
+    background-color: #8471a7;
+  }
 
-.str16 {
-  background-color: #377da7;
-}
+  .str16 {
+    background-color: #377da7;
+  }
 
-.str18 {
-  background-color: #377da7;
-}
+  .str18 {
+    background-color: #377da7;
+  }
 
-.str21 {
-  background-color: #b693be;
-}
+  .str21 {
+    background-color: #b693be;
+  }
 
-.str27 {
-  background-color: #bf6b31;
-}
+  .str27 {
+    background-color: #bf6b31;
+  }
 
-.str37 {
-  background-color: #9c4b35;
-}
+  .str37 {
+    background-color: #9c4b35;
+  }
 
-.str50 {
-  background-color: #df9537;
-}
+  .str50 {
+    background-color: #df9537;
+  }
 
-.str60 {
-  background-color: #449ad4;
-}
+  .str60 {
+    background-color: #449ad4;
+  }
 
-.str61 {
-  background-color: #d12f26;
-}
+  .str61 {
+    background-color: #d12f26;
+  }
 
-.str62 {
-  background-color: #205030;
-}
+  .str62 {
+    background-color: #205030;
+  }
 
-.str63 {
-  background-color: #df7a2e;
-}
+  .str63 {
+    background-color: #df7a2e;
+  }
 
-.str67 {
-  background-color: #cf73a4;
-}
+  .str67 {
+    background-color: #cf73a4;
+  }
 
-.str68 {
-  background-color: #79b245;
+  .str68 {
+    background-color: #79b245;
+  }
 }

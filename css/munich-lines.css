@@ -1,158 +1,152 @@
-/*
-  This stylesheet contains the css classes needed to colorize the line
-  labels in the display.
-
-  To customize this use as class name the name of the line without any
-  blanks and all lower case. For instance "Bus N9" becomes ".busn9"
- */
-
-/*
+.MMM-PublicTransportHafas {
+  /*
   S-Bahn
  */
-.s1 {
-  background-color: #6bbee6;
-}
+  .s1 {
+    background-color: #6bbee6;
+  }
 
-.s2 {
-  background-color: #8cbd4f;
-}
+  .s2 {
+    background-color: #8cbd4f;
+  }
 
-.s3 {
-  background-color: #7d2a8b;
-}
+  .s3 {
+    background-color: #7d2a8b;
+  }
 
-.s4 {
-  background-color: #cb1e47;
-}
+  .s4 {
+    background-color: #cb1e47;
+  }
 
-.s5 {
-  background-color: #7d2a8a;
-}
+  .s5 {
+    background-color: #7d2a8a;
+  }
 
-.s6 {
-  background-color: #5da570;
-}
+  .s6 {
+    background-color: #5da570;
+  }
 
-.s7 {
-  background-color: #833c37;
-}
+  .s7 {
+    background-color: #833c37;
+  }
 
-.s8 {
-  background-color: #262425;
-}
+  .s8 {
+    background-color: #262425;
+  }
 
-.s20 {
-  background-color: #d45e71;
-}
+  .s20 {
+    background-color: #d45e71;
+  }
 
-/*
+  /*
   U-Bahn
 */
-.u1 {
-  background-color: #5c803e;
-}
+  .u1 {
+    background-color: #5c803e;
+  }
 
-.u2 {
-  background-color: #a6123a;
-}
+  .u2 {
+    background-color: #a6123a;
+  }
 
-.u3 {
-  background-color: #d66f38;
-}
+  .u3 {
+    background-color: #d66f38;
+  }
 
-.u4 {
-  background-color: #64b28d;
-}
+  .u4 {
+    background-color: #64b28d;
+  }
 
-.u5 {
-  background-color: #a67322;
-}
+  .u5 {
+    background-color: #a67322;
+  }
 
-.u6 {
-  background-color: #406fb7;
-}
+  .u6 {
+    background-color: #406fb7;
+  }
 
-.u7 {
-  background-color: #5b803e;
-}
+  .u7 {
+    background-color: #5b803e;
+  }
 
-.u8 {
-  background-color: #9f1a31;
-}
+  .u8 {
+    background-color: #9f1a31;
+  }
 
-/*
+  /*
   Straßenbahn
 */
-.str12 {
-  background-color: #903f98;
-}
+  .str12 {
+    background-color: #903f98;
+  }
 
-.str15 {
-  background-color: white;
-  border: 1px solid #f58f98;
-  color: #f58f98;
-}
+  .str15 {
+    background-color: white;
+    border: 1px solid #f58f98;
+    color: #f58f98;
+  }
 
-.str16 {
-  background-color: #006cb2;
-}
+  .str16 {
+    background-color: #006cb2;
+  }
 
-.str17 {
-  background-color: #875b46;
-}
+  .str17 {
+    background-color: #875b46;
+  }
 
-.str18 {
-  background-color: #0db14b;
-}
+  .str18 {
+    background-color: #0db14b;
+  }
 
-.str19 {
-  background-color: #ed1d24;
-}
+  .str19 {
+    background-color: #ed1d24;
+  }
 
-.str20 {
-  background-color: #00c0e8;
-}
+  .str20 {
+    background-color: #00c0e8;
+  }
 
-.str21 {
-  background-color: #b999c7;
-}
+  .str21 {
+    background-color: #b999c7;
+  }
 
-.str23 {
-  background-color: #b3d334;
-}
+  .str23 {
+    background-color: #b3d334;
+  }
 
-.str25 {
-  background-color: #f58f98;
-}
+  .str25 {
+    background-color: #f58f98;
+  }
 
-.str27 {
-  background-color: #faa61a;
-}
+  .str27 {
+    background-color: #faa61a;
+  }
 
-.str28 {
-  background-color: white;
-  border: 1px solid #faa61a;
-  color: #faa61a;
-}
+  .str28 {
+    background-color: white;
+    border: 1px solid #faa61a;
+    color: #faa61a;
+  }
 
-.str29 {
-  background-color: white;
-  border: 1px solid #ed1d24;
-  color: #ed1d24;
-}
+  .str29 {
+    background-color: white;
+    border: 1px solid #ed1d24;
+    color: #ed1d24;
+  }
 
-/*
+  /*
   Bus
 */
-.bus {
-  background-color: #d0672f;
-}
+  .bus {
+    background-color: #d0672f;
+  }
 
-/*
+  /*
   X-Bus
 */
-div[class^="x"],
-div[class*=" x"] {
-  background-color: #779986;
-  border-radius: 1rem;
+  div[class^="x"],
+  div[class*=" x"] {
+    background-color: #779986;
+    border-radius: 1rem;
+  }
 }

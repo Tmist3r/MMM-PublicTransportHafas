@@ -1,346 +1,348 @@
-.str701 {
-  background-color: #f58221;
-}
-
-.str704 {
-  background-color: #bf1e23;
-}
-
-.str705 {
-  background-color: #bd1b8e;
-}
-
-.str706 {
-  background-color: #ee1c25;
-}
-
-.str707 {
-  background-color: #781d7d;
-}
-
-.str708 {
-  background-color: #f698b2;
-}
-
-.str709 {
-  background-color: #ee4c9c;
-}
-
-.busm1,
-.busm2,
-.busm3 {
-  background-color: #1db056;
-}
-
-.bus721 {
-  background-color: #af963c;
-}
-
-.bus722 {
-  background-color: #006e96;
-}
-
-.bus723 {
-  background-color: #cd6656;
-}
-
-.bus724 {
-  background-color: #659e39;
-}
-
-.bus725 {
-  background-color: #005c4d;
-}
-
-.bus726 {
-  background-color: #f4a000;
-}
-
-.bus727 {
-  background-color: #b3559b;
-}
-
-.bus728 {
-  background-color: #8a6b9a;
-}
-
-.bus729 {
-  background-color: #ce7e00;
-}
-
-.bus730 {
-  background-color: #4a215c;
-}
-
-.bus731 {
-  background-color: #00a8c1;
-}
-
-.bus732 {
-  background-color: #9d3f76;
-}
-
-.bus733 {
-  background-color: #b87745;
-}
-
-.bus734 {
-  background-color: #e40050;
-}
-
-.bus735 {
-  background-color: #d18d2b;
-}
-
-.bus736 {
-  background-color: #334e9d;
-}
-
-.bus737 {
-  background-color: #00ae9e;
-}
-
-.bus738 {
-  background-color: #00a29c;
-}
-
-.bus749 {
-  background-color: #b87745;
-}
-
-.bus751 {
-  background-color: #f7a600;
-}
-
-.bus752 {
-  background-color: #7d9dd2;
-}
-
-.bus754 {
-  background-color: #d38f0d;
-}
-
-.bus756 {
-  background-color: #e94280;
-}
-
-.bus757 {
-  background-color: #8b4c87;
-}
-
-.bus758 {
-  background-color: #009f83;
-}
-
-.bus759 {
-  background-color: #9ac063;
-}
-
-.bus760 {
-  background-color: #cc5098;
-}
-
-.bus776 {
-  background-color: #9c5b15;
-}
-
-.bus778 {
-  background-color: #006331;
-}
-
-.bus779 {
-  background-color: #006e96;
-}
-
-.bus780 {
-  background-color: #31b404;
-}
-
-.bus781 {
-  background-color: #ea5b0c;
-}
-
-.bus782 {
-  background-color: #0071ad;
-}
-
-.bus783 {
-  background-color: #8880b8;
-}
-
-.bus784 {
-  background-color: #009f83;
-}
-
-.bus785 {
-  background-color: #9a7200;
-}
-
-.bus788 {
-  background-color: #adb916;
-}
-
-.bus789 {
-  background-color: #1ab9de;
-}
-
-.bus827 {
-  background-color: #f4a100;
-}
-
-.bus828 {
-  background-color: #ed6c32;
-}
-
-.bus829 {
-  background-color: #817094;
-}
-
-.bus830 {
-  background-color: #64454b;
-}
-
-.bus833 {
-  background-color: #006e96;
-}
-
-.bus834 {
-  background-color: #d97c12;
-}
-
-.bus835 {
-  background-color: #f0f;
-}
-
-.bus836 {
-  background-color: #ce75ad;
-}
-
-.bus841 {
-  background-color: #bdbdbd;
-}
-
-.bus862 {
-  background-color: #c28100;
-}
-
-.bus863 {
-  background-color: #79589b;
-}
-
-.bus864 {
-  background-color: #5b8d32;
-}
-
-.bus891 {
-  background-color: #c5b230;
-}
-
-.bus894 {
-  background-color: #00a1d2;
-}
-
-.bus896 {
-  background-color: #c0476a;
-}
-
-.bussb50,
-.bussb51,
-.bussb52,
-.bussb53,
-.bussb55,
-.bussb57,
-.bussb59,
-.bussb85 {
-  background-color: #00929e;
-}
-
-.busne1 {
-  background-color: #f9ba31;
-  color: black;
-}
-
-.busne2 {
-  background-color: #fb7cba;
-}
-
-.busne3 {
-  background-color: #94cb45;
-}
-
-.busne4 {
-  background-color: #ff2e17;
-}
-
-.busne5 {
-  background-color: #8b369b;
-}
-
-.busne6 {
-  background-color: #ff7322;
-}
-
-.busne7 {
-  background-color: #059748;
-}
-
-.busne8 {
-  background-color: #bbb193;
-  color: black;
-}
-
-.rrbre10,
-.viare19 {
-  background-color: rgb(31 131 50);
-  border: 0.5px white solid;
-}
-
-.re1,
-.re5 {
-  background-color: #ff8c00;
-  color: black;
-}
-
-.u70 {
-  background-color: #5badce;
-}
-
-.u71 {
-  background-color: #41c8f4;
-}
-
-.u72 {
-  background-color: #21bec6;
-}
-
-.u73 {
-  background-color: #416ab3;
-}
-
-.u74 {
-  background-color: #282680;
-}
-
-.u75 {
-  background-color: #0099c7;
-}
-
-.u76 {
-  background-color: #006cb7;
-}
-
-.u77 {
-  background-color: #6a93cc;
-}
-
-.u78 {
-  background-color: #00a6e9;
-}
-
-.u79 {
-  background-color: #00a99d;
-}
-
-.u83 {
-  background-color: #16479f;
+.MMM-PublicTransportHafas {
+  .str701 {
+    background-color: #f58221;
+  }
+
+  .str704 {
+    background-color: #bf1e23;
+  }
+
+  .str705 {
+    background-color: #bd1b8e;
+  }
+
+  .str706 {
+    background-color: #ee1c25;
+  }
+
+  .str707 {
+    background-color: #781d7d;
+  }
+
+  .str708 {
+    background-color: #f698b2;
+  }
+
+  .str709 {
+    background-color: #ee4c9c;
+  }
+
+  .busm1,
+  .busm2,
+  .busm3 {
+    background-color: #1db056;
+  }
+
+  .bus721 {
+    background-color: #af963c;
+  }
+
+  .bus722 {
+    background-color: #006e96;
+  }
+
+  .bus723 {
+    background-color: #cd6656;
+  }
+
+  .bus724 {
+    background-color: #659e39;
+  }
+
+  .bus725 {
+    background-color: #005c4d;
+  }
+
+  .bus726 {
+    background-color: #f4a000;
+  }
+
+  .bus727 {
+    background-color: #b3559b;
+  }
+
+  .bus728 {
+    background-color: #8a6b9a;
+  }
+
+  .bus729 {
+    background-color: #ce7e00;
+  }
+
+  .bus730 {
+    background-color: #4a215c;
+  }
+
+  .bus731 {
+    background-color: #00a8c1;
+  }
+
+  .bus732 {
+    background-color: #9d3f76;
+  }
+
+  .bus733 {
+    background-color: #b87745;
+  }
+
+  .bus734 {
+    background-color: #e40050;
+  }
+
+  .bus735 {
+    background-color: #d18d2b;
+  }
+
+  .bus736 {
+    background-color: #334e9d;
+  }
+
+  .bus737 {
+    background-color: #00ae9e;
+  }
+
+  .bus738 {
+    background-color: #00a29c;
+  }
+
+  .bus749 {
+    background-color: #b87745;
+  }
+
+  .bus751 {
+    background-color: #f7a600;
+  }
+
+  .bus752 {
+    background-color: #7d9dd2;
+  }
+
+  .bus754 {
+    background-color: #d38f0d;
+  }
+
+  .bus756 {
+    background-color: #e94280;
+  }
+
+  .bus757 {
+    background-color: #8b4c87;
+  }
+
+  .bus758 {
+    background-color: #009f83;
+  }
+
+  .bus759 {
+    background-color: #9ac063;
+  }
+
+  .bus760 {
+    background-color: #cc5098;
+  }
+
+  .bus776 {
+    background-color: #9c5b15;
+  }
+
+  .bus778 {
+    background-color: #006331;
+  }
+
+  .bus779 {
+    background-color: #006e96;
+  }
+
+  .bus780 {
+    background-color: #31b404;
+  }
+
+  .bus781 {
+    background-color: #ea5b0c;
+  }
+
+  .bus782 {
+    background-color: #0071ad;
+  }
+
+  .bus783 {
+    background-color: #8880b8;
+  }
+
+  .bus784 {
+    background-color: #009f83;
+  }
+
+  .bus785 {
+    background-color: #9a7200;
+  }
+
+  .bus788 {
+    background-color: #adb916;
+  }
+
+  .bus789 {
+    background-color: #1ab9de;
+  }
+
+  .bus827 {
+    background-color: #f4a100;
+  }
+
+  .bus828 {
+    background-color: #ed6c32;
+  }
+
+  .bus829 {
+    background-color: #817094;
+  }
+
+  .bus830 {
+    background-color: #64454b;
+  }
+
+  .bus833 {
+    background-color: #006e96;
+  }
+
+  .bus834 {
+    background-color: #d97c12;
+  }
+
+  .bus835 {
+    background-color: #f0f;
+  }
+
+  .bus836 {
+    background-color: #ce75ad;
+  }
+
+  .bus841 {
+    background-color: #bdbdbd;
+  }
+
+  .bus862 {
+    background-color: #c28100;
+  }
+
+  .bus863 {
+    background-color: #79589b;
+  }
+
+  .bus864 {
+    background-color: #5b8d32;
+  }
+
+  .bus891 {
+    background-color: #c5b230;
+  }
+
+  .bus894 {
+    background-color: #00a1d2;
+  }
+
+  .bus896 {
+    background-color: #c0476a;
+  }
+
+  .bussb50,
+  .bussb51,
+  .bussb52,
+  .bussb53,
+  .bussb55,
+  .bussb57,
+  .bussb59,
+  .bussb85 {
+    background-color: #00929e;
+  }
+
+  .busne1 {
+    background-color: #f9ba31;
+    color: black;
+  }
+
+  .busne2 {
+    background-color: #fb7cba;
+  }
+
+  .busne3 {
+    background-color: #94cb45;
+  }
+
+  .busne4 {
+    background-color: #ff2e17;
+  }
+
+  .busne5 {
+    background-color: #8b369b;
+  }
+
+  .busne6 {
+    background-color: #ff7322;
+  }
+
+  .busne7 {
+    background-color: #059748;
+  }
+
+  .busne8 {
+    background-color: #bbb193;
+    color: black;
+  }
+
+  .rrbre10,
+  .viare19 {
+    background-color: rgb(31 131 50);
+    border: 0.5px white solid;
+  }
+
+  .re1,
+  .re5 {
+    background-color: #ff8c00;
+    color: black;
+  }
+
+  .u70 {
+    background-color: #5badce;
+  }
+
+  .u71 {
+    background-color: #41c8f4;
+  }
+
+  .u72 {
+    background-color: #21bec6;
+  }
+
+  .u73 {
+    background-color: #416ab3;
+  }
+
+  .u74 {
+    background-color: #282680;
+  }
+
+  .u75 {
+    background-color: #0099c7;
+  }
+
+  .u76 {
+    background-color: #006cb7;
+  }
+
+  .u77 {
+    background-color: #6a93cc;
+  }
+
+  .u78 {
+    background-color: #00a6e9;
+  }
+
+  .u79 {
+    background-color: #00a99d;
+  }
+
+  .u83 {
+    background-color: #16479f;
+  }
 }

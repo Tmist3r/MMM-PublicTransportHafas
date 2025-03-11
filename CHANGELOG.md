@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.5] 2025-03-11 - Maintenance Release
+
+### Changed
+
+- _chore_ - Update dependencies
+- _chore_ - Remove old release script from list
+- _chore_ - Simplify stylelint-prettier config
+- _chore_ - Nest all CSS in module class
+
 ## [3.1.4] 2025-03-02 - Maintenance Release
 
 ### Changed
@@ -264,15 +273,16 @@ _Skipped version 1.1.1 because 0m4rs fork had this version already._
 This is the first release of this fork. This merged all forks.
 
 1. Update hafas-client #1 - @0m4r
-2. Add css file for Düsseldorf #2 - @0m4r
+2. Add CSS file for Düsseldorf #2 - @0m4r
 3. Handle invalid departure times and canceled trains #3 - @rudibarani
 4. Broadcast context #4 - @nkucza
 5. Stopping update in some cases + display last update time #5 - @AgP42
 6. Introduce platform column #6 - @KristjanESPERANTO
-7. Add css file for Halle #6 - @KristjanESPERANTO
+7. Add CSS file for Halle #6 - @KristjanESPERANTO
 
 <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/releases>
 
+[3.1.5]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.4...v3.1.5
 [3.1.4]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.3...v3.1.4
 [3.1.3]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.2...v3.1.3
 [3.1.2]: https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.1...v3.1.2

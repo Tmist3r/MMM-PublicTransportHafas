@@ -95,7 +95,7 @@ const config = [
     },
     "rules": {
       ...eslintPluginStylistic.configs.all.rules,
-      "@stylistic/array-element-newline": "off",
+      "@stylistic/array-element-newline": ["error", "consistent"],
       "@stylistic/indent": ["error", 2],
       "@stylistic/padded-blocks": ["error", "never"],
       "func-style": "off",

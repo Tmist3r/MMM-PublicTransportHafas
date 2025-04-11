@@ -5,28 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.7](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.6...v3.1.7) 2025-04-11 - Maintenance Release
+
+### Changed
+
+- chore: update dependencies
+- chore: update ESLint configuration to use new import plugin structure
+- chore: enable ESLint rule
+
 ## [3.1.6](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.5...v3.1.6) 2025-03-23 - Maintenance Release
 
 ### Changed
 
-- _chore_ - Update dependencies
-- _chore_ - Update eslint-plugin-package-json config
+- chore: Update dependencies
+- chore: Update eslint-plugin-package-json config
 
 ## [3.1.5](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.4...v3.1.5) 2025-03-11 - Maintenance Release
 
 ### Changed
 
-- _chore_ - Update dependencies
-- _chore_ - Remove old release script from list
-- _chore_ - Simplify stylelint-prettier config
-- _chore_ - Nest all CSS in module class
+- chore: Update dependencies
+- chore: Remove old release script from list
+- chore: Simplify stylelint-prettier config
+- chore: Nest all CSS in module class
 
 ## [3.1.4] 2025-03-02 - Maintenance Release
 
 ### Changed
 
-- _chore_ - Update dependencies
-- _chore_ - Switch to default config of package-json
+- chore: Update dependencies
+- chore: Switch to default config of package-json
 
 ## [3.1.3] 2025-02-27 - Maintenance Release
 
@@ -38,11 +46,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Drop node 16 support (It reached EOL 2023. And 'db-vendo-client' will drop it with the next release too.)
 - Update README to clarify 'direction' option limitations with dbweb profile
-- _chore_ - Replace eslint-plugin-import by eslint-plugin-import-x
-- _chore_ - Update devDependencies
-- _chore_ - Remove release script (not needed anymore)
-- _chore_ - Optimize lint-staged
-- _chore_ - Optimize @stylistic/eslint-plugin config
+- chore: Replace eslint-plugin-import by eslint-plugin-import-x
+- chore: Update devDependencies
+- chore: Remove release script (not needed anymore)
+- chore: Optimize lint-staged
+- chore: Optimize @stylistic/eslint-plugin config
 
 ## [3.1.2] 2025-02-17
 
@@ -52,7 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- _chore_ - Update dependencies
+- chore: Update dependencies
 
 ### Removed
 
@@ -62,9 +70,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- _chore_ - Update dependencies
-- _chore_ - Fix spelling
-- _chore_ - Extend `release` script with test
+- chore: Update dependencies
+- chore: Fix spelling
+- chore: Extend `release` script with test
 - Add hint about issue with direction option `db` profile
 
 ## [3.1.0] 2025-01-18
@@ -93,43 +101,43 @@ Usually a major release would contain breaking changes. But in this case, the ch
 ### Changed
 
 - Use `db-vendo-client` instead of `hafas-client` for `db` profile
-- _chore_ - Update devDependencies
-- _chore_ - Improve error logging in query_stations
+- chore: Update devDependencies
+- chore: Improve error logging in query_stations
 
 ## [2.1.13] 2024-12-17
 
 ### Changed
 
-- _chore_ - Enable rule "markdown/no-missing-label-refs"
-- _chore_ - Update dependencies incl. hafas-client
+- chore: Enable rule "markdown/no-missing-label-refs"
+- chore: Update dependencies incl. hafas-client
 
 ## [2.1.12] 2024-12-16
 
 ### Changed
 
 - Only show the error message if it occurs 2 times in a row.
-- _chore_ - Update devDependencies
+- chore: Update devDependencies
 
 ## [2.1.11] 2024-12-14
 
 ### Changed
 
 - Optimize logging
-- _chore_ - Update devDependencies
-- _chore_ - Optimize heading in README.md
-- _chore_ - Switch to lts node version in linter workflow
+- chore: Update devDependencies
+- chore: Optimize heading in README.md
+- chore: Switch to lts node version in linter workflow
 
 ## [2.1.10] 2024-12-10 - Maintenance Release
 
 ### Added
 
-- _chore_ - Add CHANGELOG.md
+- chore: Add CHANGELOG.md
 
 ### Changed
 
-- _chore_ - Update Code of Conduct
-- _chore_ - Update devDependencies
-- _chore_ - Update format `package.json`
+- chore: Update Code of Conduct
+- chore: Update devDependencies
+- chore: Update format `package.json`
 
 ## [2.0.4 - 2.1.9] Maintenance Releases
 

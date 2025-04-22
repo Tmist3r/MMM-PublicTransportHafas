@@ -50,7 +50,7 @@ Just clone the module into your modules directory and install the dependencies:
 cd ~/MagicMirror/modules
 git clone https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas
 cd MMM-PublicTransportHafas
-npm ci
+npm ci --omit=dev
 ```
 
 ## Update
@@ -60,7 +60,7 @@ Just enter the module's directory, pull the update and install the dependencies:
 ```bash
 cd ~/MagicMirror/modules/MMM-PublicTransportHafas
 git pull
-npm ci
+npm ci --omit=dev
 ```
 
 ## How to get the `stationID`

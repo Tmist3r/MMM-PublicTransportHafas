@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.9](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.8...v3.1.9) 2025-04-30 - Maintenance Release
+
+### Changed
+
+- chore: update `npm ci` command to omit dev dependencies
+- chore: use `node --run` instead of `npm run` to run scripts
+- chore: drop node 18 support
+- chore: update devDependencies
+- chore: adapt and apply linter rules
+- refactor: switch `DepartureFetcher` to ESM - this is a start of the migration to ESM.
+- refactor: use paths to not rely on `module-alias` in core
+
 ## [3.1.8](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.7...v3.1.8) 2025-04-21 - Maintenance Release
 
 ### Changed
@@ -48,12 +60,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add information for using 'dbweb' profile in query_stations script.
+- Add information for using `dbweb` profile in query_stations script.
 
 ### Changed
 
-- Drop node 16 support (It reached EOL 2023. And 'db-vendo-client' will drop it with the next release too.)
-- Update README to clarify 'direction' option limitations with dbweb profile
+- Drop node 16 support (It reached EOL 2023. And `db-vendo-client` will drop it with the next release too.)
+- Update README to clarify `direction` option limitations with dbweb profile
 - chore: Replace eslint-plugin-import by eslint-plugin-import-x
 - chore: Update devDependencies
 - chore: Remove release script (not needed anymore)
@@ -268,7 +280,7 @@ _Skipped version 1.1.1 because 0m4rs fork had this version already._
 ### Changed
 
 - Made animation speed configurable by @jrettsch in <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/pull/17>
-- Add 'hafasProfile' as config parameter <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/4c9f53a7a2ee65538a49c96bd2985c23c085a3a1>
+- Add `hafasProfile` as config parameter <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/4c9f53a7a2ee65538a49c96bd2985c23c085a3a1>
 - Add technical background details <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/69694e6754a116d21fbbb64eaf8e758b425779aa>
 - Switch from var to let <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/d560b7217a028b3819ca324f81465929f29e08ce>
 - Add a function to mark canceled departures <https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/d954bd77ac79cedfcec07cbb285ef41a7be68d68>

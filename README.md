@@ -70,7 +70,7 @@ You need the `stationId` for the station whose departures should be displayed.
 Here's how to find out the `stationId`:
 
 1. You have to be in the modules directory (`~/MagicMirror/modules/MMM-PublicTransportHafas`).
-2. Then run the following command: `npm run query`.
+2. Then run the following command: `node --run query`.
 3. Enter a station name. It is useful to enter a city name too since the system knows a lot of stations even outside Germany.
 4. The result could contain one or more possible stations with valid IDs.
 5. Use the appropriate ID as `stationId` in the configuration of the module.
@@ -102,7 +102,7 @@ Stops found for 'Leipzig, Wilhelm-Leuschner-Platz':
 By default, the module uses the `db` profile. In some cases it can be advantageous to use a different profile - e.g. the default profile often does not provide platform information from local transport companies. [Here](https://github.com/public-transport/hafas-client/blob/master/p/readme.md) you can find the name of all supported interfaces. Just add the name as a parameter to the command. Like `sbb` for the profile of Swiss Railways.
 
 ```bash
-npm run query sbb
+node --run query sbb
 ```
 
 ## Configuration
@@ -275,10 +275,10 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 ### Developer commands
 
 - `npm install` - Install development dependencies.
-- `npm run lint` - Run linting and formatter checks.
-- `npm run lint:fix` - Fix linting and formatter issues.
-- `npm run test` - Run linting and formatter checks + Run spelling check.
-- `npm run test:spelling` - Run spelling check.
+- `node --run lint` - Run linting and formatter checks.
+- `node --run lint:fix` - Fix linting and formatter issues.
+- `node --run test` - Run linting and formatter checks + Run spelling check.
+- `node --run test:spelling` - Run spelling check.
 
 ## License
 

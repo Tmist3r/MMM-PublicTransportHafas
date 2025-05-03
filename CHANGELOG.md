@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.10](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.9...v3.1.10) 2025-05-03
+
+### Changed
+
+- chore: fix ESLint config to ignore unresolved imports
+- chore: refactor ESLint config to use `defineConfig` and add `@eslint/css`
+- chore: update devDependencies
+
+## Fixed
+
+- fix: set `requiresVersion` to `2.31.0` since last release doesn't work with older MagicMirror versions
+
 ## [3.1.9](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.8...v3.1.9) 2025-04-30 - Maintenance Release
 
 ### Changed

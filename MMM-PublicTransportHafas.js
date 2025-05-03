@@ -9,6 +9,7 @@
 var UserPresence = true; // true by default, so no impact for user without a PIR sensor
 
 Module.register("MMM-PublicTransportHafas", {
+  requiresVersion: "2.31.0",
   defaults: {
     // Module misc
     name: "MMM-PublicTransportHafas",

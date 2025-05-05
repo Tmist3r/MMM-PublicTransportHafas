@@ -9,7 +9,7 @@ import packageJson from "eslint-plugin-package-json";
 import stylistic from "@stylistic/eslint-plugin";
 
 export default defineConfig([
-  {files: ["**/*.css"], ignores: ["./css/munich-lines.css", "./css/styles.css"], plugins: {css}, language: "css/css", extends: ["css/recommended"]},
+  {files: ["**/*.css"], languageOptions: {tolerant: true}, plugins: {css}, language: "css/css", extends: ["css/recommended"], rules: {"css/use-baseline": ["error", {available: "newly"}]}},
   {
     files: ["**/*.js"],
     languageOptions: {
@@ -78,7 +78,7 @@ export default defineConfig([
       "sort-keys": "off"
     }
   },
-  {files: ["**/*.json"], ignores: ["package.json", "package-lock.json"], plugins: {json}, extends: ["json/recommended"], language: "json/json"},
+  {files: ["**/*.json"], ignores: ["package-lock.json"], plugins: {json}, extends: ["json/recommended"], language: "json/json"},
   {files: ["package.json"], plugins: {packageJson}, extends: ["packageJson/recommended"]},
   {files: ["**/*.md"], plugins: {markdown}, extends: ["markdown/recommended"], language: "markdown/gfm"}
 ]);

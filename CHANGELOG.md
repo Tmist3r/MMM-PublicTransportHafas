@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.11](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.10...v3.1.11) 2025-05-05 - Maintenance Release
+
+### Changed
+
+- chore: simplify linting setup by removing `stylelint` and `markdownlint`
+- chore: simplify ESLint config by applying same rules to `*.js` and `*.mjs` files
+- chore: update `cspell`
+- chore: reduce timeout for lint job from 30 to 10 minutes
+
 ## [3.1.10](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.9...v3.1.10) 2025-05-03
 
 ### Changed

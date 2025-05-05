@@ -11,14 +11,13 @@ import stylistic from "@stylistic/eslint-plugin";
 export default defineConfig([
   {files: ["**/*.css"], languageOptions: {tolerant: true}, plugins: {css}, language: "css/css", extends: ["css/recommended"], rules: {"css/use-baseline": ["error", {available: "newly"}]}},
   {
-    files: ["**/*.js"],
+    files: ["**/*.js", "**/*.mjs"],
     languageOptions: {
       ecmaVersion: "latest",
       globals: {
         ...globals.browser,
         ...globals.node
-      },
-      sourceType: "commonjs"
+      }
     },
     plugins: {js, stylistic},
     extends: [importX.recommended, "js/all", "stylistic/all"],
@@ -27,55 +26,28 @@ export default defineConfig([
       "@stylistic/dot-location": ["error", "property"],
       "@stylistic/function-call-argument-newline": ["error", "consistent"],
       "@stylistic/indent": ["error", 2],
+      "@stylistic/lines-around-comment": "off",
       "@stylistic/multiline-comment-style": "off",
       "@stylistic/no-multi-spaces": ["error", {ignoreEOLComments: true}],
+      "@stylistic/object-property-newline": ["error", {allowAllPropertiesOnSameLine: true}],
       "@stylistic/padded-blocks": ["error", "never"],
       "@stylistic/quote-props": ["error", "as-needed"],
       "capitalized-comments": "off",
       "default-case": "off",
-      "import-x/no-unresolved": ["error", {ignore: ["node_helper", "logger"]}],
+      "func-style": "off",
+      "import-x/no-unresolved": ["error", {ignore: ["eslint/config", "node_helper", "logger"]}],
       "init-declarations": "off",
-      "max-lines": "off",
-      "max-lines-per-function": ["error", 100],
-      "max-params": "off",
+      "max-lines": ["warn", 475],
+      "max-lines-per-function": ["warn", 100],
+      "max-params": ["warn", 4],
       "max-statements": ["error", 25],
       "no-inline-comments": "off",
       "no-magic-numbers": "off",
       "no-ternary": "off",
-      "one-var": "off",
+      "one-var": ["error", "never"],
+      "prefer-destructuring": "off",
       "sort-keys": "off",
       strict: "off"
-    }
-  },
-  {
-    files: ["**/*.mjs"],
-    languageOptions: {
-      ecmaVersion: "latest",
-      globals: {
-        ...globals.browser,
-        ...globals.node
-      },
-      sourceType: "module"
-    },
-    plugins: {js, stylistic},
-    extends: [importX.recommended, "js/all", "stylistic/all"],
-    rules: {
-      "@stylistic/array-element-newline": ["error", "consistent"],
-      "@stylistic/function-call-argument-newline": ["error", "consistent"],
-      "@stylistic/indent": ["error", 2],
-      "@stylistic/lines-around-comment": "off",
-      "@stylistic/object-property-newline": ["error", {allowAllPropertiesOnSameLine: true}],
-      "@stylistic/padded-blocks": ["error", "never"],
-      "@stylistic/quote-props": ["error", "as-needed"],
-      "func-style": "off",
-      "import-x/no-unresolved": ["error", {ignore: ["eslint/config", "logger"]}],
-      "init-declarations": "off",
-      "max-statements": ["error", 25],
-      "no-inline-comments": "off",
-      "no-magic-numbers": ["error", {ignore: [-1, 1, 0, 2, 3, 25, 45, 100]}],
-      "one-var": "off",
-      "prefer-destructuring": "off",
-      "sort-keys": "off"
     }
   },
   {files: ["**/*.json"], ignores: ["package-lock.json"], plugins: {json}, extends: ["json/recommended"], language: "json/json"},

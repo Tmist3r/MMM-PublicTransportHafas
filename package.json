@@ -23,6 +23,7 @@
     "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/graphs/contributors"
   ],
   "main": "MMM-PublicTransportHafas.js",
+  "type": "commonjs",
   "scripts": {
     "lint": "eslint && prettier . --check",
     "lint:fix": "eslint --fix && prettier . --write",

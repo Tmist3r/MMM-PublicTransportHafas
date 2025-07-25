@@ -1,8 +1,7 @@
-/* global */
 import Log from "../../../js/logger.js";
 import dayjs from "dayjs";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter.js";
-import packageJson from "../package.json" with { type: "json" };
+import packageJson from "../package.json" with {type: "json"};
 
 dayjs.extend(isSameOrAfter);
 

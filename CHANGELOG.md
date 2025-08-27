@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.2.0...v3.2.1) 2025-08-27
+
+### Changed
+
+- chore: update actions/checkout to v5 in workflow files
+- chore: update dependencies
+
+### Fixed
+
+- chore: fix typos
+
 ## [3.2.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.1.12...v3.2.0) 2025-07-25
 
 ### Added

@@ -70,7 +70,7 @@ You need the `stationId` for the station whose departures should be displayed.
 Here's how to find out the `stationId`:
 
 1. You have to be in the modules directory (`~/MagicMirror/modules/MMM-PublicTransportHafas`).
-2. Then run the following command: `node --run query`.
+2. Then run the following command: `node --run query` or `npm run query -- <profile>`.
 3. Enter a station name. It is useful to enter a city name too since the system knows a lot of stations even outside Germany.
 4. The result could contain one or more possible stations with valid IDs.
 5. Use the appropriate ID as `stationId` in the configuration of the module.
@@ -103,6 +103,10 @@ By default, the module uses the `db` profile. In some cases it can be advantageo
 
 ```bash
 node --run query sbb
+```
+or
+```bash
+npm run query -- <profile>
 ```
 
 ## Configuration

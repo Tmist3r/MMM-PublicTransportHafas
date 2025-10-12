@@ -58,7 +58,8 @@ Module.register("MMM-PublicTransportHafas", {
     fadePointForReachableDepartures: 0.25,
     customLineStyles: "",               // Prefix for the name of the custom css file. ex: Leipzig-lines.css (case sensitive)
     showOnlyLineNumbers: false,         // Display only the line number instead of the complete name, i. e. "11" instead of "STR 11"
-    animationSpeed: 1_500               // Refresh animation speed in milliseconds
+    animationSpeed: 1_500,              // Refresh animation speed in milliseconds
+    excludeEndStation: [],              // List of names of the final stop to exclude
   },
 
   start () {

@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.2.1...v3.3.0) 2025-10-12
+
+### Added
+
+- feat: add socket error threshold to improve resilience against temporary network issues (relates to #186)
+
+### Changed
+
+- chore: update actions/setup-node to v5 in automated tests workflow
+- chore: update dependencies
+
+### Fixed
+
+- chore: add Prettier configuration file for code formatting - disable embedded language formatting to avoid issues with code blocks in markdown files.
+
 ## [3.2.1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.2.0...v3.2.1) 2025-08-27
 
 ### Changed

@@ -1,0 +1,90 @@
+.MMM-PublicTransportHafas {
+
+  /*
+  All suburban lines share the same settings so they are listed with commas
+  separating them.
+  The border radius is slightly bigger than the font size. This will result
+  in nice round corners.
+ */
+
+  /* custom configs*/
+  .mmm-pth-warning-remarks {
+    width: 50ch;
+  }
+
+
+  .s1,
+  .s2,
+  .s3,
+  .s4,
+  .s5,
+  .s5x,
+  .s6,
+  .s7,
+  .s61,
+  [class^="s "],
+  [class^="d"],
+  [class^="ec"],
+  [class^="icb"],
+  [class^="ic"],
+  [class^="ir"],
+  [class^="nj"],
+  [class^="rj"],
+  [class^="rex"]
+  {
+    background-color: #e31613;
+    border-color: #e31613;
+    border-radius: 1.25rem;
+    /* round */
+  }
+
+  .e {
+    background-color: #ecc91f;
+    color: white;
+    border-radius: 5px;
+  }
+
+  [class*="expressbus"],
+  [class*="regiobus"],
+  [class*="regionalbus"] {
+    background-color: #95bf0f;
+    /* Text color for contrast */
+    color: white;
+    border-radius: 5px
+  }
+
+  /* .straßenbahn1,
+  .straßenbahn2,
+  .straßenbahn3,
+  .straßenbahn4,
+  .straßenbahn4\/6,
+  .straßenbahn5,
+  .straßenbahn6,
+  .straßenbahn7,
+  .straßenbahn8,
+  .straßenbahn9,
+  .straßenbahn10, 
+  .straßenbahn23,
+  .straßenbahn26 { */
+  [class*="straßenbahn"] {
+    /* Straßenbahn color */
+    background-color: #93931b;
+    /* Text color for contrast */
+    color: white;
+    border-radius: 5px
+  }
+
+  [class*="stadtbus"],
+  [class*="nightline"] {
+    /* Stadtbus color */
+    background-color: #018c3c;
+    /* Text color for contrast */
+    color: white;
+    border-radius: 5px;
+  }
+
+  .sbb,
+  .sbl {
+    background-color: #6b4d34;
+  }
+}

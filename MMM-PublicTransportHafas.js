@@ -26,6 +26,9 @@ Module.register("MMM-PublicTransportHafas", {
     displayLastUpdate: true,            // Add line after the tasks with the last server update time
     displayLastUpdateFormat: "dd - HH:mm:ss", // Format to display the last update. See dayjs.js documentation for all display possibilities
 
+    // Error handling
+    discardSocketErrorThreshold: 3,     // How many consecutive socket errors should be tolerated before showing an error message? (0 = show errors immediately)
+
     // Departures options
     direction: "",                      // Show only departures heading to this station. (A station ID.)
     ignoredLines: [],                   // Which lines should be ignored? (comma-separated list of line names)
@@ -140,8 +143,8 @@ Module.register("MMM-PublicTransportHafas", {
   getDom () {
     const domBuilder = new PtDomBuilder(this.config);
 
-    // Error handling
-    if (this.hasErrors()) {
+    // Error handling - only show error if threshold is exceeded
+    if (this.hasErrors() && this.errorCount > this.config.discardSocketErrorThreshold) {
       Log.error("[MMM-PublicTransportHafas]", this.error);
 
       let errorMessage;
@@ -150,6 +153,16 @@ Module.register("MMM-PublicTransportHafas", {
         case "ENOTFOUND":
           // HAFAS endpoint not available
           errorMessage = this.translate("ERROR_ENOTFOUND");
+          break;
+        case "EAI_AGAIN":
+          // Temporary DNS resolution failure
+          errorMessage = this.translate("ERROR_EAI_AGAIN");
+          break;
+        case "ETIMEDOUT":
+        case "ECONNREFUSED":
+        case "ECONNRESET":
+          // Connection issues
+          errorMessage = this.translate("ERROR_CONNECTION");
           break;
         case "NOT_FOUNDS":
           // Station not found
@@ -161,10 +174,14 @@ Module.register("MMM-PublicTransportHafas", {
       }
 
       Log.error("[MMM-PublicTransportHafas]", errorMessage.replace(/<br>/gu, " "));
-      errorMessage = `${this.translate("LOADING")}<br><br><small>⚠️ ${errorMessage}</small>`;
+      errorMessage = `${this.translate("ERROR_UNAVAILABLE")}<br><br><small>⚠️ ${errorMessage}</small>`;
       return domBuilder.getSimpleDom(errorMessage);
     }
-    this.errorCount = 0;
+
+    // Log errors below threshold as warnings
+    if (this.hasErrors() && this.errorCount > 0 && this.errorCount <= this.config.discardSocketErrorThreshold) {
+      Log.warn(`[MMM-PublicTransportHafas] Socket error ${this.errorCount}/${this.config.discardSocketErrorThreshold}:`, this.error);
+    }
 
 
     if (!this.initialized) {
@@ -190,7 +207,14 @@ Module.register("MMM-PublicTransportHafas", {
     if (this.config.displayLastUpdate) {
       const updateInfo = document.createElement("div");
       updateInfo.className = "xsmall light align-left";
-      updateInfo.textContent = `Update: ${dayjs
+
+      // Show socket issues count if there are errors below the threshold
+      let updateText = "Update";
+      if (this.errorCount > 0 && this.errorCount <= this.config.discardSocketErrorThreshold) {
+        updateText = `Update (socket issues: ${this.errorCount})`;
+      }
+
+      updateInfo.textContent = `${updateText}: ${dayjs
         .unix(this.lastUpdate)
         .format(this.config.displayLastUpdateFormat)}`;
       wrapper.appendChild(updateInfo);
@@ -248,8 +272,9 @@ Module.register("MMM-PublicTransportHafas", {
             .unix(this.lastUpdate)
             .format(this.config.displayLastUpdateFormat))}`);
 
-          // Reset error object
+          // Reset error object and error count on successful fetch
           this.error = {};
+          this.errorCount = 0;
           this.departures = payload.departures;
           this.updateDom(this.config.animationSpeed);
           this.sendNotification("TRANSPORT_HAFAS", payload.departures);
@@ -258,10 +283,17 @@ Module.register("MMM-PublicTransportHafas", {
         case "FETCH_ERROR":
           this.error = payload.error;
           this.errorCount += 1;
-          this.departures = [];
 
-          // Only show the error message if it occurs 2 times in a row.
-          if (this.errorCount > 1) {
+          // Only clear departures if error threshold is exceeded
+          if (this.errorCount > this.config.discardSocketErrorThreshold) {
+            this.departures = [];
+          }
+
+          // Only show the error message if threshold is exceeded
+          if (this.errorCount > this.config.discardSocketErrorThreshold) {
+            this.updateDom(this.config.animationSpeed);
+          } else {
+            // Update DOM to show socket issue count in "Last update" line
             this.updateDom(this.config.animationSpeed);
           }
 

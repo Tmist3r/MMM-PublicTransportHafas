@@ -1,5 +1,8 @@
 {
   "ERROR_ENOTFOUND": "Departure interface not available!",
+  "ERROR_EAI_AGAIN": "Network issue - DNS lookup failed",
+  "ERROR_CONNECTION": "Connection to server failed",
+  "ERROR_UNAVAILABLE": "Departures unavailable",
   "NO_STATION_ID_SET": "You have not provided a stationID!<br>Please set stationID in config.js!",
   "NOT_FOUND": "'stationID' is missing or invalid!",
   "PTH_CANCELLED": "Cancelled",

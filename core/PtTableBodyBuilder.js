@@ -223,7 +223,7 @@ class PtTableBodyBuilder {
       cell.appendChild(document.createTextNode(time));
 
       if (this.config.showAbsoluteTime) {
-        cell.appendChild(this.getDelaySpan(delay));
+	cell.appendChild(this.getDelaySpan(departure, delay));
       }
     } else {
       cell.className = "pthTimeCanceled";
@@ -233,9 +233,9 @@ class PtTableBodyBuilder {
     return cell;
   }
 
-  getDelaySpan (delay) {
+  getDelaySpan (departure, delay) {
     const delaySpan = document.createElement("span");
-    delaySpan.textContent = this.getDelay(delay);
+    delaySpan.textContent = this.getDelay(departure, delay);
 
     let cssClass = "dimmed";
 
@@ -250,7 +250,7 @@ class PtTableBodyBuilder {
     return delaySpan;
   }
 
-  getDelay (delay) {
+  getDelay (departure, delay) {
     this.delayString = this.config.noRealtimeDelayString;
     if (typeof delay === "number") {
       // convert seconds to minutes
@@ -258,10 +258,15 @@ class PtTableBodyBuilder {
       // round to one digit after comma
       this.delayString = Math.round(this.delayString * 10) / 10;
       // add "+" or "-" sign
-      const sign = delay < 0
-        ? "-"
-        : "+";
-      this.delayString = sign + this.delayString;
+      const sign = delay > 0
+        ? "+"
+        : "";
+      if(delay != 0) {
+	this.delayString = this.config.showRelativeTime ? sign + this.delayString : dayjs(departure).format("HH:mm");
+      }
+      else {
+	this.delayString = "";
+      }
     }
 
     return this.delayString;

@@ -60,6 +60,7 @@ Module.register("MMM-PublicTransportHafas", {
     showOnlyLineNumbers: false,         // Display only the line number instead of the complete name, i. e. "11" instead of "STR 11"
     animationSpeed: 1_500,              // Refresh animation speed in milliseconds
     excludeEndStation: [],              // List of names of the final stop to exclude
+    showRelativeDelay: true,		// Display the time delay either as relative minutes (+5) or as absolute time (10:00 +5 => 10:05)
   },
 
   start () {

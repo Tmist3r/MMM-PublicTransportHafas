@@ -262,11 +262,11 @@ class PtTableBodyBuilder {
         ? "+"
         : "";
       if(delay != 0) {
-	this.delayString = this.config.showRelativeTime ? sign + this.delayString : dayjs(departure).format("HH:mm");
+				this.delayString = this.config.showRelativeDelay ? sign + this.delayString : dayjs(departure).format("HH:mm");
       }
       else {
-	this.delayString = "";
-      }
+				return "";
+			}
     }
 
     return this.delayString;

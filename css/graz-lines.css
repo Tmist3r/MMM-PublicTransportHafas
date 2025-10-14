@@ -1,5 +1,4 @@
 .MMM-PublicTransportHafas {
-
   /*
   All suburban lines share the same settings so they are listed with commas
   separating them.
@@ -11,7 +10,6 @@
   .mmm-pth-warning-remarks {
     width: 50ch;
   }
-
 
   .s1,
   .s2,
@@ -30,8 +28,7 @@
   [class^="ir"],
   [class^="nj"],
   [class^="rj"],
-  [class^="rex"]
-  {
+  [class^="rex"] {
     background-color: #e31613;
     border-color: #e31613;
     border-radius: 1.25rem;
@@ -50,7 +47,7 @@
     background-color: #95bf0f;
     /* Text color for contrast */
     color: white;
-    border-radius: 5px
+    border-radius: 5px;
   }
 
   /* .straßenbahn1,
@@ -71,7 +68,7 @@
     background-color: #93931b;
     /* Text color for contrast */
     color: white;
-    border-radius: 5px
+    border-radius: 5px;
   }
 
   [class*="stadtbus"],

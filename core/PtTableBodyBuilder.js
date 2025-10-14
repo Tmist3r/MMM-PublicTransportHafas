@@ -21,12 +21,12 @@ class PtTableBodyBuilder {
       return tBody;
     }
 
-    const excludeFinalStations = Array.isArray(this.config.excludeFinalStations)
-      ? this.config.excludeFinalStations
+    const excludeDirections = Array.isArray(this.config.excludeDirections)
+      ? this.config.excludeDirections
       : [];
-    const filteredDepartures = excludeFinalStations.length === 0
+    const filteredDepartures = excludeDirections.length === 0
       ? departures
-      : departures.filter((departure) => !excludeFinalStations.some((endStation) => departure.direction === endStation));
+      : departures.filter((departure) => !excludeDirections.some((direction) => departure.direction === direction));
     if (filteredDepartures.length === 0) {
       const row = this.getDeparturesTableNoDeparturesRow(noDepartureMessage);
       tBody.appendChild(row);

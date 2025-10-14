@@ -21,10 +21,22 @@ class PtTableBodyBuilder {
       return tBody;
     }
 
-    const reachableCount = departures.length;
-    const unreachableCount = departures.filter((departure) => !departure.isReachable).length;
+    const excludeFinalStations = Array.isArray(this.config.excludeFinalStations)
+      ? this.config.excludeFinalStations
+      : [];
+    const filteredDepartures = excludeFinalStations.length === 0
+      ? departures
+      : departures.filter((departure) => !excludeFinalStations.some((endStation) => departure.direction === endStation));
+    if (filteredDepartures.length === 0) {
+      const row = this.getDeparturesTableNoDeparturesRow(noDepartureMessage);
+      tBody.appendChild(row);
+      return tBody;
+    }
 
-    for (const [index, departure] of departures.entries()) {
+    const reachableCount = filteredDepartures.length;
+    const unreachableCount = filteredDepartures.filter((departure) => !departure.isReachable).length;
+
+    for (const [index, departure] of filteredDepartures.entries()) {
       const row = this.getDeparturesTableRow(
         departure,
         index,
@@ -32,13 +44,9 @@ class PtTableBodyBuilder {
         unreachableCount
       );
 
-      // Exclude stations that end at excludeFinalStations[i]
-      const shouldExclude = this.config.excludeFinalStations.some((endStation) => departure.direction === endStation);
-      if (!shouldExclude) {
-        tBody.appendChild(row);
-      }
+      tBody.appendChild(row);
 
-      if (!shouldExclude && this.config.showWarningRemarks) {
+      if (this.config.showWarningRemarks) {
         // Next line is for testing if there are no warning remarks - uncomment it to append to every departure a warning remark
         // This is a list of dictionaries. There is also a "hint" type but that does not contain a summary.
         // departure.remarks.push({id: "326169", type: "warning", summary: "Meldung für Linie 8", text: "Es kommt zu betriebsbedingten Fahrtausfällen. \nDie entfallenden Fahrten sind in der App MOOVME sowie unter www.havag.com/fahrtenplaner gekennzeichnet.", icon: {type: "HIM3", title: null}, priority: 50, products: {nationalExpress: true, national: true, regional: true, suburban: true, tram: true, bus: true, tourismTrain: true}, company: "HAVAG - Hallesche Verkehrs-AG", categories: [3], validFrom: "2021-12-03T09:17:00+01:00", validUntil: "2022-12-31T23:59:00+01:00", modified: "2021-12-03T09:17:46+01:00"});
@@ -48,7 +56,7 @@ class PtTableBodyBuilder {
         }
       }
 
-      const nextDeparture = departures[index + 1];
+      const nextDeparture = filteredDepartures[index + 1];
       this.insertRulerIfNecessary(
         tBody,
         departure,

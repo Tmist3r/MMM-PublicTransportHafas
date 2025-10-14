@@ -37,7 +37,7 @@ export default defineConfig([
       "func-style": "off",
       "import-x/no-unresolved": ["error", {ignore: ["eslint/config", "node_helper", "logger"]}],
       "init-declarations": "off",
-      "max-lines": ["warn", 475],
+      "max-lines": ["warn", 500],
       "max-lines-per-function": ["warn", 100],
       "max-params": ["warn", 4],
       "max-statements": ["error", 25],

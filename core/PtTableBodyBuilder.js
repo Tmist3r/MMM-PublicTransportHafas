@@ -38,7 +38,6 @@ class PtTableBodyBuilder {
       if (!shouldExclude) {
         tBody.appendChild(row);
       }
-      //tBody.appendChild(row);
 
       if (!shouldExclude && this.config.showWarningRemarks) {
         // Next line is for testing if there are no warning remarks - uncomment it to append to every departure a warning remark

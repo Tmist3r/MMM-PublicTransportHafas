@@ -33,7 +33,7 @@ class PtTableBodyBuilder {
       );
 
       //exclude stations that end at exludeEndStation[i]
-      const shouldExclude = this.config.excludeEndStation.some(
+      const shouldExclude = this.config.excludeFinalStations.some(
         endStation => departure.direction == endStation
       );
       if (!shouldExclude) {

@@ -32,9 +32,8 @@ class PtTableBodyBuilder {
         unreachableCount
       );
 
-      const shouldExclude = this.config.excludeFinalStations.some(
-        endStation => departure.direction == endStation
-      );
+      // Exclude stations that end at excludeFinalStations[i]
+      const shouldExclude = this.config.excludeFinalStations.some((endStation) => departure.direction === endStation);
       if (!shouldExclude) {
         tBody.appendChild(row);
       }

@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.4.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.3.0...v3.4.0) 2025-10-14
+
+### Added
+
+- feat: add `excludeDirections` option to filter out departures to specific destinations (#236) - thanks to @Tmist3r
+- feat: add css style for lines in Graz
+
+### Changed
+
+- chore: update devDependencies
+
 ## [3.3.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.2.1...v3.3.0) 2025-10-12
 
 ### Added

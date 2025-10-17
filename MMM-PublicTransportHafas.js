@@ -97,6 +97,19 @@ Module.register("MMM-PublicTransportHafas", {
 
     this.sendSocketNotification("CREATE_FETCHER", fetcherOptions);
 
+    // Fallback: If no FETCHER_INITIALIZED is received within 30 seconds, start fetching anyway
+    // This handles cases where the socket notification is lost or delayed
+    // Increased timeout to allow time for HAFAS client initialization
+    setTimeout(() => {
+      if (!this.initialized) {
+        Log.warn("[MMM-PublicTransportHafas] FETCHER_INITIALIZED not received after 30s, starting fetch loop anyway.");
+        this.initialized = true;
+        this.startFetchingLoop(this.config.updatesEvery);
+        // Force DOM update to trigger the fetch result display
+        this.updateDom(this.config.animationSpeed);
+      }
+    }, 30_000);
+
     // Set locale
     dayjs.locale(config.language);
   },

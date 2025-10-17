@@ -5,6 +5,7 @@ const DepartureFetcher = require("./core/DepartureFetcher.mjs").default;
 module.exports = NodeHelper.create({
   start () {
     this.departuresFetchers = [];
+    this.fetcherConfigs = {};
   },
 
   socketNotificationReceived (notification, payload) {
@@ -19,20 +20,36 @@ module.exports = NodeHelper.create({
     }
   },
 
+  /**
+   * Creates a new departure fetcher for a station or returns an existing one.
+   * Sends FETCHER_INITIALIZED immediately to start the fetch loop, then initializes
+   * the HAFAS client in the background.
+   *
+   * @param {object} config - Configuration object containing station ID, profile, and other settings
+   */
   async createFetcher (config) {
+    this.fetcherConfigs[config.identifier] = config;
+
     let fetcher;
 
     if (typeof this.departuresFetchers[config.identifier] === "undefined") {
       fetcher = new DepartureFetcher(config);
-      await fetcher.init();
       this.departuresFetchers[config.identifier] = fetcher;
-      Log.info(`[MMM-PublicTransportHafas] Transportation fetcher for station with id '${fetcher.getStationID()}' created.`);
 
+      // Send initialization complete immediately so the fetch loop can start
+      // The actual HAFAS client init will be done on first fetch if needed
       this.sendFetcherLoaded(fetcher);
+
+      // Init in background
+      try {
+        await fetcher.init();
+        Log.info(`[MMM-PublicTransportHafas] Transportation fetcher for station with id '${fetcher.getStationID()}' created.`);
+      } catch (error) {
+        Log.error(`[MMM-PublicTransportHafas] Failed to initialize fetcher for station id '${config.stationID}'. Will retry on next fetch cycle.`, error);
+      }
     } else {
       fetcher = this.departuresFetchers[config.identifier];
       Log.info(`[MMM-PublicTransportHafas] Using existing transportation fetcher for station id '${fetcher.getStationID()}'.`);
-
       this.sendFetcherLoaded(fetcher);
     }
   },
@@ -47,22 +64,71 @@ module.exports = NodeHelper.create({
     const fetcher = this.departuresFetchers[identifier];
 
     if (typeof fetcher === "undefined") {
-      Log.log("[MMM-PublicTransportHafas] fetcher is undefined. If this occurs only sporadically, it is not a problem.");
-    } else {
+      await this.handleMissingFetcher(identifier);
+      return;
+    }
+
+    await this.fetchWithInitializedFetcher(fetcher);
+  },
+
+  /**
+   * Handles the case when a fetcher is requested but doesn't exist yet.
+   * Attempts to create the fetcher from saved config and retries the fetch.
+   *
+   * @param {string} identifier - The unique identifier of the fetcher/module instance
+   */
+  async handleMissingFetcher (identifier) {
+    // Fetcher not initialized yet - try to create it now
+    const config = this.fetcherConfigs[identifier];
+    if (config) {
+      Log.log("[MMM-PublicTransportHafas] Fetcher undefined, attempting to create it now.");
+      await this.createFetcher(config);
+      // Try again after creation attempt
+      await this.fetchDepartures(identifier);
+      return;
+    }
+
+    Log.log("[MMM-PublicTransportHafas] fetcher is undefined. If this occurs only sporadically, it is not a problem.");
+  },
+
+  /**
+   * Fetches departures using an existing fetcher instance.
+   * Checks if the HAFAS client is initialized and retries initialization if needed.
+   * Sends either DEPARTURES_FETCHED or FETCH_ERROR notification based on the result.
+   *
+   * @param {object} fetcher - The DepartureFetcher instance to use
+   */
+  async fetchWithInitializedFetcher (fetcher) {
+    // Check if fetcher needs initialization (in case it failed before)
+    if (!fetcher.hafasClient) {
+      Log.log("[MMM-PublicTransportHafas] Fetcher not fully initialized, attempting init now.");
       try {
-        const fetchedDepartures = await fetcher.fetchDepartures();
-        const payload = {
-          departures: fetchedDepartures,
-          identifier: fetcher.getIdentifier()
-        };
-        this.sendSocketNotification("DEPARTURES_FETCHED", payload);
+        await fetcher.init();
+        Log.info("[MMM-PublicTransportHafas] Fetcher initialization successful on retry.");
       } catch (error) {
+        Log.error("[MMM-PublicTransportHafas] Fetcher initialization failed again.", error);
         const payload = {
           error,
           identifier: fetcher.getIdentifier()
         };
         this.sendSocketNotification("FETCH_ERROR", payload);
+        return;
       }
+    }
+
+    try {
+      const fetchedDepartures = await fetcher.fetchDepartures();
+      const payload = {
+        departures: fetchedDepartures,
+        identifier: fetcher.getIdentifier()
+      };
+      this.sendSocketNotification("DEPARTURES_FETCHED", payload);
+    } catch (error) {
+      const payload = {
+        error,
+        identifier: fetcher.getIdentifier()
+      };
+      this.sendSocketNotification("FETCH_ERROR", payload);
     }
   }
 });

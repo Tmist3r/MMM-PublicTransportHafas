@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.4.0...v3.5.0) 2025-10-17
+
+### Changed
+
+- chore: replace `husky` with `simple-git-hooks` for pre-commit linting
+- chore: update devDependencies
+- docs: update installation instructions to include `--ignore-scripts` option for `npm ci`
+
+### Fixed
+
+- fix: improve module initialization and error resilience
+
 ## [3.4.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.3.0...v3.4.0) 2025-10-14
 
 ### Added

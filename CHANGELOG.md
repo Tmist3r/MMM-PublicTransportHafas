@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.2.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.1.1...v4.2.0) (2026-02-21)
+
+
+### Added
+
+* add toggleAbsoluteTimeInterval option to alternate time display ([ca60b56](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/ca60b56ca4b72b28a0dcb27a065e4f5ba95df114)), closes [#15](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/15)
+
+
+### Chores
+
+* update demo script ([9122b9d](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/9122b9db184f5bbbe31c1963586ca577e3277dbb))
+* update devDependencies ([60ad128](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/60ad128c0621f148ee0b9b228b0d54e9a4eb3754))
+* update ESLint config ([b587adf](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/b587adfc8dc925a2965b762f33417eed4a7bc9f5))
+
 ## [4.1.1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.1.0...v4.1.1) (2026-01-12)
 
 

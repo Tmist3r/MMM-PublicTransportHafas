@@ -264,11 +264,13 @@ export default class PtTableBodyBuilder {
       return TemporalHelper.formatTime(adjustedInstant, this.config.language ?? "en", this.config.timeFormat);
     }
 
-    // Calculate difference in milliseconds
-    const diffMs = instant.epochMilliseconds - now.epochMilliseconds;
+    // When toggling is active, always show relative time (skip the showRelativeTimeOnlyUnder threshold)
+    if (!this.config.toggleAbsoluteTimeInterval) {
+      const diffMs = instant.epochMilliseconds - now.epochMilliseconds;
 
-    if (diffMs > this.config.showRelativeTimeOnlyUnder) {
-      return TemporalHelper.formatTime(instant, this.config.language ?? "en", this.config.timeFormat);
+      if (diffMs > this.config.showRelativeTimeOnlyUnder) {
+        return TemporalHelper.formatTime(instant, this.config.language ?? "en", this.config.timeFormat);
+      }
     }
 
     return TemporalHelper.formatRelativeTime(instant, this.config.language ?? "en");

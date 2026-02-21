@@ -25,6 +25,11 @@ export function sanitizeConfig (config, defaults) {
     sanitized.timeInFuture = sanitized.timeToStation + 30;
   }
 
+  // Toggle interval cannot be negative
+  if (sanitized.toggleAbsoluteTimeInterval < 0) {
+    sanitized.toggleAbsoluteTimeInterval = 0;
+  }
+
   // Cannot show negative unreachable departures
   if (sanitized.maxUnreachableDepartures < 0) {
     sanitized.maxUnreachableDepartures = 0;

@@ -52,6 +52,7 @@ Module.register("MMM-PublicTransportHafas", {
     showColoredLineSymbols: true,       // Want colored line symbols?
     useColorForRealtimeInfo: true,      // Want colored real time information (timeToStation, early)?
     showAbsoluteTime: true,             // How should the departure time be displayed? "15:10" (absolute) or "in 5 minutes" (relative)
+    toggleAbsoluteTimeInterval: 0,      // Automatically switch between absolute and relative time every n seconds (0 = disabled)
     noRealtimeDelayString: "+?",        // Only relevant if 'showAbsoluteTime: true'. The string that is displayed as delay if no real-time departure time data is available.
     showRelativeTimeOnlyUnder: 10 * 60 * 1000,  // Display the time only relatively if the departure takes place in less than 10 minutes (600000 milliseconds). The value is only relevant if showAbsoluteTime: false.
     showTableHeaders: true,             // Show table headers?
@@ -81,6 +82,7 @@ Module.register("MMM-PublicTransportHafas", {
     this.initialized = false;
     this.error = {};
     this.errorCount = 0;
+    this.toggleAbsoluteTimeIntervalID = 0;
 
     await this.sanitizeConfig();
 
@@ -120,6 +122,7 @@ Module.register("MMM-PublicTransportHafas", {
     };
 
     this.sendSocketNotification("CREATE_FETCHER", fetcherOptions);
+    this.startTimeDisplayToggle();
 
     // Fallback: If no FETCHER_INITIALIZED is received within 30 seconds, start fetching anyway
     // This handles cases where the socket notification is lost or delayed
@@ -169,11 +172,14 @@ Module.register("MMM-PublicTransportHafas", {
 
       // Update now and start again the update timer
       this.startFetchingLoop(this.config.updatesEvery);
+      this.startTimeDisplayToggle();
     } else {
       // (UserPresence = false OU ModulePublicTransportHafasHidden = true)
       Log.debug(`[MMM-PublicTransportHafas] No one is watching: Stop the update! ${this.config.stationName}`);
       clearInterval(this.updatesIntervalID); // Stop the current update interval
       this.updatesIntervalID = 0; // Reset the variable
+      clearInterval(this.toggleAbsoluteTimeIntervalID); // Stop the time display toggle
+      this.toggleAbsoluteTimeIntervalID = 0; // Reset the variable
     }
   },
 
@@ -339,6 +345,15 @@ Module.register("MMM-PublicTransportHafas", {
     // Dynamic import to load ESM module in browser
     const {sanitizeConfig} = await import("./core/ConfigValidator.mjs");
     this.config = sanitizeConfig(this.config, this.defaults);
+  },
+
+  startTimeDisplayToggle () {
+    if (this.config.toggleAbsoluteTimeInterval > 0 && this.toggleAbsoluteTimeIntervalID === 0) {
+      this.toggleAbsoluteTimeIntervalID = setInterval(() => {
+        this.config.showAbsoluteTime = !this.config.showAbsoluteTime;
+        this.updateDom();
+      }, this.config.toggleAbsoluteTimeInterval * 1_000);
+    }
   },
 
   startFetchingLoop (interval) {

@@ -27,6 +27,7 @@ let config = {
         replaceInDirections: {"Halle (Saale), ": "", " (Tram/Bus)": ""},
         showOnlyLineNumbers: true,
         showAbsoluteTime: false,
+        toggleAbsoluteTimeInterval: 10, // Switch between absolute and relative time every 10 seconds
         showTableHeaders: false,
         tableHeaderOrder: ["line", "direction", "time", "platform"],
         timeInFuture: 90 // in minutes

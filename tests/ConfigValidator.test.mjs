@@ -7,7 +7,8 @@ const defaultConfig = {
   timeToStation: 10,
   timeInFuture: 40,
   maxUnreachableDepartures: 0,
-  maxReachableDepartures: 7
+  maxReachableDepartures: 7,
+  toggleAbsoluteTimeInterval: 0
 };
 
 describe("ConfigValidator", () => {
@@ -133,6 +134,26 @@ describe("ConfigValidator", () => {
         const config = {maxReachableDepartures: 10};
         const result = sanitizeConfig(config, defaultConfig);
         assert.strictEqual(result.maxReachableDepartures, 10);
+      });
+    });
+
+    describe("toggleAbsoluteTimeInterval", () => {
+      it("should reset negative values to 0", () => {
+        const config = {toggleAbsoluteTimeInterval: -5};
+        const result = sanitizeConfig(config, defaultConfig);
+        assert.strictEqual(result.toggleAbsoluteTimeInterval, 0);
+      });
+
+      it("should allow zero (disabled)", () => {
+        const config = {toggleAbsoluteTimeInterval: 0};
+        const result = sanitizeConfig(config, defaultConfig);
+        assert.strictEqual(result.toggleAbsoluteTimeInterval, 0);
+      });
+
+      it("should allow positive values", () => {
+        const config = {toggleAbsoluteTimeInterval: 10};
+        const result = sanitizeConfig(config, defaultConfig);
+        assert.strictEqual(result.toggleAbsoluteTimeInterval, 10);
       });
     });
 

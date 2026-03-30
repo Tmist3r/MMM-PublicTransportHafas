@@ -494,8 +494,9 @@ describe("getDepartureTime", () => {
     const reachableTime = fetcher.getReachableTime();
     const departureTime = fetcher.getDepartureTime();
 
-    // Should be the same when maxUnreachableDepartures is 0
-    assert.strictEqual(departureTime.toString(), reachableTime.toString());
+    // Both methods call Temporal.Now independently, so allow minor execution-time drift.
+    const diff = Math.abs(departureTime.toInstant().epochMilliseconds - reachableTime.toInstant().epochMilliseconds);
+    assert.ok(diff < 1000);
   });
 
   it("should subtract leadTime when unreachable departures configured", () => {
@@ -547,14 +548,14 @@ describe("isReachable", () => {
   });
 
   it("should mark departure as reachable when exactly at timeToStation boundary", () => {
-    const exactTime = new Date();
-    exactTime.setMinutes(exactTime.getMinutes() + 10); // Exactly timeToStation
+    const exactInstant = Temporal.Now.instant().add({minutes: 10});
+    const departure = createDeparture({when: exactInstant.toString()});
 
-    const departure = createDeparture({when: exactTime.toISOString()});
+    fetcher.getReachableTime = () => exactInstant.toZonedDateTimeISO("UTC");
 
     const result = fetcher.isReachable(departure);
 
-    // isSameOrAfter should return true for exact match
+    // Compare exactly equal instants to verify boundary handling (>=).
     assert.strictEqual(result, true);
   });
 });

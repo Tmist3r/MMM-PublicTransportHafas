@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.3.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.2.0...v4.3.0) (2026-03-30)
+
+
+### Added
+
+* add styles for new bus lines and update existing styles ([fad084e](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/fad084efdabe8c26ac28d53893f4b8098f974232))
+
+
+### Fixed
+
+* **node_helper:** use MagicMirror core module aliases for logger and node_helper ([9565072](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/956507250edb845b2511f3914acab7623da46b5c))
+
+
+### Chores
+
+* change var to const for config in demo.config.js ([8f73f01](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/8f73f01b2408a89c8b7df5a7fe1f7b208c1b1356))
+* simplify prepare script ([d91a1e0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/d91a1e097cf6973f9a76e504fd68b51e47c08496))
+* update dependencies ([7b77063](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/7b77063509e0d86c06fefc3f0b81f24a217914f2))
+
 ## [4.2.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.1.1...v4.2.0) (2026-02-21)
 
 

@@ -49,7 +49,6 @@ export default defineConfig([
       strict: "off"
     }
   },
-  {files: ["demo.config.js"], rules: {"prefer-const": "off"}},
   {files: ["tests/**/*.mjs"], rules: {"no-undefined": "off", "max-lines": "off", "max-lines-per-function": "off"}},
   {files: ["**/*.json"], ignores: ["package-lock.json"], plugins: {json}, extends: ["json/recommended"], language: "json/json"},
   {files: ["package.json"], plugins: {packageJson}, extends: ["packageJson/recommended"]},

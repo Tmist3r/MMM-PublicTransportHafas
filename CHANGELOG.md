@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.3.1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.3.0...v4.3.1) (2026-03-30)
+
+
+### Chores
+
+* add "busx" to custom words list ([d9a3745](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/d9a3745b5b4c419d021c42269d6c89135c85945b))
+* streamline automated tests workflow ([5bf9ad9](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/5bf9ad99f3f032587a0101c020dd9b106f7d89d0))
+
+
+### Code Refactoring
+
+* replace lazy logger initialization with direct logger usage ([6326453](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/63264532eea4c06fb8db1b43a7f8ed0584c37e60))
+
+
+### Tests
+
+* stabilize flaky Temporal boundary assertions in DepartureFetcher tests ([2f21278](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/2f21278045e2bdb97a357cebfee015b4c97e0eda))
+
 ## [4.3.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.2.0...v4.3.0) (2026-03-30)
 
 

@@ -1,18 +1,23 @@
+/* eslint-disable no-console */
 import "temporal-polyfill/global";
+import {createRequire} from "node:module";
 import packageJson from "../package.json" with {type: "json"};
 
-/**
- * Lazy logger initialization to avoid top-level await
- * Falls back to console in test environments
- */
-let loggerInstance;
-function getLogger () {
-  if (!loggerInstance) {
-    loggerInstance = typeof globalThis.Log === "undefined"
-      ? console
-      : globalThis.Log;
-  }
-  return loggerInstance;
+const fallbackLogger = {
+  debug: console.info.bind(console),
+  info: console.info.bind(console),
+  warn: console.warn.bind(console),
+  error: console.error.bind(console),
+  log: console.log.bind(console)
+};
+
+const require = createRequire(import.meta.url);
+let logger = fallbackLogger;
+
+try {
+  logger = require("logger");
+} catch {
+  logger = fallbackLogger;
 }
 
 /**
@@ -52,14 +57,14 @@ export default class DepartureFetcher {
     let createClient;
     let profile;
     if (this.config.hafasProfile === "db" || this.config.hafasProfile === "dbweb") {
-      getLogger().info("Using vendo client");
+      logger.info("Using vendo client");
       const vendoClient = await import("db-vendo-client");
       const createVendoClient = vendoClient.createClient;
       createClient = createVendoClient;
       const vendo = await import(`db-vendo-client/p/${this.config.hafasProfile}/index.js`);
       profile = vendo.profile;
     } else {
-      getLogger().info("Using HAFAS client");
+      logger.info("Using HAFAS client");
       const hafasClient = await import("hafas-client");
       const createHafasClient = hafasClient.createClient;
       createClient = createHafasClient;
@@ -99,7 +104,7 @@ export default class DepartureFetcher {
     const {departures, failures} = DepartureFetcher.processResults(results, directions);
 
     if (failures.length > 0) {
-      getLogger().warn(`[MMM-PublicTransportHafas] Failed to fetch ${failures.length} of ${directions.length} direction(s), continuing with successful results`);
+      logger.warn(`[MMM-PublicTransportHafas] Failed to fetch ${failures.length} of ${directions.length} direction(s), continuing with successful results`);
     }
 
     const sortedDepartures = DepartureFetcher.sortDepartures(departures);
@@ -149,11 +154,11 @@ export default class DepartureFetcher {
         if (departuresData.length > 0) {
           departures.push(...departuresData);
         } else {
-          getLogger().warn(`[MMM-PublicTransportHafas] No departures found for direction ${directions[index] || "all"}`);
+          logger.warn(`[MMM-PublicTransportHafas] No departures found for direction ${directions[index] || "all"}`);
         }
       } else {
         failures.push({direction: directions[index], error: result.reason});
-        getLogger().error(
+        logger.error(
           `[MMM-PublicTransportHafas] Failed to fetch departures for direction ${directions[index]}:`,
           result.reason
         );
@@ -308,7 +313,7 @@ export default class DepartureFetcher {
     const reachableDepartures = departures.filter((departure) => departure.isReachable);
 
     // Output reachableDepartures for debugging
-    getLogger().debug(reachableDepartures);
+    logger.debug(reachableDepartures);
 
     // Merge unreachable and reachable departures
     const result = [].concat(unreachableDepartures, reachableDepartures);
@@ -336,7 +341,7 @@ export default class DepartureFetcher {
 
     // If neither when nor plannedWhen is available, treat as unreachable
     if (!departureTime) {
-      getLogger().warn("[MMM-PublicTransportHafas] Departure has no when or plannedWhen, treating as unreachable");
+      logger.warn("[MMM-PublicTransportHafas] Departure has no when or plannedWhen, treating as unreachable");
       return false;
     }
 

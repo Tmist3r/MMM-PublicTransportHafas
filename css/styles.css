@@ -100,7 +100,7 @@
 
     span {
       font-weight: 400;
-      animation: mmm-pth-warning-remarks 600s linear infinite;
+      animation: mmm-pth-warning-remarks linear infinite;
       display: inline-block;
       padding-left: 20%;
     }

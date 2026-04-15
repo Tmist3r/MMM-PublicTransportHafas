@@ -59,6 +59,7 @@ Module.register("MMM-PublicTransportHafas", {
     showTableHeadersAsSymbols: true,    // Table Headers as symbols or written?
     showWarningRemarks: true,           // Show warning remarks?
     warningRemarksFilter: [],           // list of strings (case-insensitive) to filter remarks
+    warningRemarksScrollSpeed: 10,      // Scroll speed of warning remarks in characters per second
     showWarningsOnce: false,            // Hide same warning in next departure?
     tableHeaderOrder: ["time", "line", "direction", "platform"], // In which order should the table headers appear?
     maxUnreachableDepartures: 0,        // How many unreachable departures should be shown?

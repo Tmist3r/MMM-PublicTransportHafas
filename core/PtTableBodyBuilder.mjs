@@ -126,10 +126,12 @@ export default class PtTableBodyBuilder {
     }
 
     if (marquee.textContent !== "") {
-      cellContainer.title = marquee.textContent.trim();
-      while (marquee.textContent.length < 3000) {
-        marquee.textContent += marquee.textContent;
-      }
+      const warningText = marquee.textContent.trim();
+      cellContainer.title = warningText;
+
+      // Calculate scroll duration based on text length for constant scroll speed
+      const scrollDuration = Math.max(3, warningText.length / this.config.warningRemarksScrollSpeed);
+      marquee.style.animationDuration = `${scrollDuration}s`;
     }
 
     cellContainer.appendChild(marquee);

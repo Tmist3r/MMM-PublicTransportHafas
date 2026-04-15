@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.4.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.3.1...v4.4.0) (2026-04-15)
+
+
+### Added
+
+* **warning-remarks:** constant scroll speed regardless of text length ([cab6ac5](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/cab6ac550b0a2674fcf51275318cbb595b27904c)), closes [#102](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/102)
+
+
+### Fixed
+
+* **warning-remarks:** prevent table width expansion ([0b645a7](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/0b645a7366aa82697410a6dad5f96362f9753bdf)), closes [#270](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/270)
+
+
+### Chores
+
+* update devDependencies ([a4acecb](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/a4acecb4ad9de386e4274bcfbf489c04ab9fb2cc))
+
 ## [4.3.1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.3.0...v4.3.1) (2026-03-30)
 
 

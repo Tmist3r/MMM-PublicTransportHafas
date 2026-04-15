@@ -126,6 +126,7 @@ export default class PtTableBodyBuilder {
     }
 
     if (marquee.textContent !== "") {
+      cellContainer.title = marquee.textContent.trim();
       while (marquee.textContent.length < 3000) {
         marquee.textContent += marquee.textContent;
       }

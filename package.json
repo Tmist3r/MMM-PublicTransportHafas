@@ -1,6 +1,6 @@
 {
   "name": "mmm-publictransporthafas",
-  "version": "3.3.0",
+  "version": "4.4.0",
   "description": "A public transport module for MagicMirror² powered by db-vendo-client and hafas-client data.",
   "keywords": [
     "MagicMirror",
@@ -19,18 +19,26 @@
   "license": "MIT",
   "author": "Kristjan ESPERANTO (https://github.com/KristjanESPERANTO)",
   "contributors": [
-    "https://github.com/raywo/MMM-PublicTransportHafas/graphs/contributors",
-    "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/graphs/contributors"
+    {
+      "name": "Contributors to KristjanESPERANTO/MMM-PublicTransportHafas",
+      "url": "https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/graphs/contributors"
+    }
   ],
   "main": "MMM-PublicTransportHafas.js",
   "type": "commonjs",
   "scripts": {
+    "demo": "cd ../../ && MM_CONFIG_FILE=modules/MMM-PublicTransportHafas/demo.config.js node --run start:dev",
     "lint": "eslint && prettier . --check",
     "lint:fix": "eslint --fix && prettier . --write",
-    "prepare": "[ -f node_modules/.bin/husky ] && husky || true",
+    "prepare": "simple-git-hooks || true",
     "query": "node ./convenience/query_stations.mjs",
-    "test": "node --run lint && node --run test:spelling",
-    "test:spelling": "cspell ."
+    "release": "commit-and-tag-version --config ./changelog.config.js",
+    "test": "node --run lint && node --run test:spelling && node --run test:unit",
+    "test:spelling": "cspell .",
+    "test:unit": "node --test 'tests/**/*.test.mjs'"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "*": [
@@ -39,24 +47,25 @@
     ]
   },
   "dependencies": {
-    "dayjs": "^1.11.18",
-    "db-vendo-client": "^6.10.0",
-    "hafas-client": "^6.3.5"
+    "db-vendo-client": "^6.10.8",
+    "hafas-client": "^6.3.6",
+    "temporal-polyfill": "^0.3.2"
   },
   "devDependencies": {
-    "@eslint/css": "^0.13.0",
-    "@eslint/js": "^9.37.0",
-    "@eslint/json": "^0.13.2",
-    "@eslint/markdown": "^7.4.0",
-    "@stylistic/eslint-plugin": "^5.4.0",
-    "cspell": "^9.2.1",
-    "eslint": "^9.37.0",
-    "eslint-plugin-import-x": "^4.16.1",
-    "eslint-plugin-package-json": "^0.56.3",
-    "globals": "^16.4.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.4",
-    "prettier": "^3.6.2"
+    "@eslint/css": "^1.1.0",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^1.2.0",
+    "@eslint/markdown": "^8.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "commit-and-tag-version": "^12.7.1",
+    "cspell": "^10.0.0",
+    "eslint": "^10.2.0",
+    "eslint-plugin-import-x": "^4.16.2",
+    "eslint-plugin-package-json": "^0.91.1",
+    "globals": "^17.5.0",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "simple-git-hooks": "^2.13.1"
   },
   "engines": {
     "node": ">=20"

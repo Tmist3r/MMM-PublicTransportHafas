@@ -19,8 +19,7 @@ export default defineConfig([
         ...globals.node
       }
     },
-    plugins: {js, stylistic},
-    extends: [importX.recommended, "js/all", "stylistic/all"],
+    extends: [importX.recommended, js.configs.all, stylistic.configs.all],
     rules: {
       "@stylistic/array-element-newline": ["error", "consistent"],
       "@stylistic/dot-location": ["error", "property"],
@@ -37,7 +36,7 @@ export default defineConfig([
       "func-style": "off",
       "import-x/no-unresolved": ["error", {ignore: ["eslint/config", "node_helper", "logger"]}],
       "init-declarations": "off",
-      "max-lines": ["warn", 475],
+      "max-lines": ["warn", 500],
       "max-lines-per-function": ["warn", 100],
       "max-params": ["warn", 4],
       "max-statements": ["error", 25],
@@ -50,6 +49,7 @@ export default defineConfig([
       strict: "off"
     }
   },
+  {files: ["tests/**/*.mjs"], rules: {"no-undefined": "off", "max-lines": "off", "max-lines-per-function": "off"}},
   {files: ["**/*.json"], ignores: ["package-lock.json"], plugins: {json}, extends: ["json/recommended"], language: "json/json"},
   {files: ["package.json"], plugins: {packageJson}, extends: ["packageJson/recommended"]},
   {files: ["**/*.md"], plugins: {markdown}, extends: ["markdown/recommended"], language: "markdown/gfm"}

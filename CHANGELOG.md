@@ -1,9 +1,202 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [4.4.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.3.1...v4.4.0) (2026-04-15)
+
+
+### Added
+
+* **warning-remarks:** constant scroll speed regardless of text length ([cab6ac5](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/cab6ac550b0a2674fcf51275318cbb595b27904c)), closes [#102](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/102)
+
+
+### Fixed
+
+* **warning-remarks:** prevent table width expansion ([0b645a7](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/0b645a7366aa82697410a6dad5f96362f9753bdf)), closes [#270](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/270)
+
+
+### Chores
+
+* update devDependencies ([a4acecb](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/a4acecb4ad9de386e4274bcfbf489c04ab9fb2cc))
+
+## [4.3.1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.3.0...v4.3.1) (2026-03-30)
+
+
+### Chores
+
+* add "busx" to custom words list ([d9a3745](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/d9a3745b5b4c419d021c42269d6c89135c85945b))
+* streamline automated tests workflow ([5bf9ad9](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/5bf9ad99f3f032587a0101c020dd9b106f7d89d0))
+
+
+### Code Refactoring
+
+* replace lazy logger initialization with direct logger usage ([6326453](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/63264532eea4c06fb8db1b43a7f8ed0584c37e60))
+
+
+### Tests
+
+* stabilize flaky Temporal boundary assertions in DepartureFetcher tests ([2f21278](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/2f21278045e2bdb97a357cebfee015b4c97e0eda))
+
+## [4.3.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.2.0...v4.3.0) (2026-03-30)
+
+
+### Added
+
+* add styles for new bus lines and update existing styles ([fad084e](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/fad084efdabe8c26ac28d53893f4b8098f974232))
+
+
+### Fixed
+
+* **node_helper:** use MagicMirror core module aliases for logger and node_helper ([9565072](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/956507250edb845b2511f3914acab7623da46b5c))
+
+
+### Chores
+
+* change var to const for config in demo.config.js ([8f73f01](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/8f73f01b2408a89c8b7df5a7fe1f7b208c1b1356))
+* simplify prepare script ([d91a1e0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/d91a1e097cf6973f9a76e504fd68b51e47c08496))
+* update dependencies ([7b77063](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/7b77063509e0d86c06fefc3f0b81f24a217914f2))
+
+## [4.2.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.1.1...v4.2.0) (2026-02-21)
+
+
+### Added
+
+* add toggleAbsoluteTimeInterval option to alternate time display ([ca60b56](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/ca60b56ca4b72b28a0dcb27a065e4f5ba95df114)), closes [#15](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/15)
+
+
+### Chores
+
+* update demo script ([9122b9d](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/9122b9db184f5bbbe31c1963586ca577e3277dbb))
+* update devDependencies ([60ad128](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/60ad128c0621f148ee0b9b228b0d54e9a4eb3754))
+* update ESLint config ([b587adf](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/b587adfc8dc925a2965b762f33417eed4a7bc9f5))
+
+## [4.1.1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.1.0...v4.1.1) (2026-01-12)
+
+
+### Fixed
+
+* handle null values and HAFAS API format changes ([ada88b2](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/ada88b25c53b66d6b1b1f1578d10aff9f0098b7f))
+* use globalThis.Log to avoid top-level await ([8237330](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/823733038cf1f6a25f5fe2fa9ae71111f00f6672))
+
+
+### Chores
+
+* add unit tests step to automated tests workflow ([d3448f0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/d3448f07f5e6ed4d6f415966730845ada6aecb9d))
+* add vbn demo example ([131c8c1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/131c8c181c906459f10e78e582679f62dcdac4fc))
+* update dependencies ([5de7202](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/5de72026ea3493771c2af9e216fe4ef3d3bd84a4))
+
+
+### Code Refactoring
+
+* simplify time assignment logic in getCell method ([ea012dd](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/ea012dd3ed3e1370c4dd1a1dfd529ae975bb6205))
+
+## [4.1.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v4.0.0...v4.1.0) (2026-01-09)
+
+
+### Added
+
+* add platformsToShow filter option ([cb5179a](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/cb5179aba65fe77c18b5525107d06de6cd014521)), closes [#21](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/21)
+
+
+### Chores
+
+* update devDependencies ([2850378](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/2850378dab2150b9007bab8cdc217f6d35b59c25))
+
+
+### Code Refactoring
+
+* replace temporal-kit with temporal-polyfill ([967472b](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/967472bb5ae909a21c14bfea6c5769c15fc140d6))
+
+## [4.0.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.5.2...v4.0.0) (2026-01-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate from dayjs to Temporal API
+
+### Added
+
+* migrate from dayjs to Temporal API ([a8772ec](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/a8772ecfe1b87a406342bb26c2e45b3fe82e4947)), closes [#253](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/253)
+* modify direction filter to handle multiple IDs ([#253](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/issues/253)) ([37e01cf](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/37e01cf9eb1bcd3a8ee857c0ec44acb6a1c9a31f))
+
+
+### Documentation
+
+* add release command to README ([a4adb7f](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/a4adb7fa2ad2f3649ffc24586b00b5beec76d8fe))
+
+
+### Chores
+
+* change runner from ubuntu-latest to ubuntu-slim in workflow files ([da29b49](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/da29b49a7904c3f83acdad289f54ace662ef0981))
+* handle spelling issues ([50033b7](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/50033b702a117ca7eaaf5cedd5d33a635097998f))
+* update actions/checkout to v6 in workflow files ([57361aa](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/57361aa2dd3cb1f8ed58eb473bd5bf271e723c70))
+* update devDependencies ([24546b9](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/24546b9d6e0804898893e9e3ca9ab453cbc425c7))
+
+
+### Code Refactoring
+
+* convert DOM builders to ESM modules ([be58162](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/be58162f44c98b8352a015ff0e504356e30e7001))
+* extract config validation into testable module ([3cb19e1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/3cb19e182c848c386dcec5f5e51476bc705c3872))
+* improve robustness of multi-direction feature ([971d086](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/971d086760791a9975c8bf8983fc6932d147df1e))
+* move excludeDirections filter to backend ([8566aa3](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/8566aa35ad3d18067d04f91435928c34e5c4d413))
+
+
+### Tests
+
+* add time calculation and reachability tests ([7794aaf](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/7794aafc979156aef4a28e40d58167b0b4fe5ce3))
+* add unit tests using node:test ([9420064](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/942006492041232c2db1e1d82eff541095a0c0c3))
+
+## [3.5.2](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.5.1...v3.5.2) (2026-01-01)
+
+### Chores
+
+- add demo config and demo script ([1cd4a56](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/1cd4a56e4de19a2eaa11404d318df101c0d8f5cb))
+- **changelog:** change section label for chore type ([9ba98b6](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/9ba98b6d8b87e15b588e3b10d0f62e88b7bc9825))
+- fix contributors section in package.json ([39e4890](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/39e4890bc37a1827e01c01b92e73513a6cdf3a42))
+- make simple-git-hooks more robust and platform independent ([679cc27](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/679cc2768b9e51761cac22764ea445448f6b0db2))
+- update dependencies ([41265f7](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/41265f7d17cf19faeab8ec21ed0a3e4cec16b6db))
+
+### Code Refactoring
+
+- improve log message formatting ([ab655ad](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/ab655ad0cb5cf98d6419d558678008b801a6d6bd))
+- optimize DOM builder initialization ([74448b6](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/74448b68c1a41ba213ade45805e444b9a295b386))
+- remove module prefix from log messages ([8118f16](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/8118f16537787e5fbe3a770c2a3442f5e83ce324))
+- simplify departure filtering logic ([fb6f531](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/fb6f5313d8249f5b92626cc70c04a579152a116a))
+
+## [3.5.1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.5.0...v3.5.1) (2025-11-30)
+
+### Documentation
+
+- replace not working sbb profile with working one for query script ([695e2e1](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/695e2e1214a6d3adcace1667b9b7583cfa2562ce))
+
+### Changed
+
+- **ci:** add release script and changelog configuration ([49f3c7b](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/49f3c7b8fe8e8b70ca7cedd06e5767804ebc1b29))
+- update dependencies ([459bf86](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/459bf86930a44e9332d0b10add9d829889fbb36f))
+- update Node.js action to v6 in automated tests workflow ([7684fdc](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/commit/7684fdce152fc82f2e6fe95f511474943362f9e3))
+
+## [3.5.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.4.0...v3.5.0) 2025-10-17
+
+### Changed
+
+- chore: replace `husky` with `simple-git-hooks` for pre-commit linting
+- chore: update devDependencies
+- docs: update installation instructions to include `--ignore-scripts` option for `npm ci`
+
+### Fixed
+
+- fix: improve module initialization and error resilience
+
+## [3.4.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.3.0...v3.4.0) 2025-10-14
+
+### Added
+
+- feat: add `excludeDirections` option to filter out departures to specific destinations (#236) - thanks to @Tmist3r
+- feat: add css style for lines in Graz
+
+### Changed
+
+- chore: update devDependencies
 
 ## [3.3.0](https://github.com/KristjanESPERANTO/MMM-PublicTransportHafas/compare/v3.2.1...v3.3.0) 2025-10-12
 

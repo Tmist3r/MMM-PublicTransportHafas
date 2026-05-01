@@ -1,4 +1,4 @@
-/* global dayjs PtDomBuilder Module Log config */
+/* global Module Log config */
 
 /*
  * UserPresence Management (PIR sensor)
@@ -17,6 +17,7 @@ Module.register("MMM-PublicTransportHafas", {
     hidden: false,
     updatesEvery: 120,                  // How often should the table be updated in s?
     timeFormat: config.timeFormat,      // Since we don't use moment.js, we need to handle the time format ourselves. This is the default time format of the mirror.
+    language: config.language,          // Use MagicMirror's language setting for date/time formatting
 
     // Header
     headerPrefix: "",
@@ -24,16 +25,24 @@ Module.register("MMM-PublicTransportHafas", {
 
     // Display last update time
     displayLastUpdate: true,            // Add line after the tasks with the last server update time
-    displayLastUpdateFormat: "dd - HH:mm:ss", // Format to display the last update. See dayjs.js documentation for all display possibilities
+    displayLastUpdateOptions: {         // Intl.DateTimeFormat options for last update display
+      weekday: "short",                 // e.g., "Mon" or "Mo"
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    },
 
     // Error handling
     discardSocketErrorThreshold: 3,     // How many consecutive socket errors should be tolerated before showing an error message? (0 = show errors immediately)
 
     // Departures options
-    direction: "",                      // Show only departures heading to this station. (A station ID.)
+    direction: "",                      // Deprecated. Will be used if directions is empty.
+    directions: [],                     // Show only departures heading to this station. (A station ID.)
     ignoredLines: [],                   // Which lines should be ignored? (comma-separated list of line names)
     ignoreRelatedStations: false,       // For some stations there are related stations. By default, their departures are also displayed.
     excludedTransportationTypes: [],    // Which transportation types should not be shown on the mirror? (comma-separated list of types) possible values: "tram", "bus", "suburban", "subway", "regional" and "national"
+    excludeDirections: [],              // List of destination names to omit from the display.
+    platformsToShow: [],                // Show only departures from specific platforms (e.g., ["A", "B"]). Empty array = show all platforms.
     timeToStation: 10,                  // How long do you need to walk to the Station? (in minutes)
     timeInFuture: 40,                   // Show departures for the next *timeInFuture* minutes.
 
@@ -43,12 +52,14 @@ Module.register("MMM-PublicTransportHafas", {
     showColoredLineSymbols: true,       // Want colored line symbols?
     useColorForRealtimeInfo: true,      // Want colored real time information (timeToStation, early)?
     showAbsoluteTime: true,             // How should the departure time be displayed? "15:10" (absolute) or "in 5 minutes" (relative)
+    toggleAbsoluteTimeInterval: 0,      // Automatically switch between absolute and relative time every n seconds (0 = disabled)
     noRealtimeDelayString: "+?",        // Only relevant if 'showAbsoluteTime: true'. The string that is displayed as delay if no real-time departure time data is available.
     showRelativeTimeOnlyUnder: 10 * 60 * 1000,  // Display the time only relatively if the departure takes place in less than 10 minutes (600000 milliseconds). The value is only relevant if showAbsoluteTime: false.
     showTableHeaders: true,             // Show table headers?
     showTableHeadersAsSymbols: true,    // Table Headers as symbols or written?
     showWarningRemarks: true,           // Show warning remarks?
     warningRemarksFilter: [],           // list of strings (case-insensitive) to filter remarks
+    warningRemarksScrollSpeed: 10,      // Scroll speed of warning remarks in characters per second
     showWarningsOnce: false,            // Hide same warning in next departure?
     tableHeaderOrder: ["time", "line", "direction", "platform"], // In which order should the table headers appear?
     maxUnreachableDepartures: 0,        // How many unreachable departures should be shown?
@@ -63,7 +74,7 @@ Module.register("MMM-PublicTransportHafas", {
     showRelativeDelay: true,						// Display the time delay either as relative minutes (+5) or as absolute time (10:00 +5 => 10:05)
   },
 
-  start () {
+  async start () {
     Log.info(`Starting module: ${this.name} with identifier: ${this.identifier}`);
 
     this.ModulePublicTransportHafasHidden = false; // By default we display the module (if no carousel or other module)
@@ -74,12 +85,27 @@ Module.register("MMM-PublicTransportHafas", {
     this.initialized = false;
     this.error = {};
     this.errorCount = 0;
+    this.toggleAbsoluteTimeIntervalID = 0;
 
-    this.sanitizeConfig();
+    await this.sanitizeConfig();
+
+    // Load DOM builder ESM module
+    const {default: PtDomBuilder} = await import("./core/PtDomBuilder.mjs");
+    const {formatTime, formatDateTime, fromUnixSeconds} = await import("./core/TemporalHelper.mjs");
+    this.TemporalHelper = {formatTime, formatDateTime, fromUnixSeconds};
+    this.domBuilder = new PtDomBuilder(this.config);
 
     if (!this.config.stationID) {
       this.error.message = this.translate("NO_STATION_ID_SET");
       return;
+    }
+
+    // Determine directions (in case old keyword is used)
+    let directions = [];
+    if (this.config.directions && this.config.directions.length > 0) {
+      directions = this.config.directions;
+    } else if (this.config.direction) {
+      directions = [this.config.direction];
     }
 
     const fetcherOptions = {
@@ -88,18 +114,33 @@ Module.register("MMM-PublicTransportHafas", {
       stationID: this.config.stationID,
       timeToStation: this.config.timeToStation,
       timeInFuture: this.config.timeInFuture,
-      direction: this.config.direction,
+      directions,
       ignoredLines: this.config.ignoredLines,
       ignoreRelatedStations: this.config.ignoreRelatedStations,
       excludedTransportationTypes: this.config.excludedTransportationTypes,
+      excludeDirections: this.config.excludeDirections,
+      platformsToShow: this.config.platformsToShow,
       maxReachableDepartures: this.config.maxReachableDepartures,
       maxUnreachableDepartures: this.config.maxUnreachableDepartures
     };
 
     this.sendSocketNotification("CREATE_FETCHER", fetcherOptions);
+    this.startTimeDisplayToggle();
 
-    // Set locale
-    dayjs.locale(config.language);
+    // Fallback: If no FETCHER_INITIALIZED is received within 30 seconds, start fetching anyway
+    // This handles cases where the socket notification is lost or delayed
+    // Increased timeout to allow time for HAFAS client initialization
+    setTimeout(() => {
+      if (!this.initialized) {
+        Log.warn("[MMM-PublicTransportHafas] FETCHER_INITIALIZED not received after 30s, starting fetch loop anyway.");
+        this.initialized = true;
+        this.startFetchingLoop(this.config.updatesEvery);
+        // Force DOM update to trigger the fetch result display
+        this.updateDom(this.config.animationSpeed);
+      }
+    }, 30_000);
+
+    // Temporal uses Intl for locale-specific formatting (no separate config needed)
   },
 
   suspend () {
@@ -134,60 +175,27 @@ Module.register("MMM-PublicTransportHafas", {
 
       // Update now and start again the update timer
       this.startFetchingLoop(this.config.updatesEvery);
+      this.startTimeDisplayToggle();
     } else {
       // (UserPresence = false OU ModulePublicTransportHafasHidden = true)
-      Log.debug(`[MMM-PublicTransportHafas] No one is watching: Stop the update!${this.config.stationName}`);
+      Log.debug(`[MMM-PublicTransportHafas] No one is watching: Stop the update! ${this.config.stationName}`);
       clearInterval(this.updatesIntervalID); // Stop the current update interval
       this.updatesIntervalID = 0; // Reset the variable
+      clearInterval(this.toggleAbsoluteTimeIntervalID); // Stop the time display toggle
+      this.toggleAbsoluteTimeIntervalID = 0; // Reset the variable
     }
   },
 
   getDom () {
-    const domBuilder = new PtDomBuilder(this.config);
-
-    // Error handling - only show error if threshold is exceeded
-    if (this.hasErrors() && this.errorCount > this.config.discardSocketErrorThreshold) {
-      Log.error("[MMM-PublicTransportHafas]", this.error);
-
-      let errorMessage;
-
-      switch (this.error.code) {
-        case "ENOTFOUND":
-          // HAFAS endpoint not available
-          errorMessage = this.translate("ERROR_ENOTFOUND");
-          break;
-        case "EAI_AGAIN":
-          // Temporary DNS resolution failure
-          errorMessage = this.translate("ERROR_EAI_AGAIN");
-          break;
-        case "ETIMEDOUT":
-        case "ECONNREFUSED":
-        case "ECONNRESET":
-          // Connection issues
-          errorMessage = this.translate("ERROR_CONNECTION");
-          break;
-        case "NOT_FOUNDS":
-          // Station not found
-          errorMessage = this.translate("NOT_FOUND");
-          break;
-        default:
-          errorMessage = this.error.hafasMessage || this.error.code || this.error.message;
-          break;
-      }
-
-      Log.error("[MMM-PublicTransportHafas]", errorMessage.replace(/<br>/gu, " "));
-      errorMessage = `${this.translate("ERROR_UNAVAILABLE")}<br><br><small>⚠️ ${errorMessage}</small>`;
-      return domBuilder.getSimpleDom(errorMessage);
+    const errorDom = this.getErrorDom();
+    if (errorDom) {
+      return errorDom;
     }
 
-    // Log errors below threshold as warnings
-    if (this.hasErrors() && this.errorCount > 0 && this.errorCount <= this.config.discardSocketErrorThreshold) {
-      Log.warn(`[MMM-PublicTransportHafas] Socket error ${this.errorCount}/${this.config.discardSocketErrorThreshold}:`, this.error);
-    }
-
+    this.logWarningsIfNeeded();
 
     if (!this.initialized) {
-      return domBuilder.getSimpleDom(this.translate("LOADING"));
+      return this.domBuilder.getSimpleDom(this.translate("LOADING"));
     }
 
     const headings = {
@@ -197,32 +205,77 @@ Module.register("MMM-PublicTransportHafas", {
       platform: this.translate("PTH_PLATFORM")
     };
 
-    const noDeparturesMessage = this.translate("PTH_NO_DEPARTURES");
-
-    const wrapper = domBuilder.getDom(
+    const wrapper = this.domBuilder.getDom(
       this.departures,
       headings,
-      noDeparturesMessage
+      this.translate("PTH_NO_DEPARTURES")
     );
 
-    // Display the update time at the end, if defined so by the user config
     if (this.config.displayLastUpdate) {
-      const updateInfo = document.createElement("div");
-      updateInfo.className = "xsmall light align-left";
-
-      // Show socket issues count if there are errors below the threshold
-      let updateText = "Update";
-      if (this.errorCount > 0 && this.errorCount <= this.config.discardSocketErrorThreshold) {
-        updateText = `Update (socket issues: ${this.errorCount})`;
-      }
-
-      updateInfo.textContent = `${updateText}: ${dayjs
-        .unix(this.lastUpdate)
-        .format(this.config.displayLastUpdateFormat)}`;
-      wrapper.appendChild(updateInfo);
+      wrapper.appendChild(this.getUpdateInfoElement());
     }
 
     return wrapper;
+  },
+
+  getErrorDom () {
+    if (!this.hasErrors() || this.errorCount <= this.config.discardSocketErrorThreshold) {
+      return null;
+    }
+
+    Log.error("[MMM-PublicTransportHafas]", this.error);
+
+    const errorMessage = this.getErrorMessage();
+    Log.error("[MMM-PublicTransportHafas]", errorMessage.replace(/<br>/gu, " "));
+
+    return this.domBuilder.getSimpleDom(`${this.translate("ERROR_UNAVAILABLE")}<br><br><small>⚠️ ${errorMessage}</small>`);
+  },
+
+  getErrorMessage () {
+    switch (this.error.code) {
+      case "ENOTFOUND":
+        return this.translate("ERROR_ENOTFOUND");
+      case "EAI_AGAIN":
+        return this.translate("ERROR_EAI_AGAIN");
+      case "ETIMEDOUT":
+      case "ECONNREFUSED":
+      case "ECONNRESET":
+        return this.translate("ERROR_CONNECTION");
+      case "NOT_FOUNDS":
+        return this.translate("NOT_FOUND");
+      default:
+        return this.error.hafasMessage || this.error.code || this.error.message;
+    }
+  },
+
+  logWarningsIfNeeded () {
+    if (this.hasErrors() && this.errorCount > 0 && this.errorCount <= this.config.discardSocketErrorThreshold) {
+      Log.warn(`[MMM-PublicTransportHafas] Socket error ${this.errorCount}/${this.config.discardSocketErrorThreshold}:`, this.error);
+    }
+  },
+
+  getUpdateInfoElement () {
+    const updateInfo = document.createElement("div");
+    updateInfo.className = "xsmall light align-left";
+
+    const updateText = this.errorCount > 0 && this.errorCount <= this.config.discardSocketErrorThreshold
+      ? `Update (socket issues: ${this.errorCount})`
+      : "Update";
+
+    updateInfo.textContent = this.lastUpdate > 0
+      ? `${updateText}: ${this.getFormattedUpdateTime()}`
+      : `${updateText}: ${this.translate("PTH_NO_UPDATES_YET")}`;
+
+    return updateInfo;
+  },
+
+  getFormattedUpdateTime () {
+    const updateTime = this.TemporalHelper.fromUnixSeconds(this.lastUpdate);
+    return this.TemporalHelper.formatDateTime(
+      updateTime,
+      this.config.language,
+      this.config.displayLastUpdateOptions
+    );
   },
 
   getStyles () {
@@ -237,14 +290,7 @@ Module.register("MMM-PublicTransportHafas", {
   },
 
   getScripts () {
-    return [
-      this.file("node_modules/dayjs/dayjs.min.js"),
-      this.file("node_modules/dayjs/plugin/localizedFormat.js"),
-      this.file("node_modules/dayjs/plugin/relativeTime.js"),
-      this.file(`node_modules/dayjs/locale/${config.language}.js`),
-      this.file("core/PtDomBuilder.js"),
-      this.file("core/PtTableBodyBuilder.js")
-    ];
+    return [this.file("node_modules/temporal-polyfill/global.min.js")];
   },
 
   getTranslations () {
@@ -268,11 +314,7 @@ Module.register("MMM-PublicTransportHafas", {
             this.lastUpdate = Date.now() / 1_000; // Save the timestamp of the last update to be able to display it
           }
 
-          Log.log(`[MMM-PublicTransportHafas] Update OK, station : ${
-            this.config.stationName
-          } at : ${Number(dayjs
-            .unix(this.lastUpdate)
-            .format(this.config.displayLastUpdateFormat))}`);
+          Log.log(`[MMM-PublicTransportHafas] Update OK, station: ${this.config.stationName} at: ${new Date().toLocaleTimeString()}`);
 
           // Reset error object and error count on successful fetch
           this.error = {};
@@ -291,14 +333,8 @@ Module.register("MMM-PublicTransportHafas", {
             this.departures = [];
           }
 
-          // Only show the error message if threshold is exceeded
-          if (this.errorCount > this.config.discardSocketErrorThreshold) {
-            this.updateDom(this.config.animationSpeed);
-          } else {
-            // Update DOM to show socket issue count in "Last update" line
-            this.updateDom(this.config.animationSpeed);
-          }
-
+          // Always update DOM (either to show error or socket issue count)
+          this.updateDom(this.config.animationSpeed);
           break;
       }
     }
@@ -308,25 +344,18 @@ Module.register("MMM-PublicTransportHafas", {
     return payload.identifier === this.identifier;
   },
 
-  sanitizeConfig () {
-    if (this.config.updatesEvery < 30) {
-      this.config.updatesEvery = 30;
-    }
+  async sanitizeConfig () {
+    // Dynamic import to load ESM module in browser
+    const {sanitizeConfig} = await import("./core/ConfigValidator.mjs");
+    this.config = sanitizeConfig(this.config, this.defaults);
+  },
 
-    if (this.config.timeToStation < 0) {
-      this.config.timeToStation = 0;
-    }
-
-    if (this.config.timeInFuture < this.config.timeToStation + 30) {
-      this.config.timeInFuture = this.config.timeToStation + 30;
-    }
-
-    if (this.config.maxUnreachableDepartures < 0) {
-      this.config.maxUnreachableDepartures = 0;
-    }
-
-    if (this.config.maxReachableDepartures < 0) {
-      this.config.maxReachableDepartures = this.defaults.maxReachableDepartures;
+  startTimeDisplayToggle () {
+    if (this.config.toggleAbsoluteTimeInterval > 0 && this.toggleAbsoluteTimeIntervalID === 0) {
+      this.toggleAbsoluteTimeIntervalID = setInterval(() => {
+        this.config.showAbsoluteTime = !this.config.showAbsoluteTime;
+        this.updateDom();
+      }, this.config.toggleAbsoluteTimeInterval * 1_000);
     }
   },
 

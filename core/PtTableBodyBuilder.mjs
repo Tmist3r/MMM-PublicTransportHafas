@@ -1,13 +1,16 @@
-/* global dayjs */
+import * as TemporalHelper from "./TemporalHelper.mjs";
 
-dayjs.extend(window.dayjs_plugin_relativeTime);
-dayjs.extend(window.dayjs_plugin_localizedFormat);
-
-// eslint-disable-next-line no-unused-vars
-class PtTableBodyBuilder {
+/**
+ * Builds the table body for departure display.
+ * Uses Temporal API for modern date/time handling.
+ */
+export default class PtTableBodyBuilder {
+  /**
+   * @param {object} config - Module configuration
+   */
   constructor (config) {
     this.config = config;
-    this.remarksCollector = [];  // the array with warnings that are already displayed
+    this.remarksCollector = []; // the array with warnings that are already displayed
   }
 
   getDeparturesTableBody (departures, noDepartureMessage) {
@@ -32,14 +35,7 @@ class PtTableBodyBuilder {
         unreachableCount
       );
 
-      //exclude stations that end at exludeEndStation[i]
-      const shouldExclude = this.config.excludeEndStation.some(
-        endStation => departure.direction == endStation
-      );
-      if (!shouldExclude) {
-        tBody.appendChild(row);
-      }
-      //tBody.appendChild(row);
+      tBody.appendChild(row);
 
       if (!shouldExclude && this.config.showWarningRemarks) {
         // Next line is for testing if there are no warning remarks - uncomment it to append to every departure a warning remark
@@ -123,16 +119,19 @@ class PtTableBodyBuilder {
             ${remark.text.replaceAll("\n", " ")}`;
 
         if (this.config.showWarningsOnce === true) {
-        // Add remark.summary and remark.text to the remarksCollector array. Elements in this array will not be displayed again
+          // Add remark.summary and remark.text to the remarksCollector array. Elements in this array will not be displayed again
           this.remarksCollector.push(remark.summary, remark.text);
         }
       }
     }
 
     if (marquee.textContent !== "") {
-      while (marquee.textContent.length < 3000) {
-        marquee.textContent += marquee.textContent;
-      }
+      const warningText = marquee.textContent.trim();
+      cellContainer.title = warningText;
+
+      // Calculate scroll duration based on text length for constant scroll speed
+      const scrollDuration = Math.max(3, warningText.length / this.config.warningRemarksScrollSpeed);
+      marquee.style.animationDuration = `${scrollDuration}s`;
     }
 
     cellContainer.appendChild(marquee);
@@ -171,11 +170,8 @@ class PtTableBodyBuilder {
 
     switch (key) {
       case "time": {
-        this.time = departure.when;
-        // Use planned time if canceled
-        if (departure.canceled === true) {
-          this.time = departure.plannedWhen;
-        }
+        // Use when if available, otherwise fall back to plannedWhen
+        this.time = departure.when ?? departure.plannedWhen;
 
         // Get time cell
         cell = this.getTimeCell(this.time, departure.delay);
@@ -199,13 +195,7 @@ class PtTableBodyBuilder {
       }
 
       case "platform": {
-        let {platform} = departure;
-        if (platform === null) {
-          platform = departure.plannedPlatform;
-        }
-        if (platform === null) {
-          platform = "";
-        }
+        const platform = departure.platform ?? departure.plannedPlatform ?? "";
         cell = this.getPlatformCell(platform);
         break;
       }
@@ -214,11 +204,11 @@ class PtTableBodyBuilder {
     return cell;
   }
 
-  getTimeCell (departure, delay) {
-    const time = this.getDisplayDepartureTime(departure, delay);
+  getTimeCell (when, delay) {
+    const time = this.getDisplayDepartureTime(when, delay);
     const cell = document.createElement("td");
 
-    if (dayjs(departure).isValid()) {
+    if (TemporalHelper.isValidTemporal(when)) {
       cell.className = "mmm-pth-time-cell";
       cell.appendChild(document.createTextNode(time));
 
@@ -273,23 +263,25 @@ class PtTableBodyBuilder {
   }
 
   getDisplayDepartureTime (when, delay) {
-    let time = dayjs(when);
-    let format = "HH:mm";
-
-    if (this.config.timeFormat === 12) {
-      format = "h:mm A";
-    }
+    const instant = Temporal.Instant.from(when);
+    const now = Temporal.Now.instant();
 
     if (this.config.showAbsoluteTime) {
-      time = dayjs(when).subtract(delay, "seconds");
-      return time.format(format);
+      // Subtract delay to show scheduled time
+      const adjustedInstant = instant.subtract(Temporal.Duration.from({seconds: delay ?? 0}));
+      return TemporalHelper.formatTime(adjustedInstant, this.config.language ?? "en", this.config.timeFormat);
     }
 
-    if (dayjs(when).diff(dayjs()) > this.config.showRelativeTimeOnlyUnder) {
-      return time.format(format);
+    // When toggling is active, always show relative time (skip the showRelativeTimeOnlyUnder threshold)
+    if (!this.config.toggleAbsoluteTimeInterval) {
+      const diffMs = instant.epochMilliseconds - now.epochMilliseconds;
+
+      if (diffMs > this.config.showRelativeTimeOnlyUnder) {
+        return TemporalHelper.formatTime(instant, this.config.language ?? "en", this.config.timeFormat);
+      }
     }
 
-    return time.fromNow();
+    return TemporalHelper.formatRelativeTime(instant, this.config.language ?? "en");
   }
 
   getLineId (lineName) {
@@ -341,7 +333,7 @@ class PtTableBodyBuilder {
    * This function returns the product name. In the two examples already mentioned
    * (`RB50` and` RB 50`) the string `RB` would be returned. If there is no product name
    * (if the line name starts with a digit), `undefined` is returned.
-   * @param  {string} lineName    The line name as it was delivered by the HAFAS API.
+   * @param {string} lineName    The line name as it was delivered by the HAFAS API.
    * @returns {string} product     The product ('RB', 'S', 'U', ...).
    */
   getProduct (lineName) {
@@ -366,7 +358,7 @@ class PtTableBodyBuilder {
    *
    * Class names are returned depending on the line name. This enables CSS styles
    * to be defined on the basis of various properties.
-   * @param  {string} lineName     The linename as it was delivered by the HAFAS API.
+   * @param {string} lineName     The linename as it was delivered by the HAFAS API.
    * @returns {string} classNames   Series of class names
    */
   getColoredCssClass (lineName) {
@@ -393,14 +385,14 @@ class PtTableBodyBuilder {
 
   getDirectionCell (direction) {
     const truncatePosition = 26;
-    let content = this.getProcessedDirection(direction);
+    let content = this.getProcessedDirection(direction ?? "");
     let className = "mmm-pth-direction-cell";
 
     if (
       this.config.marqueeLongDirections && content.length > truncatePosition
     ) {
       content = document.createElement("span");
-      content.textContent = this.getProcessedDirection(direction);
+      content.textContent = this.getProcessedDirection(direction ?? "");
       className += " mmm-pth-marquee";
     }
 
@@ -413,7 +405,7 @@ class PtTableBodyBuilder {
 
   getProcessedDirection (direction) {
     const replacements = this.config.replaceInDirections;
-    let processed = direction;
+    let processed = direction ?? "";
 
     for (const key of Object.keys(replacements)) {
       processed = processed.replaceAll(key, replacements[key]);

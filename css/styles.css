@@ -93,12 +93,14 @@
     white-space: nowrap;
     overflow: hidden;
     font-size: 0.8em;
-    width: 80ch;
-    display: inline-block;
+    width: 100%;
+    min-width: 100%;
+    max-width: 0;
+    display: block;
 
     span {
       font-weight: 400;
-      animation: mmm-pth-warning-remarks 600s linear infinite;
+      animation: mmm-pth-warning-remarks linear infinite;
       display: inline-block;
       padding-left: 20%;
     }

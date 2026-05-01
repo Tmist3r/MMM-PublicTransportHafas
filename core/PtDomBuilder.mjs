@@ -1,6 +1,12 @@
-/* global PtTableBodyBuilder */
-// eslint-disable-next-line no-unused-vars
-class PtDomBuilder {
+import PtTableBodyBuilder from "./PtTableBodyBuilder.mjs";
+
+/**
+ * Builds the DOM structure for the departure display.
+ */
+export default class PtDomBuilder {
+  /**
+   * @param {object} config - Module configuration
+   */
   constructor (config) {
     this.config = config;
 

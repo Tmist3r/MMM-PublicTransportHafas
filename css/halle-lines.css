@@ -5,7 +5,9 @@
   }
 
   .str2,
-  .str2e {
+  .str2e,
+  .str2s,
+  .str2se {
     background-color: rgb(239 124 0);
   }
 
@@ -221,5 +223,19 @@
   .bus97,
   .bus97e {
     background-color: rgb(90 108 2);
+  }
+
+  .x1,
+  .x1e,
+  .busx1,
+  .busx1e {
+    background-color: rgb(125 0 213);
+  }
+
+  .x2,
+  .x2e,
+  .busx2,
+  .busx2e {
+    background-color: rgb(144 129 131);
   }
 }

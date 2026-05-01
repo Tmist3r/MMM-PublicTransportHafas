@@ -75,6 +75,7 @@
   }
 
   [class*="stadtbus"],
+  [class*="nachtbus"],
   [class*="nightline"] {
     /* Stadtbus color */
     background-color: #018c3c;
